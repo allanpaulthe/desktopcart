@@ -1,0 +1,110 @@
+.footer {
+    background-color: #33333a;
+    width: 100%;
+    .footer-top {
+        display: flex;
+        padding: 3% 15%;
+        @media screen and (max-width: 990px) {
+            flex-direction: column;
+            .listgroup {
+                margin-bottom: 20px;
+            }
+        }
+        @media screen and (max-width: 800px) {
+            padding: 3% 3%;
+        }
+        .listgroup {
+            flex: 1;
+            display: flex;
+            &>* {
+                flex: 1;
+            }
+            h3 {
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 1.67;
+                margin-top: 0;
+                font-family: VLNewParisHeadline;
+            }
+            p {
+                font-size: 14px;
+                line-height: 1.79;
+                color: #dedede;
+                font-family: AvenirNext;
+            }
+            .partners,
+            .categories {
+                p {
+                    cursor: pointer;
+                }
+            }
+            @media screen and (max-width: 390px) {
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+        .subscribe {
+            flex: 1;
+            h3 {
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 1.67;
+                margin-top: 0;
+                font-family: VLNewParisHeadline;
+            }
+            .footer-input {
+                display: flex;
+                justify-content: space-between;
+                @media screen and (max-width: 390px) {
+                    flex-direction: column;
+                    button {
+                        flex-basis: 30%;
+                        margin-top: 10px;
+                        height: 30px;
+                    }
+                }
+                input {
+                    height: 40px;
+                    background-color: #33333a;
+                    border: solid 1px #666666;
+                    flex-basis: 60%;
+                    padding: 10px;
+                    font-size: 14px;
+                    line-height: 1.43;
+                    color: #dedede;
+                    box-sizing: border-box;
+                    outline: none;
+                    font-family: AvenirNext;
+
+                }
+                button {
+                    flex-basis: 30%;
+                    font-size: 12px;
+                    line-height: 1.67;
+                    letter-spacing: 2px;
+                    text-align: center;
+                    color: #33333a;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    outline: none;
+                    border: none;
+                    font-family: NunitoSans;
+                }
+            }
+            .footer-icons {
+                margin-top: 20px;
+                img {
+                    margin-right: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .footer-copyright {
+        padding-bottom: 24px;
+        font-size: 14px;
+        line-height: 1.79;
+        color: #dedede;
+        font-family: AvenirNext;
+    }
+}

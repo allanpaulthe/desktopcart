@@ -1,3 +1,54 @@
-.carousal{
+.image-slide {
+    height: 100%;
+    width: 100%;
+    transition: background-image .3s ease-in-out;
+}
+
+.slide-arrow {
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+}
+
+.slide-arrow.right {
+    right: 0;
+    top: 0;
+}
+
+.slide-arrow.left {
+    left: 0;
+}
+
+.carousel {
     height: 600px;
+    margin: 0;
+    position: relative;
+    font-family: 'Nunito Sans', sans-serif;
+    @media screen and (max-width: 600px) {
+        display:none;
+    }
+    .info {
+        .text {
+            height: 160px;
+            font-size: 60px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.33;
+        }
+        position: absolute;
+        right: 3.5%;
+        bottom: 20%;
+        button {
+            height: 35px;
+            margin-top: 20px;
+            background-color: #33333a;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
 }
