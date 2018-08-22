@@ -10,9 +10,9 @@ class ShopElement extends Component {
     render() {
         return (
             <div className="shop-element">
-                <img src={require('../../assets/img/dress.jpg')} alt="dress"/>
+                <img src={this.props.element.image_URL} alt="dress"/>
                 <div className="label flex-center">
-                    pants
+                    {this.props.element.id}
                 </div>
                 <div className="shopnow flex-center">
                     SHOP NOW
