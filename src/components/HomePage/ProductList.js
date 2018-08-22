@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/style/HomePage/product-list.less';
 import ProductCard from './ProductCard';
-import QuickView from '../QuickView/QuickView';
+
 
 
 class ProductList extends Component {
@@ -26,7 +26,6 @@ class ProductList extends Component {
         const productList = this.state.data;
         return (
             <div className="product-list">
-                <QuickView />
                 {[...productList].map((x, i) => (
                     <ProductCard key={i} element={x} />
                 ))}

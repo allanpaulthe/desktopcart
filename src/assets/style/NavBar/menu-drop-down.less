@@ -1,0 +1,44 @@
+.menu-drop-down {
+    padding: 10px 0 0 10px;
+    box-sizing: border-box;
+    .top {
+        display: flex;
+        p {
+            font-family: ProximaNovaSoft;
+            font-size: 12px;
+            line-height: 3.33;
+            letter-spacing: 1px;
+            color: #33333a;
+            text-transform: uppercase;
+            margin-left: 10px;
+            user-select: none;
+            cursor: pointer;
+            &:hover {
+                color: #0231b7;
+            }
+        }
+    }
+    .bottom {
+        transition: transform .3s cubic-bezier(.5, 0, .3, 1);
+        height: 0;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            padding-left: 25px;
+            li {
+                margin: 0;
+                font-family: AvenirNext;
+                font-size: 12px;
+                line-height: 3.33;
+                letter-spacing: 1px;
+                color: #666666;
+                text-transform: uppercase;
+                cursor: pointer;
+                &:hover {
+                    color: #0231b7;
+                }
+            }
+        }
+    }
+}

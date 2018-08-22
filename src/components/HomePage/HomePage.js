@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../assets/style/HomePage/home-page.less';
 import OfferBar from './OfferBar';
 import NavBar from '../NavBar/NavBar';
+import Menu from '../NavBar/Menu';
 import Carousel from './Carousal';
 import ProductList from './ProductList';
 import About from './About';
@@ -18,6 +19,7 @@ class HomePage extends Component {
             <div className="home-page">
                 <OfferBar />
                 <NavBar />
+                <Menu />
                 <Carousel />
                 <div className="container">
                     <div className="header">

@@ -2,16 +2,35 @@
 body,
 p {
     margin: 0;
-    padding: 0;
-    //font-family: Roboto;
+    padding: 0; //font-family: Roboto;
 }
-.flex-center{
+
+.flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.flex-v-center{
+
+.flex-v-center {
     display: flex;
     align-items: center;
 }
 
+.popup-screen {
+    position: fixed;
+    background-color: rgba(0, 0, 0, .5);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    overflow: auto;
+    padding: 5% 15%;
+    @media screen and (max-width: 860px) {
+        padding: 5% 3%;
+    }
+}
+body{
+    overflow-x: hidden;
+}
