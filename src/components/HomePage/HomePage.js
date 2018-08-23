@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import '../../assets/style/HomePage/home-page.less';
-import OfferBar from './OfferBar';
-import NavBar from '../NavBar/NavBar';
-import Menu from '../NavBar/Menu';
 import Carousel from './Carousal';
 import ProductList from './ProductList';
 import About from './About';
 import Shop from './Shop';
-import Footer from '../Footer/Footer';
 import { Icon } from 'react-icons-kit';
 import { search } from 'react-icons-kit/fa/search';
 import {list} from 'react-icons-kit/fa/list';
@@ -21,9 +17,6 @@ class HomePage extends Component {
     render() {
         return (
             <div className="home-page">
-                <OfferBar />
-                <NavBar />
-                <Menu />
                 <Carousel />
                 <div className="container">
                     <div className="header">
@@ -47,7 +40,6 @@ class HomePage extends Component {
                     <About />
                     <Shop />
                 </div>
-                <Footer />
             </div>
         );
     }
