@@ -8,6 +8,8 @@ import { Icon } from 'react-icons-kit';
 import { ic_close } from 'react-icons-kit/md/ic_close';
 import { ic_star_border } from 'react-icons-kit/md/ic_star_border';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
+import { connect } from 'react-redux';
+import { closeQuickView } from '../../actions/productsActions';
 
 
 class QuickView extends Component {
@@ -15,22 +17,26 @@ class QuickView extends Component {
         super(props);
         this.state = {};
     }
+    closeQuickView() {
+        this.props.closeQuickView()
+    }
     render() {
+        let id = this.props.id;
         return (
             <div className="quick-view">
                 <div className="quick-header flex-v-center">
                     <h1>Argentina Authentic...</h1>
-                    <Icon icon={ic_close} size={30} />
+                    <Icon icon={ic_close} size={30} onClick={this.closeQuickView.bind(this)} />
                 </div>
                 <div className="quick-body">
                     <div className="quick-first">
                         <div className="pic-list">
                             {Array.apply(null, { length: 5 }).map((x, i) => (
-                                <img src={'http://10.7.50.88:4000/img/product/3'} alt="" className="selected" />
+                                <img src={'http://10.7.50.88:4000/img/product/'+id} alt="" className="selected" />
                             ))}
                         </div>
                         <div className="pic">
-                            <img src={'http://10.7.50.88:4000/img/product/3'} alt="" />
+                            <img src={'http://10.7.50.88:4000/img/product/'+id} alt="" />
                         </div>
                     </div>
                     <div className="quick-second">
@@ -66,7 +72,7 @@ class QuickView extends Component {
                             <button>ADD TO CART</button>
                             <div className="right flex-v-center">
                                 <p className="q flex-center">?</p>
-                                <div  className="wish">
+                                <div className="wish">
                                     <p>ADD TO WISHLIST</p>
                                 </div>
                             </div>
@@ -81,4 +87,19 @@ class QuickView extends Component {
     }
 }
 
-export default QuickView;
+export const mapStateToProps = (state) => {
+    return {
+        products: state.products,
+        id: state.quickSelected
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        closeQuickView: (id) => {
+            dispatch(closeQuickView(id))
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuickView);

@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import '../../assets/style/HomePage/product-card.less';
+import { onQuickView } from '../../actions/productsActions';
+import { connect } from 'react-redux';
 
 class ProductCard extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+    }
+    quickView() {
+        this.props.onQuickView(this.props.element.id);
     }
     render() {
         let element = this.props.element;
@@ -12,7 +17,7 @@ class ProductCard extends Component {
             <div className="product-card">
                 <div className="image flex-center">
                     <img src={element.image_url} alt="shirt" />
-                    <img src={require('../../assets/img/icons/quick-open.svg')} alt="quick open" className="hover" />
+                    <img src={require('../../assets/img/icons/quick-open.svg')} alt="quick open" className="hover" onClick={this.quickView.bind(this)} />
                 </div>
                 <div className="data">
                     <p className="name">{element.name}</p>
@@ -27,4 +32,18 @@ class ProductCard extends Component {
     }
 }
 
-export default ProductCard;
+export const mapStateToProps = (state) => {
+    return {
+        products: state.products
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onQuickView: (id) => {
+            dispatch(onQuickView(id))
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);

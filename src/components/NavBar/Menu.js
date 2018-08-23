@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/style/NavBar/menu.less';
 import Menulist from './MenuList';
+import { connect } from 'react-redux';
 
 class Menu extends Component {
     constructor(props) {
@@ -10,14 +11,19 @@ class Menu extends Component {
     render() {
         return (
             <div className="menu-wrapper">
-                <div className="menu">
+                {this.props.menuOn && <div className="menu">
                     {Array.apply(null, { length: 6 }).map((x, i) => (
-                        <Menulist />
+                        <Menulist key={i} />
                     ))}
-                </div>
+                </div>}
             </div>
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        menuOn: state.menuOn
+    };
+};
 
-export default Menu;
+export default connect(mapStateToProps, null)(Menu);

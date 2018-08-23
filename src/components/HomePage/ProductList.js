@@ -1,37 +1,48 @@
 import React, { Component } from 'react';
 import '../../assets/style/HomePage/product-list.less';
 import ProductCard from './ProductCard';
+import { getProducts } from '../../server/server';
+import { setAllProducts } from '../../actions/productsActions';
+import { connect } from 'react-redux';
 
 
 
 class ProductList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: []
-        };
+        this.state = {};
     }
     componentDidMount() {
-        fetch('http://10.7.50.88:4000/homepage/products', {
-            method: 'GET',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Credentials': true,
-                'Access-Control-Allow-Methods': 'POST, GET'
-            }
-        }).then(response => response.json())
-            .then(data => this.setState({ data: data.data.products }))
+        getProducts().then((data) => {
+            this.props.setProducts(data);
+        }).catch((error) => {
+            this.setState({ data: [] });
+        })
     }
     render() {
-        const productList = this.state.data;
+        const productList = this.props.products;
         return (
             <div className="product-list">
                 {[...productList].map((x, i) => (
-                    <ProductCard key={i} element={x} />
+                    <ProductCard key={i} element={x}/>
                 ))}
             </div>
         );
     }
 }
+export const mapStateToProps = (state) => {
+    return {
+        products: state.products
+    };
+};
 
-export default ProductList;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setProducts: (data) => {
+            dispatch(setAllProducts(data))
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
+
