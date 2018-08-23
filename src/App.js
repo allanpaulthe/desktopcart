@@ -7,6 +7,8 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import OfferBar from './components/HomePage/OfferBar';
 import Menu from './components/NavBar/Menu';
+import Cart from './components/Cart/Cart';
+import CheckOut from './components/CheckOut/CheckOut';
 
 class App extends Component {
   render() {
@@ -15,10 +17,12 @@ class App extends Component {
         <OfferBar />
         <NavBar />
         <Menu />
+        <CheckOut />
+        {/* <Cart />
         {this.props.quickView && <div className="popup-screen">
           <QuickView />
         </div>}
-        <HomePage />
+        <HomePage /> */}
         <Footer />
       </div>
     );

@@ -1,0 +1,59 @@
+.check-out {
+    .heading {
+        height: 80px;
+        background-color: #ffffff;
+        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+        padding: 0 15%;
+        @media screen and(max-width: 1000px) {
+            padding: 0 5%;
+            height: 60px;
+        }
+        h1 {
+            font-family: NunitoSans;
+            font-size: 22px;
+            font-weight: bold;
+            color: #78909c;
+        }
+    }
+    .check-out-body {
+        display: flex;
+        padding: 50px 15%;
+        @media screen and(max-width: 1000px) {
+            padding: 20px 5%;
+        }
+        .first {
+            flex-basis: 55%;
+            .wrapper {
+                width: 100%;
+            }
+            .login-buttons {
+                h2 {
+                    margin: 0;
+                    margin-top: 20px;
+                    font-family: NunitoSans;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: rgba(38, 50, 56, 0.38);
+                }
+                .buttons {
+                    display: flex;
+                    justify-content: center;
+                    margin: 20px 0;
+                    img {
+                        width: 260px;
+                        height: 56px;
+                        cursor: pointer;
+                        object-fit: contain;
+                        margin: 0 20px;
+                    }
+                }
+            }
+            .form {
+                padding-right: 10px;
+            }
+        }
+        .second {
+            flex-basis: 45%;
+        }
+    }
+}

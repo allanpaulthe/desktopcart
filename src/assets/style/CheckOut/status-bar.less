@@ -1,0 +1,55 @@
+.status-bar {
+    display: flex;
+    margin-bottom: 20px;
+    .round {
+        height: 33px;
+        width: 33px;
+        background-color: #cfd8dc;
+        border-radius: 50%;
+        font-family: NunitoSans;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1;
+        text-align: center;
+        color: #ffffff;
+        position: relative;
+        &:after {
+            position: absolute;
+            font-family: NunitoSans;
+            font-size: 14px;
+            font-weight: bold;
+            color: #cfd8dc;
+            bottom: -20px;
+        }
+    }
+    .line {
+        width: 130px;
+        height: 1px;
+        background-color: #cfd8dc;
+        @media screen and(max-width: 410px) {
+            width:70px;
+        }
+    }
+    .completed {
+        background-color: #0097a7;
+        color: #ffffff;
+        &:after {
+            color: #455a64;
+        }
+    }
+    .shipping {
+        &:after {
+            content: 'Shipping';
+        }
+    }
+    .payment {
+        &:after {
+            content: 'Payment';
+        }
+    }
+    .review {
+        &:after {
+            content: 'Review';
+        }
+    }
+}
