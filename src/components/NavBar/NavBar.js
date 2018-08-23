@@ -37,7 +37,7 @@ class NavBar extends Component {
                         <ul>
                             {
                                 [...options].map((x, i) => (
-                                    <OptionHeader name={x} key={i} />
+                                    <OptionHeader name={x} key={i} id={i} />
                                 ))
                             }
                         </ul>

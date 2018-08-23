@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../assets/style/QuickView/size-chart.less';
 
 const getStyles = (no) => {
-    if (no == 0) {
+    if (no === 0) {
         return {
             backgroundColor: "rgba(236, 239, 241, 0.4)",
             color: '#455a64',

@@ -14,7 +14,7 @@ class Menulist extends Component {
                     Apparels
                 </div>
                 {Array.apply(null, { length: 5 }).map((x, i) => (
-                    <MenuDropDown />
+                    <MenuDropDown key={i}/>
                 ))}
             </div>
         );
