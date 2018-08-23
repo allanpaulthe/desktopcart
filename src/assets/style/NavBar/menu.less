@@ -14,7 +14,38 @@
         width:100vw;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         padding:20px 15vw 50px 15vw;
         box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
+        @media screen and (max-width:1570px) {
+            padding:20px 2vw 50px 2vw;
+        }
+        @media screen and (max-width:1160px) {
+            .menu-list{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+        @media screen and (max-width:1035px) {
+            padding:20px 1vw 50px 1vw;
+            .menu-list{
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
+        @media screen and (max-width:1000px) {
+            padding:20px 5vw 50px 4vw;
+            .menu-list{
+                margin-left: 25px;
+                margin-right: 25px;
+            }
+        }
+        @media screen and (max-width:800px) {
+            padding:20px 2vw 50px 2vw;
+            .menu-list{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
     }
 }
