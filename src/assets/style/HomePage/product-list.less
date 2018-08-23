@@ -1,0 +1,23 @@
+.product-list {
+    padding: 2% 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 263px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-content: space-around;
+    @media screen and (max-width: 860px) {
+        grid-gap: 2rem;
+        // grid-column-gap: 10px;
+        // grid-row-gap: 10px;
+    }
+    @media screen and (max-width: 600px) {
+        grid-gap: .5rem;
+        // grid-column-gap: 10px;
+        // grid-row-gap: 10px;
+    }
+    &>* {
+        flex: 0 0 20%;
+        margin-bottom: 50px;
+        align-self: flex-start;
+    }
+}

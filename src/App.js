@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.less';
+import HomePage from './components/HomePage/HomePage';
+import QuickView from './components/QuickView/QuickView';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        app
+        {/* <div className="popup-screen">
+          <QuickView />
+        </div> */}
+        <HomePage />
       </div>
     );
   }

@@ -1,0 +1,32 @@
+.kit-chart {
+    display: flex;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    p {
+        font-family: NunitoSans;
+        font-size: 16px;
+        font-weight: bold;
+        color: #263238;
+        text-align: center;
+    }
+    .kit-button {
+        font-family: NunitoSans;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        height: 40px;
+        margin-left: 22px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 2px;
+        user-select: none;
+        padding: 0 15px;
+        @media screen and (max-width: 389px) {
+            margin-top: 10px;
+        }
+    }
+    .selected {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #ffffff;
+    }
+}
