@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../assets/style/CheckOut/check-out.less';
 import StatusBar from './StatusBar';
 import AdressForm from './AdressForm';
+import CartSmall from './CartSmall';
 
 class CheckOut extends Component {
     constructor(props) {
@@ -19,9 +20,9 @@ class CheckOut extends Component {
                         <div className="wrapper flex-center">
                             <StatusBar />
                         </div>
-                        <div className="hided-component">
+                        {/* <div className="hided-component">
                             hide here
-                        </div>
+                        </div> */}
                         <div className="login-buttons">
                             <h2>Login with</h2>
                             <div className="buttons">
@@ -34,7 +35,7 @@ class CheckOut extends Component {
                         </div>
                     </div>
                     <div className="second">
-                        component
+                        <CartSmall />
                     </div>
                 </div>
             </div>
