@@ -38,38 +38,45 @@ const productsReducer = (state, action) => {
                 cartCount: action.payload.userid.length
             })
         case 'ADD_COUNT':
-            state = { ...state }
-            var cart = state.cart;
-            cart.forEach(element => {
-                if (element.id === action.id) {
-                    element.count += 1;
-                }
+            var cart = [...state.cart]
+            var newData = cart.map(el => {
+                if (el.id === action.id)
+                    return Object.assign({}, el, { count: el.count + 1 })
+                return el
             });
-            state.cart =[{id:1,count:1},{id:2,count:6}]
+            state = { ...state, cart: newData }
             return state;
         case 'REMOVE_COUNT':
-            state = { ...state };
-            var cart = state.cart;
-            cart.forEach(element => {
-                if (element.id == action.id) {
-                    element.count -= 1;
-                }
+            var cart = [...state.cart]
+            var newData = cart.map(el => {
+                if (el.id === action.id)
+                    if (el.count > 1)
+                        return Object.assign({}, el, { count: el.count - 1 })
+                    else
+                        return el
+                return el
             });
-            return ({
-                ...state,
-                cart: cart
-            })
+            state = { ...state, cart: newData }
+            return state;
 
         case 'DELETE_ITEM':
-            state = { ...state };
-            var cart = state.cart;
-            cart.forEach(element => {
-                if (element.id == action.id) {
-                    var index = cart.indexOf(element);
-                    cart.splice(index, 1)
+            var cart = [...state.cart];
+            var newData = cart.filter(element => element.id !== action.id);
+            return { ...state, cart: newData };
+        case 'ADD_TO_CART':
+            let flag = 0;
+            var cart = [...state.cart];
+            var newData = cart.map(el => {
+                if (el.id === action.id) {
+                    flag = 1
+                    return Object.assign({}, el, { count: el.count + 1 })
                 }
+                return el
             });
-            return { ...state, cart };
+            if (flag === 0) {
+                newData.push({ id: action.id, count: 1 })
+            }
+            return { ...state, cart: newData };
         default:
             return state
     }

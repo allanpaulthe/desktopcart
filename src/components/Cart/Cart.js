@@ -20,7 +20,7 @@ class Cart extends Component {
                     <div className="cart-collection">
                         {[...this.props.cart].map((x, i) => (
                             <div key={i}>
-                                <CartItem product={x} />
+                                <CartItem element={x} />
                                 <div className="line"> </div>
                             </div>
 

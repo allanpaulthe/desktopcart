@@ -5,6 +5,8 @@ import { Icon } from 'react-icons-kit';
 import { bars } from 'react-icons-kit/fa/bars';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getProducts } from '../../server/server';
+import { setAllProducts } from '../../actions/productsActions';
 
 class NavBar extends Component {
     constructor(props) {
@@ -16,6 +18,13 @@ class NavBar extends Component {
     handleLoginClick() {
         this.setState({
             loginOn: true
+        })
+    }
+    componentDidMount() {
+        getProducts().then((data) => {
+            this.props.setProducts(data);
+        }).catch((error) => {
+            this.setState({ data: [] });
         })
     }
     render() {
@@ -87,5 +96,12 @@ export const mapStateToProps = (state) => {
     };
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setProducts: (data) => {
+            dispatch(setAllProducts(data))
+        }
+    };
+};
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

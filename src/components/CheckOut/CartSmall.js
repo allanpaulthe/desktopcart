@@ -11,6 +11,14 @@ class CartSmall extends Component {
         this.state = {};
     }
     render() {
+        const cart = [...this.props.cart];
+        const products = this.props.products;
+        var sum = 0;
+        cart.forEach(el => {
+            const count = el.count;
+            const price = products[el.id - 1].price;
+            sum += (count * price)
+        });
         return (
             <div className="cart-small">
                 <div className="header">
@@ -19,9 +27,9 @@ class CartSmall extends Component {
                 </div>
                 {
                     [...this.props.cart].map((x, i) => (
-                        <div key={i}>
+                        <div key={i} className="wrap">
                             <div className="underline"></div>
-                            <CartItem product={x} />
+                            <CartItem element={x} />
                             <div className="underline"></div>
                         </div>
                     ))
@@ -35,7 +43,7 @@ class CartSmall extends Component {
                 <div className="voucher flex-v-center cost">
                     <p>Subtotal</p>
                     <div>
-                        €1320
+                    {'$' + sum}
                    </div>
                 </div>
                 <div className="voucher flex-v-center cost">
@@ -48,7 +56,7 @@ class CartSmall extends Component {
                 <div className="voucher flex-v-center total-cost">
                     <p>Total</p>
                     <div>
-                        $1320
+                        {'$' + sum}
                     </div>
                 </div>
                 <h1 className="ship-method">Shipping Method</h1>
@@ -81,6 +89,7 @@ class CartSmall extends Component {
 export const mapStateToProps = (state) => {
     return {
         cart: state.cart,
+        products: state.products,
         cartCount: state.cartCount
     };
 };

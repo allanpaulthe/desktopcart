@@ -15,36 +15,35 @@ class CartItem extends Component {
             }
         };
     }
-    componentDidMount() {
-        getProductDetails(this.props.product.id).then((data) => {
-            this.setState({ product: data });
-        }).catch((error) => {
-            this.setState({ product: {} });
-        })
-    }
     deleteItem() {
-        this.props.deleteItem(this.props.product.id)
+        this.props.deleteItem(this.props.element.id)
     }
     render() {
         return (
             <div className="cart-item">
-                <div className="cart-image flex-center">
-                    <img src={this.state.product.image_url} alt="" />
-                </div>
-                <div className="cart-data">
-                    <div className="cart-top flex-v-center">
-                        <h1>{this.state.product.name}</h1>
-                        <div onClick={this.deleteItem.bind(this)}>
-                            <img src={require('../../assets/img/icons/delete.svg')} alt="" />
+                <div className="cont">
+                    <div className="cart-image flex-center">
+                        <img src={this.props.products[this.props.element.id - 1].image_url} alt="" />
+                    </div>
+                    <div className="cart-data">
+                        <div className="cart-top flex-v-center">
+                            <h1>{this.props.products[this.props.element.id - 1].name}</h1>
+                            <div onClick={this.deleteItem.bind(this)}>
+                                <img src={require('../../assets/img/icons/delete.svg')} alt="" />
+                            </div>
+                        </div>
+                        <h1 className="brand">
+                            {this.props.products[this.props.element.id - 1].brand}
+                        </h1>
+                        <div className="cart-bottom flex-v-center">
+                            <CartQuantity count={this.props.element.count} id={this.props.element.id} />
+                            <p> {'$' + this.props.products[this.props.element.id - 1].price}</p>
                         </div>
                     </div>
-                    <h1 className="brand">
-                        {this.state.product.brand}
-                    </h1>
-                    <div className="cart-bottom flex-v-center">
-                        <CartQuantity count={this.props.product.count} id={this.props.product.id} />
-                        <p> {'$' + this.state.product.price}</p>
-                    </div>
+                </div>
+                <div className="flex-v-center hides">
+                            <CartQuantity count={this.props.element.count} id={this.props.element.id} />
+                            <p> {'$' + this.props.products[this.props.element.id - 1].price}</p>
                 </div>
             </div>
         );
