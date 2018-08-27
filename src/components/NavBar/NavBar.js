@@ -3,8 +3,8 @@ import '../../assets/style/NavBar/navbar.less';
 import OptionHeader from './OptionHeader';
 import { Icon } from 'react-icons-kit';
 import { bars } from 'react-icons-kit/fa/bars';
-
-
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class NavBar extends Component {
     constructor(props) {
@@ -26,13 +26,20 @@ class NavBar extends Component {
                     <div className="menu-icon">
                         <Icon icon={bars} />
                     </div>
-                    <div className="cart">
-                        <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
-                        <div className="count flex-center">1</div>
-                    </div>
-                    <div className="logo flex-center">
-                        <img src={require("../../assets/img/logo/group-2@2x.png")} alt="logo" />
-                    </div>
+                    <Link to="/cart" className="flex-center">
+                        <div className="cart">
+                            <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
+                            {
+                                this.props.cartCount &&
+                                <div className="count flex-center">{this.props.cartCount}</div>
+                            }
+                        </div>
+                    </Link>
+                    <Link to="/">
+                        <div className="logo flex-center">
+                            <img src={require("../../assets/img/logo/group-2@2x.png")} alt="logo" />
+                        </div>
+                    </Link>
                     <div className="options">
                         <ul>
                             {
@@ -54,10 +61,15 @@ class NavBar extends Component {
                     }
                     <img src={require("../../assets/img/icons/shape_2.png")} alt="seach" />
                     <img src={require("../../assets/img/icons/shape.png")} alt="wish list" />
-                    <div className="cart">
-                        <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
-                        <div className="count flex-center">1</div>
-                    </div>
+                    <Link to="/cart" className="flex-center">
+                        <div className="cart">
+                            <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
+                            {
+                                this.props.cartCount &&
+                                <div className="count flex-center">{this.props.cartCount}</div>
+                            }
+                        </div>
+                    </Link>
                 </div>
             </div>
         );
@@ -69,5 +81,11 @@ NavBar.defaultProps = {
         'SHOP', 'OUTLET', 'STORES'
     ]
 }
+export const mapStateToProps = (state) => {
+    return {
+        cartCount: state.cartCount
+    };
+};
 
-export default NavBar;
+
+export default connect(mapStateToProps)(NavBar);

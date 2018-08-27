@@ -31,6 +31,45 @@ const productsReducer = (state, action) => {
                     menuOn: true
                 })
             }
+        case 'SET_CART':
+            return ({
+                ...state,
+                cart: action.payload.userid,
+                cartCount: action.payload.userid.length
+            })
+        case 'ADD_COUNT':
+            state = { ...state }
+            var cart = state.cart;
+            cart.forEach(element => {
+                if (element.id === action.id) {
+                    element.count += 1;
+                }
+            });
+            state.cart =[{id:1,count:1},{id:2,count:6}]
+            return state;
+        case 'REMOVE_COUNT':
+            state = { ...state };
+            var cart = state.cart;
+            cart.forEach(element => {
+                if (element.id == action.id) {
+                    element.count -= 1;
+                }
+            });
+            return ({
+                ...state,
+                cart: cart
+            })
+
+        case 'DELETE_ITEM':
+            state = { ...state };
+            var cart = state.cart;
+            cart.forEach(element => {
+                if (element.id == action.id) {
+                    var index = cart.indexOf(element);
+                    cart.splice(index, 1)
+                }
+            });
+            return { ...state, cart };
         default:
             return state
     }

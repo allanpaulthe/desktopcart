@@ -3,6 +3,7 @@ import '../../assets/style/CheckOut/cart-small.less';
 import CartItem from '../Cart/CartItem';
 import { Icon } from 'react-icons-kit';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
+import { connect } from 'react-redux';
 
 class CartSmall extends Component {
     constructor(props) {
@@ -17,10 +18,10 @@ class CartSmall extends Component {
                     <div className="count flex-center">2</div>
                 </div>
                 {
-                    Array.apply(null, { length: 3 }).map((x, i) => (
-                        <div>
+                    [...this.props.cart].map((x, i) => (
+                        <div key={i}>
                             <div className="underline"></div>
-                            <CartItem />
+                            <CartItem product={x} />
                             <div className="underline"></div>
                         </div>
                     ))
@@ -77,4 +78,11 @@ class CartSmall extends Component {
     }
 }
 
-export default CartSmall;
+export const mapStateToProps = (state) => {
+    return {
+        cart: state.cart,
+        cartCount: state.cartCount
+    };
+};
+
+export default connect(mapStateToProps)(CartSmall);
