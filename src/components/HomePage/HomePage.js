@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/style/HomePage/home-page.less';
-import Carousel from './Carousal';
+import Carousel from './Carousel';
 import ProductList from './ProductList';
 import About from './About';
 import Shop from './Shop';

@@ -24,7 +24,7 @@ class NavBar extends Component {
     componentDidMount() {
         getProducts().then((data) => {
             this.props.setProducts(data);
-        }).catch((error) => {
+        }).catch(() => {
             this.setState({ data: [] });
         })
     }

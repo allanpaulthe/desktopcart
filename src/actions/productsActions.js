@@ -19,7 +19,7 @@ export const closeQuickView = () => {
     }
 }
 
-export const toggleMenuView = (id) => {
+export const toggleMenuView = () => {
     return {
         type: 'TOGGLE_MENU_VIEW',
         payload: 0
