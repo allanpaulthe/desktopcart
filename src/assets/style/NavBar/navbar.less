@@ -91,12 +91,33 @@
             font-size: 16px;
             color: #0231b7;
             margin: 0;
-            @media screen and (max-width:864px){
+            @media screen and (max-width: 864px) {
                 flex-direction: column !important;
                 justify-content: center;
             }
-            @media screen and (max-width:700px){
+            @media screen and (max-width:700px) {
                 flex-direction: row !important;
+            }
+        }
+        .userDetails {
+            margin: 0;
+            p {
+                font-family: Roboto;
+                font-size: 12px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.33;
+                letter-spacing: 1px;
+                color: #0231b7;
+                @media screen and (max-width: 720px) {
+                    display: none;
+                }
+            }
+            img {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
             }
         }
     }

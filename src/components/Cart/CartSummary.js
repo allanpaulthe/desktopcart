@@ -23,7 +23,7 @@ class CartSummary extends Component {
                 <div className="total">
                     <div className="inner flex-v-center">
                         <h2>Subtotal</h2>
-                        <h1>{sum}</h1>
+                        <h1>{'$'+sum}</h1>
                     </div>
                 </div>
                 <div className="total">
@@ -41,7 +41,7 @@ class CartSummary extends Component {
                 <div className="total last ">
                     <div className="inner flex-v-center">
                         <h2>Total</h2>
-                        <h1>{sum}</h1>
+                        <h1>{'$'+sum}</h1>
                     </div>
                 </div>
             </div>

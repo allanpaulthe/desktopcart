@@ -33,6 +33,17 @@
                 flex-direction: column;
                 justify-content: center;
             }
+            .interchange1 {
+                @media screen and(max-width: 1000px) {
+                    display: none;
+                }
+            }
+            .interchange2 {
+                display: none;
+                @media screen and(max-width: 1000px) {
+                    display: block;
+                }
+            }
             .wrapper {
                 width: 100%;
             }
@@ -73,7 +84,7 @@
             .hided-component {
                 display: none;
                 width: 100%;
-                margin-top: 20px;
+                margin: 20px 0;
                 @media screen and(max-width: 1000px) {
                     display: block;
                 }
@@ -197,12 +208,11 @@
             text-align: center;
             color: #ffffff;
             outline: none;
-            border:none;
+            border: none;
             border-radius: 20px;
             @media screen and(max-width: 600px) {
                 font-size: 12px;
             }
-            
         }
         .right {
             font-family: NunitoSans;
@@ -216,7 +226,7 @@
             color: #2196f3;
             background: #ffffff;
             outline: none;
-            border:none;
+            border: none;
             @media screen and(max-width: 600px) {
                 font-size: 12px;
             }

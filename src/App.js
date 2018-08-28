@@ -12,6 +12,8 @@ import Cart from './components/Cart/Cart';
 import CheckOut from './components/CheckOut/CheckOut';
 import { getCart } from './server/server';
 import { setCart } from './actions/userActions';
+import Thanks from './components/CheckOut/Thanks';
+import ProductDetail from './components/ProductDetail/ProductDetail';
 
 class App extends Component {
   componentDidMount() {
@@ -34,6 +36,8 @@ class App extends Component {
             <QuickView />
           </div>}
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/thanks" component={Thanks} />
+          <Route exact path="/product/:id" component={ProductDetail} />
           <Footer />
         </div>
       </Router>

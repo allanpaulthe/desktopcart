@@ -32,3 +32,9 @@ export const addToCart = (id) => {
         id: id
     }
 }
+export const loginDetailsGoogle = (data) => {
+    return {
+        type: 'LOGIN_GOOGLE',
+        data: data
+    }
+}
