@@ -27,7 +27,7 @@ class QuickView1 extends Component {
             this.setState({
                 product: data
             })
-        }).catch((error) => {
+        }).catch(() => {
             this.setState({ product: 6 });
         })
     }

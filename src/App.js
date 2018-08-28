@@ -19,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     getCart().then((data) => {
       this.props.setCart(data);
-    }).catch((error) => {
+    }).catch(() => {
       this.setState({ data: [] });
     })
   }

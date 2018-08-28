@@ -1,6 +1,26 @@
 import React from 'react';
 import '../../assets/style/HomePage/carousal.less';
 
+const Arrow = ({ direction, clickFunction, src }) => (
+    <div
+        className={`slide-arrow ${direction} flex-v-center`}
+        onClick={clickFunction}>
+        <img src={src} alt="" />
+    </div>
+);
+
+const ImageSlide = ({ url }) => {
+    const styles = {
+        backgroundImage: `url(${url})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+    };
+
+    return (
+        <div className="image-slide" style={styles}></div>
+    );
+}
 
 class Carousel extends React.Component {
     constructor(props) {
@@ -34,7 +54,6 @@ class Carousel extends React.Component {
         const { currentImageIndex } = this.state;
         const shouldResetIndex = currentImageIndex === lastIndex;
         const index = shouldResetIndex ? 0 : currentImageIndex + 1;
-        console.log(this.state.imgUrls)
         this.setState({
             currentImageIndex: index
         });
@@ -68,28 +87,5 @@ class Carousel extends React.Component {
         );
     }
 }
-
-const Arrow = ({ direction, clickFunction, src }) => (
-    <div
-        className={`slide-arrow ${direction} flex-v-center`}
-        onClick={clickFunction}>
-        <img src={src} alt="" />
-    </div>
-);
-
-const ImageSlide = ({ url }) => {
-    const styles = {
-        backgroundImage: `url(${url})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-    };
-
-    return (
-        <div className="image-slide" style={styles}></div>
-    );
-}
-
-
 
 export default Carousel;
