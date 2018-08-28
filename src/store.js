@@ -8,11 +8,13 @@ const initial = {
     userId: '',
     menuOn: false,
     quickView: false,
-    quickSelected: 0,
+    quickSelected: null,
     selectedMenuIcon: null,
     cartCount: null,
     cart: { userid: [] },
-    count: 1
+    count: 1,
+    loggedIn: false,
+    userDetails: {}
 }
 
 const store = createStore(productsReducer, initial, applyMiddleware(logger));

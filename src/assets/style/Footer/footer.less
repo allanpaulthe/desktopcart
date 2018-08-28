@@ -1,7 +1,12 @@
 .footer {
     background-color: #33333a;
     width: 100%;
+    position: absolute;
+    bottom: 0px;
     .footer-top {
+        @media screen and (max-width: 600px) {
+            display: none;
+        }
         display: flex;
         padding: 3% 15%;
         @media screen and (max-width: 990px) {
@@ -106,5 +111,8 @@
         line-height: 1.79;
         color: #dedede;
         font-family: AvenirNext;
+        @media screen and (max-width: 600px) {
+            padding: 12px 0;  
+        }
     }
 }

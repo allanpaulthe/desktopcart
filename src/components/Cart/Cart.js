@@ -28,12 +28,16 @@ class Cart extends Component {
                     </div>
                     <CartSummary />
                     <div className="cart-end-buttons">
-                        <div className="white-button flex-center">
-                            <Link to="/">Continue Shopping</Link>
-                        </div>
-                        <div className="blue-button flex-center">
-                            <Link to="/checkout">Checkout</Link>
-                        </div>
+                        <Link to="/">
+                            <div className="white-button flex-center">
+                                Continue Shopping
+                            </div>
+                        </Link>
+                        <Link to="/checkout" className="left">
+                            <div className="blue-button flex-center">
+                                Checkout
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -48,4 +52,4 @@ export const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps,null)(Cart);
+export default connect(mapStateToProps, null)(Cart);

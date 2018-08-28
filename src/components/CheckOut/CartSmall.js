@@ -23,7 +23,7 @@ class CartSmall extends Component {
             <div className="cart-small">
                 <div className="header">
                     <h1>Shopping Cart</h1>
-                    <div className="count flex-center">2</div>
+                    <div className="count flex-center">{this.props.cartCount}</div>
                 </div>
                 {
                     [...this.props.cart].map((x, i) => (
@@ -43,8 +43,8 @@ class CartSmall extends Component {
                 <div className="voucher flex-v-center cost">
                     <p>Subtotal</p>
                     <div>
-                    {'$' + sum}
-                   </div>
+                        {'$' + sum}
+                    </div>
                 </div>
                 <div className="voucher flex-v-center cost">
                     <p>Shipping</p>

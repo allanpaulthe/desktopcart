@@ -65,5 +65,29 @@ class SizeChart extends Component {
     }
 }
 
+SizeChart.defaultProps = {
+    sizes: [
+        {
+            "size": "s",
+            "available": "2"
+        },
+        {
+            "size": "m",
+            "available": "1"
+        },
+        {
+            "size": "l",
+            "available": "0"
+        },
+        {
+            "size": "xl",
+            "available": "1"
+        },
+        {
+            "size": "xxl",
+            "available": "0"
+        }
+    ]
+}
 
 export default SizeChart;
