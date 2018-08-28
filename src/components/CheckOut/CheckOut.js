@@ -6,7 +6,7 @@ import CartSmall from './CartSmall';
 import { Icon } from 'react-icons-kit';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
 import { Link } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class CheckOut extends Component {
     constructor(props) {
@@ -64,7 +64,7 @@ class CheckOut extends Component {
                             </div>
                         </div>
                         <div className="form">
-                            <AdressForm />
+                            <Route exact path="/checkout" component={AdressForm} />
                         </div>
                     </div>
                     <div className="second">
@@ -73,11 +73,11 @@ class CheckOut extends Component {
                 </div>
                 <div className="bottom-buttons-1 flex-v-center">
                     <Link to="/"><button className="right">Continue Shopping</button></Link>
-                    <Link to="cartpage/payment" className="left"><button className="left"> Continue to payment</button></Link>
+                    <Link to="/checkout/payment" className="left"><button className="left"> Continue to payment</button></Link>
                 </div>
                 <div className="bottom-buttons-2 flex-v-center">
                     <button className="right" onClick={this.goBack.bind(this)}>back</button>
-                    <Link to="cartpage/payment" className="left"><button className="left"> Continue to payment</button></Link>
+                    <Link to="/checkout/payment" className="left"><button className="left"> Continue to payment</button></Link>
                 </div>
             </div>
         );

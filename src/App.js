@@ -29,7 +29,7 @@ class App extends Component {
           <NavBar />
           <Menu />
           <Route exct path="/cart" component={Cart} />
-          <Route exact path="/checkout" component={CheckOut} />
+          <Route path="/checkout" component={CheckOut} />
           {this.props.quickView && <div className="popup-screen">
             <QuickView />
           </div>}
