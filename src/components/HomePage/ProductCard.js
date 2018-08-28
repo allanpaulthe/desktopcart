@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../../assets/style/HomePage/product-card.less';
 import { onQuickView } from '../../actions/productsActions';
 import { connect } from 'react-redux';
+import { addToCart } from '../../actions/userActions';
+import { Link } from 'react-router-dom';
 
 class ProductCard extends Component {
     constructor(props) {
@@ -10,6 +12,9 @@ class ProductCard extends Component {
     }
     quickView() {
         this.props.onQuickView(this.props.element.id);
+    }
+    addToCart() {
+        this.props.addToCart(this.props.element.id)
     }
     render() {
         let element = this.props.element;
@@ -23,8 +28,8 @@ class ProductCard extends Component {
                     <p className="name">{element.name}</p>
                     <p className="brand">{element.brand}</p>
                     <div className="lastRow">
-                        <p className="price">{element.price}</p>
-                        <p className='add-to-cart'>Add to Cart</p>
+                        <p className="price">{'$' + element.price}</p>
+                        <Link to="/cart"> <p className='add-to-cart' onClick={this.addToCart.bind(this)}>Add to Cart</p></Link>
                     </div>
                 </div>
             </div>
@@ -42,6 +47,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onQuickView: (id) => {
             dispatch(onQuickView(id))
+        },
+        addToCart: (id) => {
+            dispatch(addToCart(id))
         }
     };
 };

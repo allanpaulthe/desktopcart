@@ -1,0 +1,199 @@
+.cart-small {
+    background-color: #f8fafb;
+    padding: 20px;
+    @media screen and(max-width: 470px) {
+        padding: 5px;
+    }
+    .header {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1 {
+            margin: 0;
+            font-family: NunitoSans;
+            font-size: 24px;
+            font-weight: 600;
+            color: #1b2125;
+        }
+        .count {
+            height: 24px;
+            width: 24px;
+            background-color: #0095f8;
+            border-radius: 50%;
+            font-family: AvenirNext;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.71;
+            text-align: center;
+            color: #ffffff;
+        }
+    }
+    .underline {
+        height: 1px;
+        background-color: rgba(38, 50, 56, 0.12);
+        margin: 20px 0;
+    }
+    .cart-item {
+        .cart-image {
+            min-height: 116px;
+            min-width: 116px;
+            height: 116px;
+            width: 116px;
+            @media screen and(max-width: 470px) {
+                min-height: 76px;
+                min-width: 76px;
+                height: 76px;
+                width: 76px;
+            }
+        }
+        .cart-top {
+            h1 {
+                font-family: NunitoSans;
+                font-size: 16px;
+                font-weight: 600;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.13;
+                letter-spacing: normal;
+                color: #263238;
+            }
+        }
+        .brand {
+            font-family: NunitoSans;
+            font-size: 18px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 0.78;
+            letter-spacing: normal;
+            color: #78909c;
+        }
+        .qty {
+            font-family: NunitoSans;
+            font-size: 16px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #263238;
+        }
+    }
+    .voucher {
+        cursor: pointer;
+        p {
+            font-family: AvenirNext;
+            font-size: 16px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            color: #1b2125;
+        }
+        div {
+            margin-left: auto;
+            color: #1b2125;
+        }
+    }
+    .cost {
+        margin: 15px 0;
+        p {
+            font-family: AvenirNext;
+            font-size: 16px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            color: #788995;
+        }
+        div {
+            font-family: AvenirNext;
+            font-size: 16px;
+            font-weight: 600;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            text-align: right;
+            color: #788995;
+        }
+    }
+    .double {
+        margin-top: 10px;
+        height: 3px;
+    }
+    .total-cost {
+        p {
+            font-family: AvenirNext;
+            font-size: 20px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.2;
+            letter-spacing: normal;
+            color: #1b2125;
+        }
+        div {
+            font-family: AvenirNext;
+            font-size: 20px;
+            font-weight: 600;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.2;
+            letter-spacing: normal;
+            text-align: right;
+            color: #1b2125;
+        }
+    }
+    .ship-method {
+        font-family: NunitoSans;
+        font-size: 18px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #78909c;
+        margin: 20px 0;
+    }
+    .methods {
+        h3 {
+            height: 20px;
+            width: 20px;
+            font-family: material;
+            font-size: 20px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #2196f3;
+            border: 2px solid #2196f3;
+        }
+        p {
+            font-family: NunitoSans;
+            font-size: 16px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #263238;
+            margin-left: 10px;
+        }
+        div {
+            font-family: NunitoSans;
+            font-size: 16px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.25;
+            letter-spacing: normal;
+            text-align: right;
+            color: rgba(38, 50, 56, 0.86);
+        }
+    }
+}

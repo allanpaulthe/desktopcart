@@ -10,6 +10,8 @@ import { ic_star_border } from 'react-icons-kit/md/ic_star_border';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
 import { connect } from 'react-redux';
 import { closeQuickView } from '../../actions/productsActions';
+import { addToCart } from '../../actions/userActions';
+import { Link } from 'react-router-dom';
 
 
 class QuickView extends Component {
@@ -20,8 +22,20 @@ class QuickView extends Component {
     closeQuickView() {
         this.props.closeQuickView()
     }
+    addToCart() {
+        this.props.addToCart(this.props.id);
+        this.props.closeQuickView()
+    }
     render() {
-        let id = this.props.id;
+        var added = false;
+        const cart = [...this.props.cart];
+        cart.forEach(el => {
+            if (el.id == this.props.id) {
+                added = true;
+            }
+        });
+        const id = this.props.id;
+        const products = this.props.products;
         return (
             <div className="quick-view">
                 <div className="quick-header flex-v-center">
@@ -32,36 +46,36 @@ class QuickView extends Component {
                     <div className="quick-first">
                         <div className="pic-list">
                             {Array.apply(null, { length: 5 }).map((x, i) => (
-                                <img src={'http://10.7.50.88:4000/img/product/'+id} alt="" className="selected" />
+                                <img src={products[id - 1].image_url} alt="" className="selected" key={i}/>
                             ))}
                         </div>
                         <div className="pic">
-                            <img src={'http://10.7.50.88:4000/img/product/'+id} alt="" />
+                            <img src={products[id - 1].image_url} alt="" />
                         </div>
                     </div>
                     <div className="quick-second">
                         <div className="second-top">
-                            <h1>Argentina Authentic  Jersey 2018</h1>
+                            <h1>{products[id - 1].name}</h1>
                             <Icon icon={ic_star_border} size={25} />
                         </div>
                         <div className="second-top-2 flex-v-center">
-                            <p className="price">$ 645</p>
+                            <p className="price">{'$' + products[id - 1].price}</p>
                             <div className="rating">
                                 <StarRatingComponent
                                     name="rate1"
                                     starCount={5}
-                                    value={3}
+                                    value={products[id - 1].rating}
                                     starColor={'#ff6008'}
                                 />
                             </div>
-                            <p className="rating-value">4.8 of 5</p>
+                            <p className="rating-value">{products[id - 1].rating + ' of 5'}</p>
                         </div>
                         <div className="second-description">
                             <h1>Description</h1>
-                            <p>Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… </p>
+                            <p>{products[id - 1].desc} </p>
                             <h2>See more</h2>
                         </div>
-                        <SizeChart />
+                        <SizeChart sizes={products[id - 1].size} />
                         <KitChart />
                         <Quantity />
                         <div className="custom flex-v-center">
@@ -69,7 +83,8 @@ class QuickView extends Component {
                             <Icon icon={ic_keyboard_arrow_down} size={20} />
                         </div>
                         <div className="button-list">
-                            <button>ADD TO CART</button>
+                            {!added && <Link to="/cart"><button onClick={this.addToCart.bind(this)}>ADD TO CART</button></Link>}
+                            {added && <Link to="/cart"><button onClick={this.closeQuickView.bind(this)}>ADDED TO CART</button></Link>}
                             <div className="right flex-v-center">
                                 <p className="q flex-center">?</p>
                                 <div className="wish">
@@ -90,7 +105,8 @@ class QuickView extends Component {
 export const mapStateToProps = (state) => {
     return {
         products: state.products,
-        id: state.quickSelected
+        id: state.quickSelected,
+        cart: state.cart
     };
 };
 
@@ -98,6 +114,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         closeQuickView: (id) => {
             dispatch(closeQuickView(id))
+        },
+        addToCart: (id) => {
+            dispatch(addToCart(id))
         }
     };
 };
