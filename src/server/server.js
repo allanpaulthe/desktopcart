@@ -10,7 +10,7 @@ export async function getProducts() {
         let responseJson = await response.json();
         return responseJson;
     } catch (error) {
-        console.error(error);
+        
     }
 }
 
@@ -20,7 +20,7 @@ export async function getCart() {
         let responseJson = await response.json();
         return responseJson;
     } catch (error) {
-        console.error(error);
+        
     }
 }
 
@@ -31,7 +31,7 @@ export async function getProductDetails(id) {
         let responseJson = await response.json();
         return responseJson;
     } catch (error) {
-        console.error(error);
+       
     }
 }
 
@@ -42,6 +42,6 @@ export async function getReviewDetails(id) {
         let responseJson = await response.json();
         return responseJson;
     } catch (error) {
-        console.error(error);
+       
     }
 }

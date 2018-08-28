@@ -8,9 +8,6 @@ class GoogleLog extends Component {
         super(props);
         this.state = {};
     }
-    responseGoogle = (response) => {
-        console.log(response);
-    }
     responseGoogleSuccess = (response) => {
         this.props.login(response);
     }
@@ -20,7 +17,6 @@ class GoogleLog extends Component {
                 clientId="538667803627-m7k0cfhpan7pcjok5fa4i3ik335s46l0.apps.googleusercontent.com"
                 buttonText=""
                 onSuccess={this.responseGoogleSuccess}
-                onFailure={this.responseGoogle}
                 style={{
                     background: 'transparent',
                     border: 'none',

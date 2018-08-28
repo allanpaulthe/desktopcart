@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import GoogleLog from '../GoogleLogin/GoogleLogin';
 
 
-const ButtonCheckOutLarge = (props) => {
+const ButtonCheckOutLarge = () => {
     return (
         <div className="bottom-buttons-1 flex-v-center">
             <Link to="/"><button className="right">Continue Shopping</button></Link>
@@ -38,7 +38,7 @@ class ButtonCheckOutSmall extends Component {
         );
     }
 }
-const ButtonPaymentLarge = (props) => {
+const ButtonPaymentLarge = () => {
     return (
         <div className="bottom-buttons-1 flex-v-center">
             <Link to="/"><button className="right">Continue Shopping</button></Link>
