@@ -14,7 +14,9 @@ const initial = {
     cart: { userid: [] },
     count: 1,
     loggedIn: false,
-    userDetails: {}
+    userDetails: {},
+    userAdress: {},
+    subMenuList: {}
 }
 
 const store = createStore(productsReducer, initial, applyMiddleware(logger));

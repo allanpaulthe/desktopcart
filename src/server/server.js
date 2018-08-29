@@ -3,6 +3,7 @@ let cartURL = 'http://10.7.50.88:4000/user/cart';
 let productDetailUrl = 'http://10.7.50.88:4000/product/details';
 let reviewDetailUrl = 'http://10.7.50.88:4000/review';
 let menuDetailURL = 'http://10.7.50.88:4000/menu/data';
+let oneMenuDetailURL = 'http://10.7.50.88:4000/menu/data/';
 
 
 export async function getProducts() {
@@ -54,5 +55,32 @@ export async function getMenuDetails() {
         return responseJson;
     } catch (error) {
 
+    }
+}
+
+export async function getOneMenuDetails(main) {
+    try {
+        let response = await fetch(oneMenuDetailURL + main);
+        let responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+
+    }
+}
+
+export async function writeToCart(cart) {
+    try {
+        let response = await fetch('http://10.7.50.88:4000/insertIntoCart', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'data': JSON.stringify(cart)
+            }
+        });
+        let responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        console.log(error)
     }
 }

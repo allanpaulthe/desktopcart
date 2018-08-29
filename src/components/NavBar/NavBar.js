@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { getProducts } from '../../server/server';
 import { setAllProducts } from '../../actions/productsActions';
 import GoogleLog from '../GoogleLogin/GoogleLogin';
+import FacebookLogin from '../FacebookLogin/FacebookLogin';
 
 class NavBar extends Component {
     constructor(props) {
@@ -64,7 +65,7 @@ class NavBar extends Component {
                     {this.props.loggedIn &&
                         <div className="userDetails flex-v-center">
                             <p>Welcome, {' ' + this.props.userdata.username}</p>
-                            <img src={this.props.userdata.pic} alt="" />
+                            <img src={this.props.userdata.pic} alt="userpic" onClick={() => { this.props.userLogOut() }} />
                         </div>
                     }
                     {!this.state.loginOn && !this.props.loggedIn && <p onClick={this.handleLoginClick.bind(this)}>LOGIN</p>}
@@ -72,7 +73,7 @@ class NavBar extends Component {
                         <div className="flex-center expand">
                             <p>Login with</p>
                             <GoogleLog />
-                            <img src={require("../../assets/img/icons/group-13.svg")} alt="seach" />
+                            <FacebookLogin />
                         </div>
                     }
                     <img src={require("../../assets/img/icons/shape_2.png")} alt="seach" />
@@ -114,6 +115,11 @@ const mapDispatchToProps = (dispatch) => {
         menuToggle: () => {
             dispatch({
                 type: 'MENU_ON_OFF'
+            })
+        },
+        userLogOut: () => {
+            dispatch({
+                type: "USER_LOGOUT"
             })
         }
     };

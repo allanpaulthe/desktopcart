@@ -1,15 +1,30 @@
 .product-detail {
     .heading {
         height: 80px;
-        background-color: #ffffff;
         box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+        @media screen and (max-width: 600px) {
+            height:50px;
+        }
+        padding: 2% 10%;
+        @media screen and (max-width: 860px) {
+            padding: 2% 3%;
+        }
+        box-sizing: border-box;
+        font-family: AvenirNext;
+        font-size: 18px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 2.22;
+        letter-spacing: normal;
+        color: #0231b7;
     }
     .product-detail-body {
         padding: 2% 10%;
         @media screen and (max-width: 860px) {
             padding: 2% 3%;
         }
-        .quick-view{
+        .quick-view {
             border: none;
             box-shadow: none;
         }
