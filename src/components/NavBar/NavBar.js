@@ -34,7 +34,7 @@ class NavBar extends Component {
             <div className="navbar flex-v-center">
                 <div className="first flex-center">
                     <div className="menu-icon">
-                        <Icon icon={bars} />
+                        <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
                     </div>
                     <Link to="/cart" className="flex-center">
                         <div className="cart">
@@ -110,6 +110,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setProducts: (data) => {
             dispatch(setAllProducts(data))
+        },
+        menuToggle: () => {
+            dispatch({
+                type: 'MENU_ON_OFF'
+            })
         }
     };
 };

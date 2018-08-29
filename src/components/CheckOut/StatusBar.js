@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 
 const StatusShippingNot = () => {
     return (
-        <div className="round shipping flex-center">
+        <div className="round shipping flex-center completed">
             <p>1</p>
         </div>
     );
@@ -27,6 +27,14 @@ const StatuspaymentNot = () => {
     );
 }
 
+const StatuspaymentReached = () => {
+    return (
+        <div className="round payment flex-center completed">
+            <p>2</p>
+        </div>
+    );
+}
+
 const StatuspaymentYes = () => {
     return (
         <div className="round payment flex-center completed">
@@ -38,15 +46,15 @@ const StatuspaymentYes = () => {
 const StatusReviewNot = () => {
     return (
         <div className="round review flex-center">
-             <p>3</p>
+            <p>3</p>
         </div>
     );
 }
 
-const StatusReviewYes = () => {
+const StatusReviewReached = () => {
     return (
         <div className="round review flex-center completed">
-            <Icon icon={ic_check} />
+            <p>3</p>
         </div>
     );
 }
@@ -65,12 +73,12 @@ class StatusBar extends Component {
                 <Route exact path="/checkout/review" component={StatusShippingYes} />
                 <div className="line"></div>
                 <Route exact path="/checkout" component={StatuspaymentNot} />
-                <Route exact path="/checkout/payment" component={StatuspaymentNot} />
+                <Route exact path="/checkout/payment" component={StatuspaymentReached} />
                 <Route exact path="/checkout/review" component={StatuspaymentYes} />
                 <div className="line"></div>
                 <Route exact path="/checkout" component={StatusReviewNot} />
                 <Route exact path="/checkout/payment" component={StatusReviewNot} />
-                <Route exact path="/checkout/review" component={StatusReviewNot} />
+                <Route exact path="/checkout/review" component={StatusReviewReached} />
             </div>
         );
     }

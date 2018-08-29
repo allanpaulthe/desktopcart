@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../../assets/style/Cart/cart-item.less';
 import CartQuantity from './CartQuantity';
 import { connect } from 'react-redux';
-import { getProductDetails } from '../../server/server';
 import { deleteItem } from '../../actions/userActions';
 
 class CartItem extends Component {

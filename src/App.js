@@ -14,6 +14,7 @@ import { getCart } from './server/server';
 import { setCart } from './actions/userActions';
 import Thanks from './components/CheckOut/Thanks';
 import ProductDetail from './components/ProductDetail/ProductDetail';
+import CategoryView from './components/CategoryView/CategoryView';
 
 class App extends Component {
   componentDidMount() {
@@ -32,6 +33,7 @@ class App extends Component {
           <Menu />
           <Route exct path="/cart" component={Cart} />
           <Route path="/checkout" component={CheckOut} />
+          <Route path="/category/:brand" component={CategoryView} />
           {this.props.quickView && <div className="popup-screen">
             <QuickView />
           </div>}

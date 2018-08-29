@@ -1,7 +1,8 @@
 let productsURL = 'http://10.7.50.88:4000/homepage/products';
 let cartURL = 'http://10.7.50.88:4000/user/cart';
 let productDetailUrl = 'http://10.7.50.88:4000/product/details';
-let reviewDetailUrl='http://10.7.50.88:4000/review';
+let reviewDetailUrl = 'http://10.7.50.88:4000/review';
+let menuDetailURL = 'http://10.7.50.88:4000/menu/data';
 
 
 export async function getProducts() {
@@ -10,7 +11,7 @@ export async function getProducts() {
         let responseJson = await response.json();
         return responseJson;
     } catch (error) {
-        
+
     }
 }
 
@@ -20,7 +21,7 @@ export async function getCart() {
         let responseJson = await response.json();
         return responseJson;
     } catch (error) {
-        
+
     }
 }
 
@@ -31,7 +32,7 @@ export async function getProductDetails(id) {
         let responseJson = await response.json();
         return responseJson;
     } catch (error) {
-       
+
     }
 }
 
@@ -42,6 +43,16 @@ export async function getReviewDetails(id) {
         let responseJson = await response.json();
         return responseJson;
     } catch (error) {
-       
+
+    }
+}
+
+export async function getMenuDetails() {
+    try {
+        let response = await fetch(menuDetailURL);
+        let responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+
     }
 }

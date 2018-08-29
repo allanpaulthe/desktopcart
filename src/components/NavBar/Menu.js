@@ -2,6 +2,32 @@ import React, { Component } from 'react';
 import '../../assets/style/NavBar/menu.less';
 import Menulist from './MenuList';
 import { connect } from 'react-redux';
+import { getMenuDetails } from '../../server/server';
+
+class MenuInner extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: {} };
+    }
+    componentDidMount() {
+        getMenuDetails().then((data) => {
+            this.setState({
+                data: data.data
+            })
+        })
+    }
+    render() {
+        const data = this.state.data;
+        return (
+            <div className="menu">
+                {[...data].map((x, i) => (
+                    <Menulist key={i} element={x} />
+                ))}
+            </div>
+        );
+    }
+}
+
 
 class Menu extends Component {
     constructor(props) {
@@ -11,11 +37,7 @@ class Menu extends Component {
     render() {
         return (
             <div className="menu-wrapper">
-                {this.props.menuOn && <div className="menu">
-                    {Array.apply(null, { length: 6 }).map((x, i) => (
-                        <Menulist key={i} />
-                    ))}
-                </div>}
+                {this.props.menuOn && <MenuInner />}
             </div>
         );
     }

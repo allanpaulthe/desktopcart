@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import '../../assets/style/NavBar/menu-list.less';
 import MenuDropDown from './MenuDropDown';
 
+
 class Menulist extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            data: {}
+        };
     }
     render() {
+        const element = this.props.element;
+        const list = this.props.element.list;
         return (
             <div className="menu-list">
                 <div className="list-heading">
-                    Apparels
+                    {element.name}
                 </div>
-                {Array.apply(null, { length: 5 }).map((x, i) => (
-                    <MenuDropDown key={i}/>
+                {[...list].map((x, i) => (
+                    <MenuDropDown key={i} element={x} />
                 ))}
             </div>
         );

@@ -3,6 +3,8 @@ import '../../assets/style/NavBar/menu-drop-down.less';
 import { Icon } from 'react-icons-kit';
 import { ic_keyboard_arrow_right } from 'react-icons-kit/md/ic_keyboard_arrow_right';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 class MenuDropDown extends Component {
@@ -17,32 +19,36 @@ class MenuDropDown extends Component {
             open: !this.state.open
         })
     }
-    getStyles(){
-        if(this.state.open){
-            return{
-                transform:'scale(1)',
-                height:'auto'
+    getStyles() {
+        if (this.state.open) {
+            return {
+                transform: 'scale(1)',
+                height: 'auto'
             }
         }
-        else{
-            return{
-                transform:'scale(0)'
+        else {
+            return {
+                transform: 'scale(0)'
             }
         }
     }
     render() {
+        const element = this.props.element;
+        const list = this.props.element.sublist;
         return (
             <div className="menu-drop-down">
                 <div className="top">
                     {!this.state.open && <Icon icon={ic_keyboard_arrow_right} />}
                     {this.state.open && <Icon icon={ic_keyboard_arrow_down} />}
-                    <p onClick={this.handleClick.bind(this)}>Jumpsuits</p>
+                    <p onClick={this.handleClick.bind(this)}>{element.type}</p>
                 </div>
                 <div className="bottom" style={this.getStyles()}>
                     <ul>
-                        <li>Stone ISland</li>
-                        <li>Peter England</li>
-                        <li>Scullers</li>
+                        {
+                            [...list].map((x, i) => (
+                                <Link to={"/category/" + x} onClick={() => { this.props.menuOff() }}><li>{x}</li></Link>
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
@@ -50,4 +56,14 @@ class MenuDropDown extends Component {
     }
 }
 
-export default MenuDropDown;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        menuOff: () => {
+            dispatch({
+                type: 'MENU_OFF'
+            })
+        }
+    };
+};
+
+export default connect(null, mapDispatchToProps)(MenuDropDown);

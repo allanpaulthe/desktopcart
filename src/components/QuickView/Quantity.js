@@ -21,7 +21,7 @@ class Quantity extends Component {
         var added = false;
         const cart = [...this.props.cart];
         cart.forEach(el => {
-            if (el.id == this.props.selectedQuick) {
+            if (parseInt(el.id, 10) === parseInt(this.props.selectedQuick, 10)) {
                 added = true;
             }
         });
@@ -36,7 +36,7 @@ class Quantity extends Component {
         var count;
         const cart = [...this.props.cart];
         cart.forEach(el => {
-            if (el.id == this.props.selectedQuick) {
+            if (parseInt(el.id, 10) === parseInt(this.props.selectedQuick, 10)) {
                 added = true;
                 count = el.count
             }

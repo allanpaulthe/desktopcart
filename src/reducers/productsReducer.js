@@ -9,7 +9,8 @@ const productsReducer = (state, action) => {
             return ({
                 ...state,
                 quickView: true,
-                quickSelected: action.payload
+                quickSelected: action.payload,
+                menuOn: false
             })
         case 'CLOSE_QUICK_VIEW':
             return ({
@@ -31,6 +32,16 @@ const productsReducer = (state, action) => {
                     menuOn: true
                 })
             }
+        case 'MENU_OFF':
+            return ({
+                ...state,
+                menuOn: false
+            })
+        case 'MENU_ON_OFF':
+            return ({
+                ...state,
+                menuOn: !state.menuOn
+            })
         case 'SET_CART':
             return ({
                 ...state,
@@ -40,7 +51,7 @@ const productsReducer = (state, action) => {
         case 'ADD_COUNT':
             var cart = [...state.cart]
             var newData = cart.map(el => {
-                if (el.id == action.id)
+                if (parseInt(el.id, 10) === parseInt(action.id, 10))
                     return Object.assign({}, el, { count: el.count + 1 })
                 return el
             });
@@ -49,7 +60,7 @@ const productsReducer = (state, action) => {
         case 'REMOVE_COUNT':
             var cart = [...state.cart]
             var newData = cart.map(el => {
-                if (el.id === action.id)
+                if (parseInt(el.id, 10) === parseInt(action.id, 10))
                     if (el.count > 1)
                         return Object.assign({}, el, { count: el.count - 1 })
                     else
@@ -61,7 +72,7 @@ const productsReducer = (state, action) => {
 
         case 'DELETE_ITEM':
             var cart = [...state.cart];
-            var length = [...state.cart].length-1;
+            var length = [...state.cart].length - 1;
             var newData = cart.filter(element => element.id !== action.id);
             return { ...state, cart: newData, cartCount: length };
         case 'ADD_TO_CART':

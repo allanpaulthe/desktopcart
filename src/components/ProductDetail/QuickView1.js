@@ -38,7 +38,7 @@ class QuickView1 extends Component {
         var added = false;
         const cart = [...this.props.cart];
         cart.forEach(el => {
-            if (el.id == this.props.id) {
+            if (parseInt(el.id, 10) === parseInt(this.props.id, 10)) {
                 added = true;
             }
         });

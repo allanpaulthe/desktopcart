@@ -4,7 +4,6 @@ import { onQuickView } from '../../actions/productsActions';
 import { connect } from 'react-redux';
 import { addToCart } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
-import { closeQuickView } from '../../actions/productsActions';
 
 class ProductCard extends Component {
     constructor(props) {
