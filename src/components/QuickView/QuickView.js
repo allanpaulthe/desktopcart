@@ -30,7 +30,7 @@ class QuickView extends Component {
         var added = false;
         const cart = [...this.props.cart];
         cart.forEach(el => {
-            if (el.id == this.props.id) {
+            if (parseInt(el.id, 10) === parseInt(this.props.id, 10)) {
                 added = true;
             }
         });
@@ -46,7 +46,7 @@ class QuickView extends Component {
                     <div className="quick-first">
                         <div className="pic-list">
                             {Array.apply(null, { length: 5 }).map((x, i) => (
-                                <img src={products[id - 1].image_url} alt="" className="selected" key={i}/>
+                                <img src={products[id - 1].image_url} alt="" className="selected" key={i} />
                             ))}
                         </div>
                         <div className="pic">

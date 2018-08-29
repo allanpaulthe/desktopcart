@@ -9,13 +9,13 @@ class SizeButton extends Component {
         };
     }
     getStyles = (no) => {
-        if (this.props.selected == this.props.index) {
+        if (this.props.selected === this.props.index) {
             return {
                 backgroundColor: "#263238",
                 color: '#ffffff'
             }
         }
-        else if (no == 0) {
+        else if (parseInt(no, 10) === 0) {
             return {
                 backgroundColor: "rgba(236, 239, 241, 0.4)",
                 color: '#455a64',

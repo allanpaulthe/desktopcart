@@ -8,7 +8,7 @@ class SizeButton extends Component {
         this.state = {};
     }
     getStyles = (no) => {
-        if (this.props.selected == this.props.index) {
+        if (this.props.selected === this.props.index) {
             return {
                 backgroundColor: "#263238",
                 color: '#ffffff'

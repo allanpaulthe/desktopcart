@@ -51,7 +51,7 @@ const productsReducer = (state, action) => {
         case 'ADD_COUNT':
             var cart = [...state.cart]
             var newData = cart.map(el => {
-                if (el.id == action.id)
+                if (parseInt(el.id, 10) === parseInt(action.id, 10))
                     return Object.assign({}, el, { count: el.count + 1 })
                 return el
             });
@@ -60,7 +60,7 @@ const productsReducer = (state, action) => {
         case 'REMOVE_COUNT':
             var cart = [...state.cart]
             var newData = cart.map(el => {
-                if (el.id === action.id)
+                if (parseInt(el.id, 10) === parseInt(action.id, 10))
                     if (el.count > 1)
                         return Object.assign({}, el, { count: el.count - 1 })
                     else
