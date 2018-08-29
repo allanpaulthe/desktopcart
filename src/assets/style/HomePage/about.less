@@ -7,6 +7,9 @@
         font-size: 42px;
         color: #33333a;
         line-height: 1.43;
+        @media screen and (max-width: 600px) {
+            font-size: 25px;
+        }
     }
     .content {
         display: flex;
@@ -29,6 +32,10 @@
                 padding-bottom: 20px;
                 font-family: AvenirNext;
                 margin-bottom: 20px;
+                @media screen and (max-width: 600px) {
+                    font-size: 12px;
+                    padding-bottom: 10px;
+                }
             }
             .subheads {
                 font-size: 12px;
@@ -38,12 +45,19 @@
                 text-transform: uppercase;
                 margin-top: 20px;
                 margin-bottom: 10px;
+                @media screen and (max-width: 600px) {
+                    font-size: 10px;
+                    margin-top: 10px;
+                }
             }
             .subdata{
                 font-family: VLNewParisHeadline;
                 font-size: 18px;
                 color: #33333a; 
-                line-height: 1.67;    
+                line-height: 1.67;  
+                @media screen and (max-width: 600px) {
+                    font-size: 10px;
+                }  
             }
         }
         @media screen and (max-width: 1310px) {

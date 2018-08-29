@@ -6,11 +6,13 @@ import CartSmall from './CartSmall';
 import { Icon } from 'react-icons-kit';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
 import { Link } from 'react-router-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PaymentInfo from './PaymentInfo';
 import Review from './Review';
 import { connect } from 'react-redux';
 import GoogleLog from '../GoogleLogin/GoogleLogin';
+import FacebookLogin from '../FacebookLogin/FacebookLogin';
+import FacebookLoginBig from '../FacebookLogin/FacebookLoginBig';
 
 
 const ButtonCheckOutLarge = () => {
@@ -152,7 +154,7 @@ class CheckOut extends Component {
                                 }
 
                                 <div className="left flex-v-center">
-                                    <h1>{'$'+sum}</h1>
+                                    <h1>{'$' + sum}</h1>
                                     <Icon icon={ic_keyboard_arrow_down} />
                                 </div>
                             </div>
@@ -164,11 +166,11 @@ class CheckOut extends Component {
                             <div className="login-buttons">
                                 <h2>Login with</h2>
                                 <div className="buttons">
-                                    <img src={require('../../assets/img/icons/fb-big.svg')} alt="" />
+                                    <FacebookLoginBig />
                                     <GoogleLog big={true} />
                                 </div>
                                 <div className="buttons-small">
-                                    <img src={require('../../assets/img/icons/group-13.svg')} alt="" />
+                                    <FacebookLogin />
                                     <GoogleLog big={false} />
                                 </div>
                             </div>

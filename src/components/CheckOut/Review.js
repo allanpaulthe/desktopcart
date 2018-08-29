@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../../assets/style/CheckOut/review.less';
 import { Icon } from 'react-icons-kit';
-import { ic_edit } from 'react-icons-kit/md/ic_edit'
+import { ic_edit } from 'react-icons-kit/md/ic_edit';
+import { connect } from 'react-redux';
 
 
 class Review extends Component {
@@ -10,6 +11,7 @@ class Review extends Component {
         this.state = {};
     }
     render() {
+        const adress = this.props.adress;
         return (
             <div className="revieww">
                 <div className="top flex-v-center">
@@ -17,17 +19,17 @@ class Review extends Component {
                     <Icon icon={ic_edit} />
                 </div>
                 <p className="data">
-                    Francisco Román Alarcón
+                    {adress.name}
                 </p>
                 <p className="data">
-                    1060 W Addison St #13
+                    {adress.street}
 
                 </p>
                 <p className="data">
-                    Chicago, IL 60613
+                    {adress.building}
                 </p>
                 <p className="data">
-                    (123) 456-7890
+                    {adress.phno}
                 </p>
                 <div className="top flex-v-center">
                     <h1>Payment Method:</h1>
@@ -71,4 +73,11 @@ class Review extends Component {
     }
 }
 
-export default Review;
+export const mapStateToProps = (state) => {
+    return {
+        adress: state.userAdress
+    };
+};
+
+
+export default connect(mapStateToProps, null)(Review);

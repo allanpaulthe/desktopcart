@@ -101,6 +101,8 @@
         }
         .userDetails {
             margin: 0;
+            position: relative;
+            min-width: 49px;
             p {
                 font-family: Roboto;
                 font-size: 12px;
@@ -110,14 +112,23 @@
                 line-height: 1.33;
                 letter-spacing: 1px;
                 color: #0231b7;
-                @media screen and (max-width: 720px) {
+                @media screen and (max-width: 830px) {
                     display: none;
                 }
             }
             img {
                 height: 40px;
                 width: 40px;
+                max-width: 40px;
+                max-height: 40px;
                 border-radius: 50%;
+                
+            }
+            &:after {
+                content: 'sign out';
+                position: absolute;
+                bottom: -10px;
+                right: 5px;
             }
         }
     }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../../assets/style/NavBar/menu-list.less';
 import MenuDropDown from './MenuDropDown';
 
-
 class Menulist extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +18,7 @@ class Menulist extends Component {
                     {element.name}
                 </div>
                 {[...list].map((x, i) => (
-                    <MenuDropDown key={i} element={x} />
+                    <MenuDropDown key={i} element={x} main={element.name}/>
                 ))}
             </div>
         );

@@ -46,7 +46,7 @@ class MenuDropDown extends Component {
                     <ul>
                         {
                             [...list].map((x, i) => (
-                                <Link to={"/category/" + x} onClick={() => { this.props.menuOff() }}><li>{x}</li></Link>
+                                <Link to={"/category/" + this.props.main + "/" + element.type + "/" + x} onClick={() => { this.props.menuOff() }} key={i}><li>{x}</li></Link>
                             ))
                         }
                     </ul>

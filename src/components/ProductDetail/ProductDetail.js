@@ -15,13 +15,13 @@ class ProductDetail extends Component {
         const id = this.props.match.params.id;
         return (
             <div className="product-detail">
-                <div className="heading">
-
+                <div className="heading flex-v-center">
+                    Argentina
                 </div>
                 <div className="product-detail-body">
                     <QuickView1 id={id} />
                 </div>
-                <CustomerReview id={id}/>
+                <CustomerReview id={id} />
             </div>
         );
     }
