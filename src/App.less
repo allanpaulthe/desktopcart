@@ -29,10 +29,19 @@ a{
     z-index: 10;
     box-sizing: border-box;
     overflow: auto;
-    padding: 5% 15%;
+    padding: 5% 13%;
     box-sizing: border-box;
     @media screen and (max-width: 860px) {
         padding: 5% 3%;
+    }
+    &::-webkit-scrollbar {
+        background-color: darken(#f4f4f4, 10%);
+        width: .25em;
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: lighten(#f4f4f4, 20%);
+        border-radius: 5px;
     }
 }
 body{
@@ -47,5 +56,16 @@ body{
     }
     @media screen and (max-width: 600px) {
         padding-bottom: 50px;
+    }
+}
+html{
+    &::-webkit-scrollbar {
+        background-color: darken(#f4f4f4, 10%);
+        width: .5em;
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: lighten(#f4f4f4, 20%);
+        border-radius: 5px;
     }
 }

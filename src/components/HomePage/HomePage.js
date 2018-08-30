@@ -18,7 +18,7 @@ class HomePage extends Component {
         return (
             <div className="home-page">
                 <Carousel />
-                <div className="container">
+                <div className="container" id="shop-body">
                     <div className="header">
                         <div className="caption">
                             Authentic World Cup Kits

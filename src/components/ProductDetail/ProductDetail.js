@@ -7,19 +7,25 @@ class ProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            product: {}
+            product: {},
+            heading: ''
         };
+        this.setHeading = this.setHeading.bind(this);
     }
-
+    setHeading(data) {
+        this.setState({
+            heading: data
+        })
+    }
     render() {
         const id = this.props.match.params.id;
         return (
             <div className="product-detail">
                 <div className="heading flex-v-center">
-                    Argentina
+                    {this.state.heading}
                 </div>
                 <div className="product-detail-body">
-                    <QuickView1 id={id} />
+                    <QuickView1 id={id} setHeading={this.setHeading} />
                 </div>
                 <CustomerReview id={id} />
             </div>
