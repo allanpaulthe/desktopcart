@@ -8,7 +8,7 @@ class AdressForm extends Component {
         this.state = {
             name: '',
             street: '',
-            buliding: '',
+            building: '',
             zip: '',
             phno: ''
         };
@@ -19,8 +19,10 @@ class AdressForm extends Component {
         this.setState({ [e.target.name]: e.target.value });
         this.props.setAdress(this.state);
     }
-    validate(e){
-        alert(e)
+    validate(e) {
+        if (this.state[e.target.name].length === 0) {
+            alert('not valid')
+        }
     }
     render() {
         return (
@@ -28,26 +30,26 @@ class AdressForm extends Component {
                 <div className="one-input ">
                     <p>Full Name</p>
                     <div className="input-wrapper flex-v-center">
-                        <input type="text" placeholder="FULL NAME" name="name" value={this.state.name} onChange={this.handleChange} onBlur={this.validate}/>
+                        <input type="text" placeholder="FULL NAME" name="name" value={this.state.name} onChange={this.handleChange} onBlur={this.validate} />
                     </div>
                 </div>
                 <div className="one-input ">
                     <p>Street Address</p>
                     <div className="input-wrapper flex-v-center">
-                        <input type="text" placeholder="STREET ADRESS" name="street" value={this.state.street} onChange={this.handleChange} />
+                        <input type="text" placeholder="STREET ADRESS" name="street" value={this.state.street} onChange={this.handleChange} onBlur={this.validate} />
                     </div>
                 </div>
                 <div className="one-input ">
                     <p>Apt, Suite, Bldg (optional)</p>
                     <div className="input-wrapper flex-v-center">
-                        <input type="text" placeholder="Unit 13" name="building" value={this.state.building} onChange={this.handleChange} />
+                        <input type="text" placeholder="Unit 13" name="building" value={this.state.building} onChange={this.handleChange} onBlur={this.validate} />
                     </div>
                 </div>
                 <div className="zip">
                     <div className="one-input ">
                         <p>Zip Code</p>
                         <div className="input-wrapper flex-v-center">
-                            <input type="text" placeholder="60613" name="zip" value={this.state.zip} onChange={this.handleChange} />
+                            <input type="number" placeholder="60613" name="zip" value={this.state.zip} onChange={this.handleChange} onBlur={this.validate} />
                         </div>
                     </div>
                     <div className="add-or-remove">
@@ -62,7 +64,7 @@ class AdressForm extends Component {
                     <div className="one-input ">
                         <p>Phone Number</p>
                         <div className="input-wrapper flex-v-center">
-                            <input type="text" placeholder="(123) 456 - 7890" name="phno" value={this.state.phno} onChange={this.handleChange} />
+                            <input type="number" placeholder="(123) 456 - 7890" name="phno" value={this.state.phno} onChange={this.handleChange} onBlur={this.validate} />
                         </div>
                     </div>
                 </div>
