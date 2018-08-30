@@ -29,7 +29,7 @@ class CategoryView extends Component {
                 <div className="topp flex-v-center">
                     <div className="flex-v-center">
                         {type &&
-                            <div>
+                            <div className="flex-v-center">
                                 <h3 className="black">{type}</h3>
                                 <Icon icon={ic_keyboard_arrow_right} />
                                 <h3>{item}</h3>

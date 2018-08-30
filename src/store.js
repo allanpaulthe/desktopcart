@@ -16,6 +16,12 @@ const initial = {
     loggedIn: false,
     userDetails: {},
     userAdress: {},
+    AdressValid: {
+        name: false,
+        street: false,
+        zip: false,
+        phno: false
+    },
     subMenuList: {}
 }
 

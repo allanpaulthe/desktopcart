@@ -19,7 +19,7 @@ const ButtonCheckOutLarge = () => {
     return (
         <div className="bottom-buttons-1 flex-v-center">
             <Link to="/"><button className="right">Continue Shopping</button></Link>
-            <Link to="/checkout/payment" className="left"><button className="left"> Continue to payment</button></Link>
+            <Link to="/checkout/payment"><button className="left"> Continue to payment</button></Link>
         </div>
     );
 }
@@ -35,7 +35,7 @@ class ButtonCheckOutSmall extends Component {
         return (
             <div className="bottom-buttons-2 flex-v-center">
                 <button className="right" onClick={this.goBack.bind(this)}>back</button>
-                <Link to="/checkout/payment" className="left"><button className="left"> Continue to payment</button></Link>
+                <Link to="/checkout/payment" ><button className="left"> Continue to payment</button></Link>
             </div>
         );
     }
@@ -44,7 +44,7 @@ const ButtonPaymentLarge = () => {
     return (
         <div className="bottom-buttons-1 flex-v-center">
             <Link to="/"><button className="right">Continue Shopping</button></Link>
-            <Link to="/checkout/review" className="left"><button className="left"> Continue to Review</button></Link>
+            <Link to="/checkout/review"><button className="left"> Continue to Review</button></Link>
         </div>
     );
 }
@@ -60,7 +60,7 @@ class ButtonPaymentSmall extends Component {
         return (
             <div className="bottom-buttons-2 flex-v-center">
                 <button className="right" onClick={this.goBack.bind(this)}>back</button>
-                <Link to="/checkout/review" className="left"><button className="left"> Continue to Review</button></Link>
+                <Link to="/checkout/review" ><button className="left"> Continue to Review</button></Link>
             </div>
         );
     }
@@ -82,7 +82,7 @@ class ButtonReviewLarge extends Component {
         return (
             <div className="bottom-buttons-1 flex-v-center">
                 <Link to="/"><button className="right">Continue Shopping</button></Link>
-                <Link to="/thanks" className="left" style={this.getStyles()}><button className="left"> Complete Order</button></Link>
+                <Link to="/thanks"  style={this.getStyles()}><button className="left"> Complete Order</button></Link>
             </div>
         );
     }
@@ -108,7 +108,7 @@ class ButtonReviewSmall extends Component {
         return (
             <div className="bottom-buttons-2 flex-v-center">
                 <button className="right" onClick={this.goBack.bind(this)}>back</button>
-                <Link to="/thanks  " className="left" style={this.getStyles()}><button className="left" > Complete Order</button></Link>
+                <Link to="/thanks  " style={this.getStyles()}><button className="left" > Complete Order</button></Link>
             </div>
         );
     }
@@ -197,7 +197,7 @@ class CheckOut extends Component {
                 <Route exact path="/checkout/payment" component={ButtonPaymentLarge} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentSmall} />
                 <Route exact path="/checkout/review" render={() => <ButtonReviewLarge isLogged={this.props.loggedIn} />} />
-                <Route exact path="/checkout/review" render={() => <ButtonReviewSmall isLogged={this.props.loggedIn} />} />
+                <Route exact path="/checkout/review" render={() => <ButtonReviewSmall isLogged={this.props.loggedIn} history={this.props.history} />} />
 
             </div>
         );

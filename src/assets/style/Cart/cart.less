@@ -8,11 +8,17 @@
             padding: 0 5%;
             height: 60px;
         }
+        @media screen and(max-width: 600px) {
+            height: 38px;
+        }
         h1 {
             font-family: NunitoSans;
             font-size: 22px;
             font-weight: bold;
             color: #78909c;
+            @media screen and(max-width: 600px) {
+                font-size: 15px;
+            }
         }
     }
     .cart-body {
@@ -33,12 +39,6 @@
         .cart-end-buttons {
             display: flex;
             margin-top: 30px;
-            @media screen and(max-width: 365px) {
-                flex-direction: column;
-                .blue-button {
-                    margin-top: 20px;
-                }
-            }
             div {
                 height: 48px;
                 padding: 0 30px;
@@ -64,8 +64,27 @@
                     color: darken(#2196f3, 20%);
                 }
                 @media screen and(max-width: 600px) {
-                    font-size: 12px;
+                    display: none;
                 }
+            }
+            .right {
+                font-family: NunitoSans;
+                font-size: 16px;
+                font-weight: 600;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #2196f3;
+                padding-left: 10px;
+                display: none;
+                @media screen and(max-width: 600px) {
+                    font-size: 13px;
+                    display: block;
+                }
+                border: none;
+                outline: none;
+                background: none;
             }
             .blue-button {
                 margin-left: auto;
@@ -82,6 +101,7 @@
                 }
                 @media screen and(max-width: 600px) {
                     font-size: 12px;
+                    border-radius: 40px;
                 }
             }
             .left {

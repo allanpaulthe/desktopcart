@@ -77,6 +77,7 @@ class QuickView extends Component {
                             </div>
                             <p className="rating-value">{products[id - 1].rating + ' of 5'}</p>
                         </div>
+                        <div className="line"></div>
                         <div className="second-description">
                             <h1>Description</h1>
                             <p>{products[id - 1].desc} </p>
@@ -102,7 +103,7 @@ class QuickView extends Component {
                     </div>
                 </div>
                 <div className="quick-bottom flex-center">
-                    <button>VIEW FULL PRODUCT DETAIL</button>
+                    <Link to={'/product/' + id} onClick={() => { this.props.closeQuickView() }}> <button>VIEW FULL PRODUCT DETAIL</button></Link>
                 </div>
             </div>
         );

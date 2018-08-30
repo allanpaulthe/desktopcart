@@ -82,6 +82,7 @@ class QuickView1 extends Component {
                                 </div>
                                 <p className="rating-value">{products.rating + ' of 5'}</p>
                             </div>
+                            <div className="line"></div>
                             <div className="second-description">
                                 <h1>Description</h1>
                                 <p>{products.desc} </p>
