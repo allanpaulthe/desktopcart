@@ -81,7 +81,7 @@ class Carousel extends React.Component {
                 <div className="info">
                     <p className='text'>Perfect <br />
                         Style, Fit, Comfort</p>
-                    <button className='button flex-center'><img src={require('../../assets/img/icons/m.svg')} alt="" /></button>
+                    <button className='button flex-center'> <a href="#shop-body"> <img src={require('../../assets/img/icons/m.svg')} alt="" /></a></button>
                 </div>
             </div>
         );

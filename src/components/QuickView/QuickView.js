@@ -17,7 +17,9 @@ import { Link } from 'react-router-dom';
 class QuickView extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            selectedImage: 0
+        };
     }
     closeQuickView() {
         this.props.closeQuickView()
@@ -25,6 +27,11 @@ class QuickView extends Component {
     addToCart() {
         this.props.addToCart(this.props.id);
         this.props.closeQuickView()
+    }
+    changeImage(i) {
+        this.setState({
+            selectedImage: i
+        })
     }
     render() {
         var added = false;
@@ -45,12 +52,12 @@ class QuickView extends Component {
                 <div className="quick-body">
                     <div className="quick-first">
                         <div className="pic-list">
-                            {Array.apply(null, { length: 5 }).map((x, i) => (
-                                <img src={products[id - 1].image_url} alt="" className="selected" key={i} />
+                            {[...products[id - 1].image_url].map((x, i) => (
+                                <img src={x} alt="" className="selected" key={i} onClick={() => this.changeImage(i)} />
                             ))}
                         </div>
-                        <div className="pic">
-                            <img src={products[id - 1].image_url} alt="" />
+                        <div className="pic flex-center">
+                            <img src={products[id - 1].image_url[this.state.selectedImage]} alt="" />
                         </div>
                     </div>
                     <div className="quick-second">

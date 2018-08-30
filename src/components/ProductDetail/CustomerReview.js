@@ -53,8 +53,8 @@ class CustomerReview extends Component {
                     <p>4.8 of 5</p>
                 </div>
                 <h2 className="top-label">Top Customers Reviews</h2>
-                {[...this.state.data].map((x) => (
-                    <Review review={x} />
+                {[...this.state.data].map((x, i) => (
+                    <Review review={x} key={i} />
                 ))}
                 <p className="show-more">Show more reviews</p>
             </div>

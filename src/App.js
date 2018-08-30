@@ -29,7 +29,7 @@ class App extends Component {
       let cart_data = JSON.parse(m.data)
       this.props.setCart(cart_data);
     };
-    setInterval(() => myWorker.postMessage('Update Cart Details'), 2000);
+    setInterval(() => myWorker.postMessage('Update Cart Details'), 10000);
   }
   render() {
     return (
@@ -41,6 +41,7 @@ class App extends Component {
           <Route exct path="/cart" component={Cart} />
           <Route path="/checkout" component={CheckOut} />
           <Route path="/category/:main/:type/:item" component={CategoryView} />
+          <Route path="/category/:main" component={CategoryView} />
           {this.props.quickView && <div className="popup-screen">
             <QuickView />
           </div>}

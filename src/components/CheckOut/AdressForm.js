@@ -13,10 +13,14 @@ class AdressForm extends Component {
             phno: ''
         };
         this.handleChange = this.handleChange.bind(this);
+        this.validate = this.validate.bind(this);
     }
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
         this.props.setAdress(this.state);
+    }
+    validate(e){
+        alert(e)
     }
     render() {
         return (
@@ -24,7 +28,7 @@ class AdressForm extends Component {
                 <div className="one-input ">
                     <p>Full Name</p>
                     <div className="input-wrapper flex-v-center">
-                        <input type="text" placeholder="FULL NAME" name="name" value={this.state.name} onChange={this.handleChange} />
+                        <input type="text" placeholder="FULL NAME" name="name" value={this.state.name} onChange={this.handleChange} onBlur={this.validate}/>
                     </div>
                 </div>
                 <div className="one-input ">

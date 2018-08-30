@@ -3,6 +3,7 @@ import '../../assets/style/Cart/cart-item.less';
 import CartQuantity from './CartQuantity';
 import { connect } from 'react-redux';
 import { deleteItem } from '../../actions/userActions';
+import { Link } from 'react-router-dom';
 
 class CartItem extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class CartItem extends Component {
             <div className="cart-item">
                 <div className="cont">
                     <div className="cart-image flex-center">
-                        <img src={this.props.products[this.props.element.id - 1].image_url} alt="" />
+                        <Link to={'/product/' + this.props.element.id}><img src={this.props.products[this.props.element.id - 1].image_url[0]} alt="" /></Link>
                     </div>
                     <div className="cart-data">
                         <div className="cart-top flex-v-center">
@@ -41,8 +42,8 @@ class CartItem extends Component {
                     </div>
                 </div>
                 <div className="flex-v-center hides">
-                            <CartQuantity count={this.props.element.count} id={this.props.element.id} />
-                            <p> {'$' + this.props.products[this.props.element.id - 1].price}</p>
+                    <CartQuantity count={this.props.element.count} id={this.props.element.id} />
+                    <p> {'$' + this.props.products[this.props.element.id - 1].price}</p>
                 </div>
             </div>
         );

@@ -28,9 +28,15 @@ class CategoryView extends Component {
                 </div>
                 <div className="topp flex-v-center">
                     <div className="flex-v-center">
-                        <h3 className="black">{type}</h3>
-                        <Icon icon={ic_keyboard_arrow_right} />
-                        <h3>{item}</h3>
+                        {type &&
+                            <div>
+                                <h3 className="black">{type}</h3>
+                                <Icon icon={ic_keyboard_arrow_right} />
+                                <h3>{item}</h3>
+                            </div>
+                        }{!type &&
+                            <h3 className="black">{main}</h3>
+                        }
                     </div>
                     <div className="left">
 
@@ -46,7 +52,7 @@ class CategoryView extends Component {
                 </div>
                 <div className="category-view-body">
                     <div className="left">
-                        <FilterView main={main}/>
+                        <FilterView main={main} />
                     </div>
                     <div className="right">
                         <ProductList />

@@ -21,7 +21,7 @@ class ProductCard extends Component {
         return (
             <div className="product-card">
                 <div className="image flex-center">
-                    <Link to={'/product/' + this.props.element.id}> <img src={element.image_url} alt="shirt"/></Link>
+                    <Link to={'/product/' + this.props.element.id}> <img src={element.image_url[0]} alt="shirt"/></Link>
                     <img src={require('../../assets/img/icons/quick-open.svg')} alt="quick open" className="hover" onClick={this.quickView.bind(this)} />
                 </div>
                 <div className="data">

@@ -12,12 +12,14 @@ class SubList extends Component {
             data: {}
         };
     }
-    componentWillReceiveProps() {
-        getOneMenuDetails(this.props.main).then((data) => {
-            this.props.setSuBMenu(data[0]);
-        }).catch(() => {
-            this.setState({ data: {} });
-        })
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.main != this.props.main) {
+            getOneMenuDetails(nextProps.main).then((data) => {
+                this.props.setSuBMenu(data[0]);
+            }).catch(() => {
+                this.setState({ data: {} });
+            })
+        }
     }
     componentWillMount() {
         getOneMenuDetails(this.props.main).then((data) => {

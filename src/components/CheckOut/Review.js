@@ -12,6 +12,14 @@ class Review extends Component {
     }
     render() {
         const adress = this.props.adress;
+        const cart = [...this.props.cart];
+        const products = this.props.products;
+        var sum = 0;
+        cart.forEach(el => {
+            const count = el.count;
+            const price = products[el.id - 1].price;
+            sum += (count * price)
+        });
         return (
             <div className="revieww">
                 <div className="top flex-v-center">
@@ -49,7 +57,7 @@ class Review extends Component {
                 <div className="summary">
                     <div className="one">
                         <h1>Subtotal</h1>
-                        <p>$165</p>
+                        <p>{'$' + sum}</p>
                     </div>
                     <div className="one">
                         <h1>Shipping</h1>
@@ -65,7 +73,7 @@ class Review extends Component {
                     </div>
                     <div className="one black">
                         <h1>Total</h1>
-                        <p>$176.55</p>
+                        <p>{'$' + (sum + 11.55)}</p>
                     </div>
                 </div>
             </div>
@@ -75,7 +83,10 @@ class Review extends Component {
 
 export const mapStateToProps = (state) => {
     return {
-        adress: state.userAdress
+        adress: state.userAdress,
+        cart: state.cart,
+        products: state.products,
+        cartCount: state.cartCount
     };
 };
 
