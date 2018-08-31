@@ -9,6 +9,7 @@ import { getProducts } from '../../server/server';
 import { setAllProducts } from '../../actions/productsActions';
 import GoogleLog from '../GoogleLogin/GoogleLogin';
 import FacebookLogin from '../FacebookLogin/FacebookLogin';
+import ReactDOM from 'react-dom';
 
 class NavBar extends Component {
     constructor(props) {

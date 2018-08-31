@@ -86,6 +86,9 @@
             .pic {
                 flex-basis: 80%;
                 background-color: #f4f4f4;
+                @media screen and (max-width: 600px) {
+                    display: none;
+                }
                 img {
                     margin-top: 24px;
                     width: 80%;
@@ -95,6 +98,12 @@
                         height: auto;
                         margin-top: 0;
                     }
+                }
+            }
+            .reveal{
+                display: none;
+                @media screen and (max-width: 600px) {
+                    display: flex;
                 }
             }
         }

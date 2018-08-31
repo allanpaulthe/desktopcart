@@ -11,6 +11,8 @@ import { connect } from 'react-redux';
 import { addToCart } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
 import { getProductDetails } from '../../server/server';
+import ImageGallery from 'react-image-gallery';
+
 
 
 class QuickView1 extends Component {
@@ -52,6 +54,11 @@ class QuickView1 extends Component {
         const products = this.state.product;
         if (products.image_url != null) {
             this.updateHeading(products.name);
+            const imgObj = products.image_url.map(function (entry) {
+                var singleObj = {}
+                singleObj['original'] = entry;
+                return singleObj;
+            });
             return (
                 <div className="quick-view">
                     <div className="quick-body">
@@ -63,6 +70,15 @@ class QuickView1 extends Component {
                             </div>
                             <div className="pic flex-center">
                                 <img src={products.image_url[this.state.selectedImage]} alt="" />
+                            </div>
+                            <div className="pic reveal flex-center">
+                                <ImageGallery
+                                    items={imgObj}
+                                    showThumbnails={false}
+                                    showBullets={true}
+                                    showPlayButton={false}
+                                    showNav={false}
+                                />
                             </div>
                         </div>
                         <div className="quick-second">

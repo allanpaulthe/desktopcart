@@ -25,6 +25,7 @@ class Review extends Component {
                 <div className="top flex-v-center">
                     <h1>Shipping to:</h1>
                     <Icon icon={ic_edit} />
+                    <div className="edit-blue">EDIT</div>
                 </div>
                 <p className="data">
                     {adress.name}
@@ -42,6 +43,7 @@ class Review extends Component {
                 <div className="top flex-v-center">
                     <h1>Payment Method:</h1>
                     <Icon icon={ic_edit} />
+                    <div className="edit-blue">EDIT</div>
                 </div>
                 <p className="data">
                     VISA ending in 8765
@@ -49,6 +51,7 @@ class Review extends Component {
                 <div className="top flex-v-center">
                     <h1>Billing Address</h1>
                     <Icon icon={ic_edit} />
+                    <div className="edit-blue">EDIT</div>
                 </div>
                 <p className="data">
                     Same as shipping address

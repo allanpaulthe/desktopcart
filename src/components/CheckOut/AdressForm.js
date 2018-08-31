@@ -23,9 +23,7 @@ class AdressForm extends Component {
     }
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
-    }
-    validate(e) {
-        if (this.state[e.target.name].length === 0) {
+        if (e.target.value.length === 0) {
             this.setState({
                 [e.target.name + 'Error']: 'This field should be filled',
                 [e.target.name + 'Ok']: false
@@ -37,12 +35,30 @@ class AdressForm extends Component {
                 [e.target.name + 'Ok']: true
             })
         }
+    }
+    validate(e) {
         this.props.setAdress(this.state);
+        if (e.target.value.length === 0) {
+            this.setState({
+                [e.target.name + 'Error']: 'This field should be filled',
+                [e.target.name + 'Ok']: false
+            })
+        }
+        else {
+            this.setState({
+                [e.target.name + 'Error']: false,
+                [e.target.name + 'Ok']: true
+            })
+        }
         let state = this.state;
         if (state.nameOk && state.streetOk && state.zipOk && state.phnoOk) {
             this.setState({
                 validatedAll: true
             })
+           this.props.makeAddressValid(true);
+        }
+        else{
+            this.props.makeAddressValid(false);
         }
     }
     render() {

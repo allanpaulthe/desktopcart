@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { closeQuickView } from '../../actions/productsActions';
 import { addToCart } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
+import ImageGallery from 'react-image-gallery';
 
 
 class QuickView extends Component {
@@ -43,6 +44,11 @@ class QuickView extends Component {
         });
         const id = this.props.id;
         const products = this.props.products;
+        const imgObj = products[id - 1].image_url.map(function (entry) {
+            var singleObj = {}
+            singleObj['original'] = entry;
+            return singleObj;
+        });
         return (
             <div className="quick-view">
                 <div className="quick-header flex-v-center">
@@ -58,6 +64,15 @@ class QuickView extends Component {
                         </div>
                         <div className="pic flex-center">
                             <img src={products[id - 1].image_url[this.state.selectedImage]} alt="" />
+                        </div>
+                        <div className="pic reveal flex-center">
+                            <ImageGallery
+                                items={imgObj}
+                                showThumbnails={false}
+                                showBullets={true}
+                                showPlayButton={false}
+                                showNav={false}
+                            />
                         </div>
                     </div>
                     <div className="quick-second">
