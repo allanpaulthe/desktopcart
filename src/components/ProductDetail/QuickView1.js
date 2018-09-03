@@ -12,6 +12,7 @@ import { addToCart } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
 import { getProductDetails } from '../../server/server';
 import ImageGallery from 'react-image-gallery';
+import { withAlert } from 'react-alert';
 
 
 
@@ -22,6 +23,7 @@ class QuickView1 extends Component {
             product: {},
             selectedImage: 0
         };
+        this.getStyles = this.getStyles.bind(this);
     }
     componentWillMount() {
         getProductDetails(this.props.id).then((data) => {
@@ -34,6 +36,7 @@ class QuickView1 extends Component {
     }
     addToCart() {
         this.props.addToCart(this.props.id);
+        this.props.alert.success('Added to cart')
     }
     changeImage(i) {
         this.setState({
@@ -42,6 +45,13 @@ class QuickView1 extends Component {
     }
     updateHeading(name) {
         this.props.setHeading(name)
+    }
+    getStyles(i) {
+        if (this.state.selectedImage === i) {
+            return ({
+                border: "solid 2px #0231b7"
+            })
+        }
     }
     render() {
         var added = false;
@@ -65,7 +75,7 @@ class QuickView1 extends Component {
                         <div className="quick-first">
                             <div className="pic-list">
                                 {[...products.image_url].map((x, i) => (
-                                    <img src={x} alt="" className="selected" key={i} onClick={() => this.changeImage(i)} />
+                                    <img src={x} alt="" style={this.getStyles(i)} key={i} onClick={() => this.changeImage(i)} />
                                 ))}
                             </div>
                             <div className="pic flex-center">
@@ -112,8 +122,7 @@ class QuickView1 extends Component {
                                 <Icon icon={ic_keyboard_arrow_down} size={20} />
                             </div>
                             <div className="button-list">
-                                {!added && <Link to="/cart"><button onClick={this.addToCart.bind(this)}>ADD TO CART</button></Link>}
-                                {added && <Link to="/cart"><button >ADDED TO CART</button></Link>}
+                                <button onClick={this.addToCart.bind(this)}>ADD TO CART</button>
                                 <div className="right flex-v-center">
                                     <p className="q flex-center">?</p>
                                     <div className="wish">
@@ -146,4 +155,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuickView1);
+export default connect(mapStateToProps, mapDispatchToProps)(withAlert(QuickView1));

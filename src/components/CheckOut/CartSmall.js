@@ -25,15 +25,16 @@ class CartSmall extends Component {
                     <h1>Shopping Cart</h1>
                     <div className="count flex-center">{this.props.cartCount}</div>
                 </div>
-                {
-                    [...this.props.cart].map((x, i) => (
-                        <div key={i} className="wrap">
-                            <div className="underline"></div>
-                            <CartItem element={x} />
-                            <div className="underline"></div>
-                        </div>
-                    ))
-                }
+                <div className="minimized-list">
+                    {
+                        [...this.props.cart].map((x, i) => (
+                            <div key={i} className="wrap">
+                                <div className="underline"></div>
+                                <CartItem element={x} />
+                            </div>
+                        ))
+                    }
+                </div>
                 <div className="underline"></div>
                 <div className="voucher flex-v-center">
                     <p>Have a Voucher?</p>

@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <Router>
         <ScrollToTop>
-          <div className="App">
+          <div className="App" id="App">
             <OfferBar />
             <NavBar />
             <Menu />
@@ -52,6 +52,7 @@ class App extends Component {
             <Route exact path="/product/:id" component={ProductDetail} />
             <Footer />
           </div>
+
         </ScrollToTop>
       </Router>
     );

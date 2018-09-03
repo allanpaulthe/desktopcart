@@ -9,7 +9,7 @@
         content: '';
         z-index: -10;
         width: 285px;
-        height: 455px;
+        height: 475px;
         position: absolute;
         top: -10px;
         left: -10px;
@@ -72,7 +72,19 @@
         }
     }
     .data {
-        padding: 19px;
+        padding:0 19px;
+        height: 180px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        font-family: 'Open Sans', sans-serif;
+        @media screen and (max-width: 600px) {
+            height: 130px;
+         }
+        @media screen and (max-width: 450px) {
+            height: 100px;
+         }
+         
         .name {
             font-size: 20px;
             font-weight: 600;
@@ -87,20 +99,12 @@
             font-weight: 600;
             color: #78909c;
             line-height: 0.78;
-            margin-top: 15px;
             @media screen and (max-width: 600px) {
                 font-size: 10px;
             }
         }
         .lastRow {
             display: flex;
-            margin-top: 30px;
-            @media screen and (max-width: 600px) {
-                margin-top: 25px;
-            }
-            @media screen and (max-width: 450px) {
-                margin-top: 15px;
-            }
             .price {
                 font-size: 18px;
                 font-weight: bold;
