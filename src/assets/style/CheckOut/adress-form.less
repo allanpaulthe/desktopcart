@@ -8,6 +8,7 @@
             margin-bottom: 15px;
         }
         .input-wrapper {
+            position: relative;
             flex: 1;
             height: 53px;
             border: solid 1px rgba(38, 50, 56, 0.12);
@@ -16,6 +17,11 @@
             @media screen and(max-width: 600px) {
                 height: 30px;
                 margin-bottom: 15px;
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
             }
             input {
                 width: 100%;
@@ -29,6 +35,13 @@
                     font-size: 12px;
                 }
             }
+            .error {
+                margin: 0;
+                position: absolute;
+                top: -18px;
+                left: 2px;
+                color: red;
+            }
         }
     }
     .zip {
@@ -38,6 +51,9 @@
         .one-input {
             .input-wrapper {
                 width: 145px;
+                @media screen and(max-width: 600px) {
+                    width: 70px;
+                }
             }
         }
         .add-or-remove {

@@ -4,6 +4,7 @@ import CartQuantity from './CartQuantity';
 import { connect } from 'react-redux';
 import { deleteItem } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
+import { withAlert } from 'react-alert';
 
 class CartItem extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class CartItem extends Component {
         };
     }
     deleteItem() {
+        this.props.alert.error('Item deleted')
         this.props.deleteItem(this.props.element.id)
     }
     render() {
@@ -69,4 +71,4 @@ CartItem.defaultProps = {
     productId: 1
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
+export default connect(mapStateToProps, mapDispatchToProps)(withAlert(CartItem));

@@ -16,6 +16,7 @@ import Thanks from './components/CheckOut/Thanks';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import CategoryView from './components/CategoryView/CategoryView';
 import worker from './worker';
+import ScrollToTop from './components/ScrollToTop';
 
 class App extends Component {
   componentDidMount() {
@@ -34,22 +35,25 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <OfferBar />
-          <NavBar />
-          <Menu />
-          <Route exct path="/cart" component={Cart} />
-          <Route path="/checkout" component={CheckOut} />
-          <Route path="/category/:main/:type/:item" component={CategoryView} />
-          <Route path="/category/:main" component={CategoryView} />
-          {this.props.quickView && <div className="popup-screen">
-            <QuickView />
-          </div>}
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/thanks" component={Thanks} />
-          <Route exact path="/product/:id" component={ProductDetail} />
-          <Footer />
-        </div>
+        <ScrollToTop>
+          <div className="App" id="App">
+            <OfferBar />
+            <NavBar />
+            <Menu />
+            <Route exct path="/cart" component={Cart} />
+            <Route path="/checkout" component={CheckOut} />
+            <Route path="/category/:main/:type/:item" component={CategoryView} />
+            <Route path="/category-small/:main" component={CategoryView} />
+            {this.props.quickView && <div className="popup-screen">
+              <QuickView />
+            </div>}
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/thanks" component={Thanks} />
+            <Route exact path="/product/:id" component={ProductDetail} />
+            <Footer />
+          </div>
+
+        </ScrollToTop>
       </Router>
     );
   }

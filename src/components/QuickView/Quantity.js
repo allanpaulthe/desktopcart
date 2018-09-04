@@ -17,27 +17,12 @@ class Quantity extends Component {
     remove() {
         this.props.removeCount(this.props.selectedQuick)
     }
-    getStyles() {
-        var added = false;
-        const cart = [...this.props.cart];
-        cart.forEach(el => {
-            if (parseInt(el.id, 10) === parseInt(this.props.selectedQuick, 10)) {
-                added = true;
-            }
-        });
-        if (!added) {
-            return {
-                pointerEvents: 'none'
-            }
-        }
-    }
     render() {
         var added = false;
         var count;
         const cart = [...this.props.cart];
         cart.forEach(el => {
             if (parseInt(el.id, 10) === parseInt(this.props.selectedQuick, 10)) {
-                added = true;
                 count = el.count
             }
         });
@@ -45,7 +30,7 @@ class Quantity extends Component {
             count = 1
         }
         return (
-            <div className="quantity flex-v-center" style={this.getStyles()}>
+            <div className="quantity flex-v-center">
                 <p>Qty</p>
                 <p className="quantity-button flex-center" onClick={this.remove.bind(this)}> - </p>
                 <p className="number">{count}</p>

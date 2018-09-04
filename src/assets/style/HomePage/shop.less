@@ -1,6 +1,9 @@
 .shop {
     margin: 20px 0;
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
     .shopHeading {
         width: 100%;
         font-size: 42px;
@@ -13,11 +16,16 @@
         }
     }
     .shopList {
-        display: flex;
+        display: grid;
         justify-content: space-between;
-        flex-wrap: wrap;
-        @media screen and (max-width: 575px) {
-            justify-content: center;
-        }
+        grid-template-columns: auto auto auto auto;
+        @media screen and (max-width: 1410px) {
+            grid-template-columns: auto auto auto;
+         }
+        @media screen and (max-width: 1060px) {
+            grid-template-columns: auto auto;
+            justify-content: space-around;
+         }
+
     }
 }

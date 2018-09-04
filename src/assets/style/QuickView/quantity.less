@@ -1,15 +1,15 @@
 .quantity {
     display: flex;
     margin-bottom: 25px;
+    @media screen and (max-width: 600px) {
+        justify-content: flex-start;
+    }
     p {
-        font-family: NunitoSans;
+        font-family: 'Open Sans', sans-serif;
         font-size: 16px;
         font-weight: bold;
         color: #263238;
         text-align: center;
-        @media screen and (max-width: 600px) {
-            font-size: 10px;
-        }
     }
     .quantity-button {
         font-family: NunitoSans;
@@ -25,20 +25,20 @@
         user-select: none;
         background-color: rgba(236, 239, 241, 0.4);
         @media screen and (max-width: 600px) {
-            height: 30px;
-            width: 34px;
-            font-size: 20px;
+            height: 40px;
+            width: 44px;
+            font-size: 25px;
         }
     }
     .number {
-        font-family: NunitoSans;
+        font-family: 'Open Sans', sans-serif;
         font-size: 22px;
         font-weight: bold;
         line-height: 1.45;
         color: #2c393f;
         margin-left: 22px;
         @media screen and (max-width: 600px) {
-            font-size: 14px;
+            font-size: 22px;
         }
     }
 }

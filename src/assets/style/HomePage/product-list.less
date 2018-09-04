@@ -8,9 +8,18 @@
     @media screen and (max-width: 600px) {
         grid-template-columns: repeat(auto-fill, 200px);
     }
+    @media screen and (max-width: 450px) {
+        grid-template-columns: repeat(auto-fill, 162px);
+    }
+    @media screen and (max-width: 365px) {
+        grid-template-columns: repeat(auto-fill, 140px);
+    }
     &>* {
         flex: 0 0 20%;
         margin-bottom: 50px;
         align-self: flex-start;
+        @media screen and (max-width: 600px) {
+            margin-bottom: 20px;
+        }
     }
 }

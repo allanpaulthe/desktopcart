@@ -3,6 +3,7 @@
     box-sizing: border-box;
     height: 100%;
     .menu {
+        font-family: 'Open Sans', sans-serif;
         box-sizing: border-box;
         position: absolute;
         border-top: 1px solid black;
@@ -11,40 +12,85 @@
         right: 0;
         z-index: 50;
         background-color: #ffffff;
-        width:100vw;
+        width: 100vw;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding:20px 15vw 50px 15vw;
+        padding: 20px 15vw 50px 15vw;
         box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
-        @media screen and (max-width:1570px) {
+        @media screen and (max-width: 1570px) {
             padding:20px 2vw 50px 2vw;
         }
         @media screen and (max-width:1160px) {
-            .menu-list{
+            .menu-list {
                 margin-left: 10px;
                 margin-right: 10px;
             }
         }
         @media screen and (max-width:1035px) {
-            padding:20px 1vw 50px 1vw;
-            .menu-list{
+            padding: 20px 1vw 50px 1vw;
+            .menu-list {
                 margin-left: 5px;
                 margin-right: 5px;
             }
         }
         @media screen and (max-width:1000px) {
-            padding:20px 5vw 50px 4vw;
-            .menu-list{
+            padding: 20px 5vw 50px 4vw;
+            .menu-list {
                 margin-left: 25px;
                 margin-right: 25px;
             }
         }
         @media screen and (max-width:800px) {
-            padding:20px 2vw 50px 2vw;
-            .menu-list{
+            padding: 20px 2vw 50px 2vw;
+            .menu-list {
                 margin-left: 10px;
                 margin-right: 10px;
+            }
+        }
+        @media screen and (max-width:600px) {
+            display: none !important;
+        }
+    }
+    .menu-small {
+        font-family: 'Open Sans', sans-serif;
+        position: fixed;
+        border-top: 1px solid black;
+        top: 0;
+        left: 0;
+        z-index: 50;
+        background-color: #ffffff;
+        right: 30%; // height: ~"calc(100vh - 100px)";
+        height: 100vh;
+        display: none !important;
+        @media screen and (max-width: 600px) {
+            display: flex !important;
+        }
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding-left: 10%;
+        padding-top:20px;
+        box-sizing: border-box;
+        box-shadow:  0 200px 200px rgba(0, 0, 0, 0.5);
+        border: none;
+        &::-webkit-scrollbar {
+            background-color: white;
+            width: .15em;
+            border-radius: 5px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: black;
+            border-radius: 5px;
+        }
+        .menu-list {
+            margin-bottom: 20px;
+        }
+        .menu-icon {
+            position: fixed;
+            right: 40%;
+            div {
+                margin-left: auto;
             }
         }
     }

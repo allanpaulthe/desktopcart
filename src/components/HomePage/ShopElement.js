@@ -15,7 +15,7 @@ class ShopElement extends Component {
                 <div className="label flex-center">
                     {this.props.element.id}
                 </div>
-                <Link to={"/category/" + this.props.element.id} >
+                <Link to={"/category-small/" + this.props.element.id} >
                     <div className="shopnow flex-center">
                         SHOP NOW
                     </div>

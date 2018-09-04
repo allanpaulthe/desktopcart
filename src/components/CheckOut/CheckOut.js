@@ -14,15 +14,39 @@ import GoogleLog from '../GoogleLogin/GoogleLogin';
 import FacebookLogin from '../FacebookLogin/FacebookLogin';
 import FacebookLoginBig from '../FacebookLogin/FacebookLoginBig';
 
+class ButtonCheckOutLarge extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    checkValid() {
+        if (this.props.adressValid) {
+            this.props.history.push('/checkout/payment')
+        }
+        else {
+            this.setState({
+                alertNotValid: true
+            })
+        }
+    }
+    render() {
+        return (
+            <div className="bottom-buttons-1 flex-v-center">
+                <Link to="/"><button className="right">Continue Shopping</button></Link>
+                {this.props.adressValid &&
 
-const ButtonCheckOutLarge = () => {
-    return (
-        <div className="bottom-buttons-1 flex-v-center">
-            <Link to="/"><button className="right">Continue Shopping</button></Link>
-            <Link to="/checkout/payment" className="left"><button className="left"> Continue to payment</button></Link>
-        </div>
-    );
+                    <button className="left" onClick={this.checkValid.bind(this)}>Continue to payment</button>
+                }
+                {!this.props.adressValid &&
+
+                    <button className="left not-valid" onClick={this.checkValid.bind(this)}>Continue to payment</button>
+                }
+            </div>
+        );
+    }
 }
+
+
 class ButtonCheckOutSmall extends Component {
     constructor(props) {
         super(props);
@@ -31,11 +55,23 @@ class ButtonCheckOutSmall extends Component {
     goBack() {
         this.props.history.goBack();
     }
+    checkValid() {
+        if (this.props.adressValid) {
+            this.props.history.push('/checkout/payment')
+        }
+    }
     render() {
         return (
             <div className="bottom-buttons-2 flex-v-center">
                 <button className="right" onClick={this.goBack.bind(this)}>back</button>
-                <Link to="/checkout/payment" className="left"><button className="left"> Continue to payment</button></Link>
+                {this.props.adressValid &&
+
+                    <button className="left" onClick={this.checkValid.bind(this)}>Continue to payment</button>
+                }
+                {!this.props.adressValid &&
+
+                    <button className="left not-valid" onClick={this.checkValid.bind(this)}>Continue to payment</button>
+                }
             </div>
         );
     }
@@ -44,7 +80,7 @@ const ButtonPaymentLarge = () => {
     return (
         <div className="bottom-buttons-1 flex-v-center">
             <Link to="/"><button className="right">Continue Shopping</button></Link>
-            <Link to="/checkout/review" className="left"><button className="left"> Continue to Review</button></Link>
+            <Link to="/checkout/review"><button className="left"> Continue to Review</button></Link>
         </div>
     );
 }
@@ -60,7 +96,7 @@ class ButtonPaymentSmall extends Component {
         return (
             <div className="bottom-buttons-2 flex-v-center">
                 <button className="right" onClick={this.goBack.bind(this)}>back</button>
-                <Link to="/checkout/review" className="left"><button className="left"> Continue to Review</button></Link>
+                <Link to="/checkout/review" ><button className="left"> Continue to Review</button></Link>
             </div>
         );
     }
@@ -82,7 +118,7 @@ class ButtonReviewLarge extends Component {
         return (
             <div className="bottom-buttons-1 flex-v-center">
                 <Link to="/"><button className="right">Continue Shopping</button></Link>
-                <Link to="/thanks" className="left" style={this.getStyles()}><button className="left"> Complete Order</button></Link>
+                <Link to="/thanks" style={this.getStyles()}><button className="left"> Complete Order</button></Link>
             </div>
         );
     }
@@ -108,7 +144,7 @@ class ButtonReviewSmall extends Component {
         return (
             <div className="bottom-buttons-2 flex-v-center">
                 <button className="right" onClick={this.goBack.bind(this)}>back</button>
-                <Link to="/thanks  " className="left" style={this.getStyles()}><button className="left" > Complete Order</button></Link>
+                <Link to="/thanks  " style={this.getStyles()}><button className="left" > Complete Order</button></Link>
             </div>
         );
     }
@@ -117,12 +153,19 @@ class CheckOut extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showDetail: false
+            showDetail: false,
+            addressValid: false
         };
+        this.makeAddressValid = this.makeAddressValid.bind(this);
     }
     toggleDetail() {
         this.setState({
             showDetail: !this.state.showDetail
+        })
+    }
+    makeAddressValid(bool) {
+        this.setState({
+            adressValid: bool
         })
     }
     render() {
@@ -176,7 +219,7 @@ class CheckOut extends Component {
                             </div>
                         }
                         <div className="form">
-                            <Route exact path="/checkout" component={AdressForm} />
+                            <Route exact path="/checkout" render={() => <AdressForm makeAddressValid={this.makeAddressValid} />} />
                             <Route exact path="/checkout/payment" component={PaymentInfo} />
                             <div className="interchange1">
                                 <Route exact path="/checkout/review" component={CartSmall} />
@@ -192,12 +235,12 @@ class CheckOut extends Component {
                         <Route exact path="/checkout/review" component={Review} />
                     </div>
                 </div>
-                <Route exact path="/checkout" component={ButtonCheckOutLarge} />
-                <Route exact path="/checkout" component={ButtonCheckOutSmall} />
+                <Route exact path="/checkout" render={() => <ButtonCheckOutLarge adressValid={this.state.adressValid} history={this.props.history} />} />
+                <Route exact path="/checkout" render={() => <ButtonCheckOutSmall adressValid={this.state.adressValid} history={this.props.history} />} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentLarge} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentSmall} />
                 <Route exact path="/checkout/review" render={() => <ButtonReviewLarge isLogged={this.props.loggedIn} />} />
-                <Route exact path="/checkout/review" render={() => <ButtonReviewSmall isLogged={this.props.loggedIn} />} />
+                <Route exact path="/checkout/review" render={() => <ButtonReviewSmall isLogged={this.props.loggedIn} history={this.props.history} />} />
 
             </div>
         );

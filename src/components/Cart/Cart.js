@@ -10,6 +10,9 @@ class Cart extends Component {
         super(props);
         this.state = {};
     }
+    goBack() {
+        this.props.history.goBack();
+    }
     render() {
         return (
             <div className="cart">
@@ -33,6 +36,7 @@ class Cart extends Component {
                                 Continue Shopping
                             </div>
                         </Link>
+                        <button className="right" onClick={this.goBack.bind(this)}>back</button>
                         <Link to="/checkout" className="left">
                             <div className="blue-button flex-center">
                                 Checkout

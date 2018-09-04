@@ -8,21 +8,41 @@
             padding: 0 5%;
             height: 60px;
         }
+        @media screen and(max-width: 600px) {
+            height: 38px;
+        }
         h1 {
             font-family: NunitoSans;
             font-size: 22px;
             font-weight: bold;
             color: #78909c;
+            @media screen and(max-width: 600px) {
+                font-size: 15px;
+            }
         }
     }
     .cart-body {
-        padding: 50px 15%;
+        padding: 10px 15%;
+        padding-bottom: 50px;
         @media screen and(max-width: 1000px) {
-            padding: 20px 5%;
+            padding: 10px 5%;
         }
         .cart-collection {
+            padding-top:10px;
+            max-height: 45vh;
+            //height: 45vh;
+            overflow: auto;
+            &::-webkit-scrollbar {
+                background-color: lighten(#f4f4f4, 20%);
+                width: .25em;
+                border-radius: 5px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: darken(#f4f4f4, 10%);
+                border-radius: 5px;
+            }
             .line {
-                margin: 30px 0;
+                margin: 20px 0;
                 height: 2px;
                 background-color: rgba(38, 50, 56, 0.12);
                 @media screen and(max-width: 600px) {
@@ -33,12 +53,6 @@
         .cart-end-buttons {
             display: flex;
             margin-top: 30px;
-            @media screen and(max-width: 365px) {
-                flex-direction: column;
-                .blue-button {
-                    margin-top: 20px;
-                }
-            }
             div {
                 height: 48px;
                 padding: 0 30px;
@@ -64,8 +78,27 @@
                     color: darken(#2196f3, 20%);
                 }
                 @media screen and(max-width: 600px) {
-                    font-size: 12px;
+                    display: none;
                 }
+            }
+            .right {
+                font-family: NunitoSans;
+                font-size: 16px;
+                font-weight: 600;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #2196f3;
+                padding-left: 10px;
+                display: none;
+                @media screen and(max-width: 600px) {
+                    font-size: 13px;
+                    display: block;
+                }
+                border: none;
+                outline: none;
+                background: none;
             }
             .blue-button {
                 margin-left: auto;
@@ -82,6 +115,7 @@
                 }
                 @media screen and(max-width: 600px) {
                     font-size: 12px;
+                    border-radius: 40px;
                 }
             }
             .left {
