@@ -138,10 +138,10 @@ const productsReducer = (state, action) => {
                 subMenuList: action.data
             })
         case 'SET_SEARCH_STRING':
-            let searchString = action.data;
-            let products = [...state.products]
+            const searchString = action.data;
+            const products = [...state.products]
             const regexp = new RegExp(searchString, 'i');
-            let results = products.filter(x => (regexp.test(x.name) || regexp.test(x.brand)))
+            const results = products.filter(x => (regexp.test(x.name) || regexp.test(x.brand)))
             return ({
                 ...state,
                 searchProducts: results

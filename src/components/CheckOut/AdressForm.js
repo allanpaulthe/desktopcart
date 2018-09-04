@@ -50,7 +50,7 @@ class AdressForm extends Component {
                 [e.target.name + 'Ok']: true
             })
         }
-        let state = this.state;
+        const state = this.state;
         if (state.nameOk && state.streetOk && state.zipOk && state.phnoOk) {
             this.setState({
                 validatedAll: true

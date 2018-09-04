@@ -21,26 +21,22 @@ class SearchBar extends Component {
         this.setState({
             string: e.target.value
         })
-        if (e.target.value.length === 1) {
-            if (this.props.history.location.pathname !== "/search") {
-                this.props.history.push('/search');
-            }
+        if (e.target.value.length === 1 && this.props.history.location.pathname !== "/search") {
+            this.props.history.push('/search');
         }
-        if (e.target.value.length === 0) {
+        else if (e.target.value.length === 0) {
             this.props.history.goBack();
         }
         this.props.setSearchString(e.target.value);
     }
     onFocus(e) {
-        if (e.target.value.length >= 1) {
-            if (this.props.history.location.pathname !== "/search") {
-                this.props.history.push('/search');
-            }
+        if (e.target.value.length >= 1 && this.props.history.location.pathname !== "/search") {
+            this.props.history.push('/search');
         }
         this.props.setSearchString(e.target.value);
     }
     render() {
-        let className = this.state.searchOn ? 'show-search' : '';
+        const className = this.state.searchOn ? 'show-search' : '';
         return (
             <div className="searching">
                 <input type="text" placeholder="SEARCH" value={this.state.string}
