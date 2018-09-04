@@ -38,3 +38,10 @@ export const loginDetailsGoogle = (data) => {
         data: data
     }
 }
+
+export const setSearchString = (data) => {
+    return {
+        type: 'SET_SEARCH_STRING',
+        data: data
+    }
+}

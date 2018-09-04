@@ -20,7 +20,7 @@ class CategoryView extends Component {
         return (
             <div className="category-view">
                 <div className="img-view">
-                    <img src="http://10.7.50.88:4000/img/carousal/2" alt="" />
+                    <img src="http://10.7.50.88:4000/categories/1" alt="" />
                     <div className="data">
                         <h1>{main}</h1>
                         <p>White Gold began gaining popularity in the early 1900’s as an alternative to platinum. </p>

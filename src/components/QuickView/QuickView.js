@@ -46,7 +46,7 @@ class QuickView extends Component {
     componentDidMount() {
         document.body.style.overflow = "hidden";
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         document.body.style.overflow = "auto";
     }
     render() {
@@ -115,7 +115,7 @@ class QuickView extends Component {
                         </div>
                         <SizeChart sizes={products[id - 1].size} />
                         <KitChart />
-                        <Quantity />
+                        <Quantity/>
                         <div className="custom flex-v-center">
                             <p>Customize Your Jersey</p>
                             <Icon icon={ic_keyboard_arrow_down} size={20} />

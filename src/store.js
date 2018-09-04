@@ -22,7 +22,8 @@ const initial = {
         zip: false,
         phno: false
     },
-    subMenuList: {}
+    subMenuList: {},
+    searchProducts: []
 }
 
 const store = createStore(productsReducer, initial, applyMiddleware(logger));

@@ -17,6 +17,7 @@ import ProductDetail from './components/ProductDetail/ProductDetail';
 import CategoryView from './components/CategoryView/CategoryView';
 import worker from './worker';
 import ScrollToTop from './components/ScrollToTop';
+import SearchResults from './components/HomePage/SearchResults';
 
 class App extends Component {
   componentDidMount() {
@@ -30,7 +31,7 @@ class App extends Component {
       let cart_data = JSON.parse(m.data)
       this.props.setCart(cart_data);
     };
-    setInterval(() => myWorker.postMessage('Update Cart Details'), 10000);
+    setInterval(() => myWorker.postMessage('Update Cart Details'), 1000000);
   }
   render() {
     return (
@@ -40,6 +41,7 @@ class App extends Component {
             <OfferBar />
             <NavBar />
             <Menu />
+            <Route exct path="/search" component={SearchResults} />
             <Route exct path="/cart" component={Cart} />
             <Route path="/checkout" component={CheckOut} />
             <Route path="/category/:main/:type/:item" component={CategoryView} />
