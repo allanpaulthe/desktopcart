@@ -28,7 +28,7 @@ class App extends Component {
     })
     var myWorker = new Worker(worker);
     myWorker.onmessage = (m) => {
-      let cart_data = JSON.parse(m.data)
+      const cart_data = JSON.parse(m.data)
       this.props.setCart(cart_data);
     };
     setInterval(() => myWorker.postMessage('Update Cart Details'), 1000000);

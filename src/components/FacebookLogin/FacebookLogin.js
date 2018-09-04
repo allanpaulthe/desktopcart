@@ -12,7 +12,6 @@ class FacebookLogin extends Component {
         this.state = {};
     }
     authenticate = (response) => {
-        console.log(response)
         this.props.login(response);
     };
     render() {

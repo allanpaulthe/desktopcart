@@ -20,7 +20,7 @@ class ProductCard extends Component {
         this.props.addToCart(this.props.element.id)
     }
     render() {
-        let element = this.props.element;
+        const element = this.props.element;
         return (
             <div className="product-card">
                 <div className="image flex-center">

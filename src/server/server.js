@@ -1,15 +1,15 @@
-let productsURL = 'http://10.7.50.88:4000/homepage/products';
-let cartURL = 'http://10.7.50.88:4000/user/cart';
-let productDetailUrl = 'http://10.7.50.88:4000/product/details';
-let reviewDetailUrl = 'http://10.7.50.88:4000/review';
-let menuDetailURL = 'http://10.7.50.88:4000/menu/data';
-let oneMenuDetailURL = 'http://10.7.50.88:4000/menu/data/';
+const productsURL = 'http://10.7.50.88:4000/homepage/products';
+const cartURL = 'http://10.7.50.88:4000/user/cart';
+const productDetailUrl = 'http://10.7.50.88:4000/product/details';
+const reviewDetailUrl = 'http://10.7.50.88:4000/review';
+const menuDetailURL = 'http://10.7.50.88:4000/menu/data';
+const oneMenuDetailURL = 'http://10.7.50.88:4000/menu/data/';
 
 
 export async function getProducts() {
     try {
-        let response = await fetch(productsURL);
-        let responseJson = await response.json();
+        const response = await fetch(productsURL);
+        const responseJson = await response.json();
         return responseJson;
     } catch (error) {
 
@@ -18,8 +18,8 @@ export async function getProducts() {
 
 export async function getCart() {
     try {
-        let response = await fetch(cartURL);
-        let responseJson = await response.json();
+        const response = await fetch(cartURL);
+        const responseJson = await response.json();
         return responseJson;
     } catch (error) {
 
@@ -29,8 +29,8 @@ export async function getCart() {
 export async function getProductDetails(id) {
     try {
         var DetailUrl = productDetailUrl + '/' + id;
-        let response = await fetch(DetailUrl);
-        let responseJson = await response.json();
+        const response = await fetch(DetailUrl);
+        const responseJson = await response.json();
         return responseJson;
     } catch (error) {
 
@@ -40,8 +40,8 @@ export async function getProductDetails(id) {
 export async function getReviewDetails(id) {
     try {
         var DetailUrl = reviewDetailUrl + '/' + id;
-        let response = await fetch(DetailUrl);
-        let responseJson = await response.json();
+        const response = await fetch(DetailUrl);
+        const responseJson = await response.json();
         return responseJson;
     } catch (error) {
 
@@ -50,8 +50,8 @@ export async function getReviewDetails(id) {
 
 export async function getMenuDetails() {
     try {
-        let response = await fetch(menuDetailURL);
-        let responseJson = await response.json();
+        const response = await fetch(menuDetailURL);
+        const responseJson = await response.json();
         return responseJson;
     } catch (error) {
 
@@ -60,8 +60,8 @@ export async function getMenuDetails() {
 
 export async function getOneMenuDetails(main) {
     try {
-        let response = await fetch(oneMenuDetailURL + main);
-        let responseJson = await response.json();
+        const response = await fetch(oneMenuDetailURL + main);
+        const responseJson = await response.json();
         return responseJson;
     } catch (error) {
 
@@ -70,7 +70,7 @@ export async function getOneMenuDetails(main) {
 
 export async function writeToCart(cart) {
     try {
-        let response = await fetch('http://10.7.50.88:4000/insertIntoCart', {
+        const response = await fetch('http://10.7.50.88:4000/insertIntoCart', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -78,7 +78,7 @@ export async function writeToCart(cart) {
                 'data': JSON.stringify(cart)
             }
         });
-        let responseJson = await response.json();
+        const responseJson = await response.json();
         return responseJson;
     } catch (error) {
         console.log(error)

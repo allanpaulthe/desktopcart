@@ -9,7 +9,6 @@ import { ic_star_border } from 'react-icons-kit/md/ic_star_border';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
 import { connect } from 'react-redux';
 import { addToCart } from '../../actions/userActions';
-import { Link } from 'react-router-dom';
 import { getProductDetails } from '../../server/server';
 import ImageGallery from 'react-image-gallery';
 import { withAlert } from 'react-alert';

@@ -29,7 +29,7 @@ class SubList extends Component {
         })
     }
     render() {
-        if (this.props.subMenuList.list != null) {
+        if (this.props.subMenuList.list !== undefined) {
             const element = this.props.subMenuList;
             return (
                 <div className="menu-list">

@@ -1,6 +1,6 @@
 const workercode = () => {
 
-    let onmessage = function (e) {
+    let onmessage = function () {
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
