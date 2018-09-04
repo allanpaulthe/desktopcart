@@ -57,13 +57,19 @@ const productsReducer = (state, action) => {
             })
         case 'ADD_COUNT':
             var cart = [...state.cart]
+            let f = 0;
             var newData = cart.map(el => {
-                if (parseInt(el.id, 10) === parseInt(action.id, 10))
+                if (parseInt(el.id, 10) === parseInt(action.id, 10)) {
+                    f = 1;
                     return Object.assign({}, el, { count: el.count + 1 })
+                }
                 return el
             });
+            if (f === 0) {
+                newData.push({ id: action.id, count: 2 })
+            }
             writeToCart(newData);
-            state = { ...state, cart: newData }
+            state = { ...state, cart: newData, cartCount: newData.length }
             return state;
         case 'REMOVE_COUNT':
             var cart = [...state.cart]
@@ -76,7 +82,7 @@ const productsReducer = (state, action) => {
                 return el
             });
             writeToCart(newData);
-            state = { ...state, cart: newData }
+            state = { ...state, cart: newData, cartCount: newData.length }
             return state;
 
         case 'DELETE_ITEM':
@@ -130,6 +136,15 @@ const productsReducer = (state, action) => {
             return ({
                 ...state,
                 subMenuList: action.data
+            })
+        case 'SET_SEARCH_STRING':
+            let searchString = action.data;
+            let products = [...state.products]
+            const regexp = new RegExp(searchString, 'i');
+            let results = products.filter(x => (regexp.test(x.name) || regexp.test(x.brand)))
+            return ({
+                ...state,
+                searchProducts: results
             })
         default:
             return state

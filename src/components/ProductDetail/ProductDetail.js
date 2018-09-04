@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../../assets/style/ProductDetail/product-detail.less';
 import QuickView1 from './QuickView1';
 import CustomerReview from './CustomerReview';
+import { withRouter } from 'react-router';
+
 
 class ProductDetail extends Component {
     constructor(props) {
@@ -33,4 +35,4 @@ class ProductDetail extends Component {
     }
 }
 
-export default ProductDetail;
+export default withRouter(ProductDetail);

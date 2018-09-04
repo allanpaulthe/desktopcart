@@ -23,6 +23,7 @@ class Quantity extends Component {
         const cart = [...this.props.cart];
         cart.forEach(el => {
             if (parseInt(el.id, 10) === parseInt(this.props.selectedQuick, 10)) {
+                added = true;
                 count = el.count
             }
         });

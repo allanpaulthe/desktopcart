@@ -9,12 +9,14 @@ import { getProducts } from '../../server/server';
 import { setAllProducts } from '../../actions/productsActions';
 import GoogleLog from '../GoogleLogin/GoogleLogin';
 import FacebookLogin from '../FacebookLogin/FacebookLogin';
+import SearchBar from './SearchBar';
+
 
 class NavBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loginOn: false
+            loginOn: false,
         };
     }
     handleLoginClick() {
@@ -76,7 +78,7 @@ class NavBar extends Component {
                             <FacebookLogin />
                         </div>
                     }
-                    <img src={require("../../assets/img/icons/shape_2.png")} alt="seach" />
+                    <SearchBar />
                     <img src={require("../../assets/img/icons/shape.png")} alt="wish list" />
                     <Link to="/cart" className="flex-center">
                         <div className="cart">
