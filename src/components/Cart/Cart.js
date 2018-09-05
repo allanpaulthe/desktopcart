@@ -36,7 +36,7 @@ class Cart extends Component {
                                 Continue Shopping
                             </div>
                         </Link>
-                        <button className="right" onClick={this.goBack.bind(this)}>back</button>
+                        <button className="right" onClick={this.goBack.bind(this)}>BACK</button>
                         <Link to="/checkout" className="left">
                             <div className="blue-button flex-center">
                                 Continue to Checkout

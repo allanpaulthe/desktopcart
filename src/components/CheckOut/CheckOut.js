@@ -117,9 +117,9 @@ class ButtonReviewLarge extends Component {
     }
     navigate() {
         if (!this.props.isLogged) {
-           this.props.alert.error('Please Login to complete your order')
+            this.props.alert.error('Please Login to complete your order')
         }
-        else{
+        else {
             this.props.history.push("/thanks");
         }
     }
@@ -151,9 +151,9 @@ class ButtonReviewSmall extends Component {
     }
     navigate() {
         if (!this.props.isLogged) {
-           this.props.alert.error('Please Login to complete your order');
+            this.props.alert.error('Please Login to complete your order');
         }
-        else{
+        else {
             this.props.history.push("/thanks");
         }
     }
@@ -199,10 +199,14 @@ class CheckOut extends Component {
                 <div className="heading flex-v-center">
                     <h1>Checkout</h1>
                 </div>
+                <div className="flex-center status-out">
+                    <Route exact path="/checkout/review" component={StatusBar} />
+                </div>
                 <div className="check-out-body">
                     <div className="first">
                         <div className="wrapper flex-center">
-                            <StatusBar />
+                            <Route exact path="/checkout" component={StatusBar} />
+                            <Route exact path="/checkout/payment" component={StatusBar} />
                         </div>
                         <div className="hided-component" >
                             <div className="box flex-v-center" onClick={this.toggleDetail.bind(this)}   >
@@ -219,7 +223,10 @@ class CheckOut extends Component {
                                 </div>
                             </div>
                             {
-                                this.state.showDetail && <CartSmall />
+                                this.state.showDetail &&
+                                <div className="abs-container">
+                                    <CartSmall />
+                                </div>
                             }
                         </div>
                         {!this.props.loggedIn &&
@@ -256,8 +263,8 @@ class CheckOut extends Component {
                 <Route exact path="/checkout" render={() => <ButtonCheckOutSmall adressValid={this.state.adressValid} history={this.props.history} />} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentLarge} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentSmall} />
-                <Route exact path="/checkout/review" render={() => <ButtonReviewLarge isLogged={this.props.loggedIn} history={this.props.history} alert={this.props.alert}/>} />
-                <Route exact path="/checkout/review" render={() => <ButtonReviewSmall isLogged={this.props.loggedIn} history={this.props.history} alert={this.props.alert}/>} />
+                <Route exact path="/checkout/review" render={() => <ButtonReviewLarge isLogged={this.props.loggedIn} history={this.props.history} alert={this.props.alert} />} />
+                <Route exact path="/checkout/review" render={() => <ButtonReviewSmall isLogged={this.props.loggedIn} history={this.props.history} alert={this.props.alert} />} />
 
             </div>
         );

@@ -40,8 +40,8 @@ class PaymentInfo extends Component {
                     </div>
                     <div className="details flex-v-center">
                         <img src={require('../../assets/img/icons/cc.svg')} alt="card" />
-                        <input type="text" placeholder="1234  5678  9012  3456" className="card"/>
-                        <input type="text" placeholder="MM/YYYY" className="date"/>
+                        <input type="text" placeholder="1234  5678  9012  3456" className="card" />
+                        <input type="text" placeholder="MM/YYYY" className="date" />
                         <input type="text" placeholder="CVV" className="cvv" />
                     </div>
                     <div className="Help-Text">
@@ -67,6 +67,22 @@ class PaymentInfo extends Component {
                     <div className="text">
                         You will be redirected to PayPal website to complete your purchase securely.
                     </div>
+                </div>
+                <div className="credit-small">
+                    <h3>Credit or Debit Card</h3>
+                    <div className="details flex-v-center">
+                        <img src={require('../../assets/img/icons/cc.svg')} alt="card" />
+                        <input type="text" placeholder="1234  5678  9012  3456" className="card" />
+                        <input type="text" placeholder="MM/YYYY" className="date" />
+                        <input type="text" placeholder="CVV" className="cvv" />
+                    </div>
+                    <h4>Enter card number, expiration date & CVV number</h4>
+                </div>
+                <div className="paypal flex-center">
+                    <img src={require('../../assets/img/icons/paypal.svg')} alt="card" />
+                </div>
+                <div className="paypal flex-center">
+                    <img src={require('../../assets/img/icons/apple-pay.svg')} alt="card" />
                 </div>
             </div>
         );
