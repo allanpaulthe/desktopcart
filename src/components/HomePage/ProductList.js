@@ -4,6 +4,7 @@ import ProductCard from './ProductCard';
 import { getProducts } from '../../server/server';
 import { setAllProducts } from '../../actions/productsActions';
 import { connect } from 'react-redux';
+import ProductCardList from './ProductCardList';
 
 
 
@@ -22,10 +23,24 @@ class ProductList extends Component {
     render() {
         const productList = this.props.products;
         return (
-            <div className="product-list">
-                {[...productList].map((x, i) => (
-                    <ProductCard key={i} element={x}/>
-                ))}
+            <div>
+                {this.props.gridView &&
+                    <div className="product-list">
+                        {[...productList].map((x, i) => (
+                            <ProductCard key={i} element={x} />
+                        ))}
+                    </div>
+                }
+                {!this.props.gridView &&
+                    <div className="product-list-view">
+                        {[...productList].map((x, i) => (
+                            <div>
+                                <ProductCardList key={i} element={x} />
+                                <div className="line"></div>
+                            </div>
+                        ))}
+                    </div>
+                }
             </div>
         );
     }

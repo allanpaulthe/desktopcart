@@ -1,7 +1,7 @@
 .product-list {
     padding: 2% 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 263px);   
+    grid-template-columns: repeat(auto-fill, 263px);
     justify-content: space-around;
     grid-column-gap: 25px;
     @media screen and (max-width: 600px) {
@@ -22,9 +22,17 @@
             margin-bottom: 20px;
         }
     }
-    
 }
-.empty-data{
+
+.product-list-view {
+    .line {
+        height: 1px;
+        background-color:rgba(38, 50, 56, 0.16);
+        margin:20px 0;
+    }
+}
+
+.empty-data {
     height: 50vh;
     width: 100%;
     text-transform: capitalize;

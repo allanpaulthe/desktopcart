@@ -18,7 +18,8 @@ class HomePage extends Component {
         super(props);
         this.state = {
             searchOn: false,
-            string: ''
+            string: '',
+            gridView: true
         };
     }
     onSearch(e) {
@@ -39,6 +40,16 @@ class HomePage extends Component {
     onFocus(e) {
         this.props.setSearchString(e.target.value);
     }
+    listView() {
+        this.setState({
+            gridView: false
+        })
+    }
+    gridView() {
+        this.setState({
+            gridView: true
+        })
+    }
     render() {
         return (
             <div className="home-page">
@@ -58,15 +69,15 @@ class HomePage extends Component {
                         </div>
                         <div className="buttons">
                             <div className="view-buttons flex-v-center">
-                                <Icon icon={list} />
-                                <Icon icon={th} />
+                                <Icon icon={list} onClick={this.listView.bind(this)} />
+                                <Icon icon={th} onClick={this.gridView.bind(this)} />
                             </div>
                             <p>FILTER</p>
                             <p>SORT</p>
                         </div>
                     </div>
                     {this.state.searchOn && <SearchList />}
-                    {!this.state.searchOn && <ProductList />}
+                    {!this.state.searchOn && <ProductList gridView={this.state.gridView} />}
                     {!this.state.searchOn && <About />}
                     {!this.state.searchOn && <Shop />}
                 </div>
