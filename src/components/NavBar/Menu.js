@@ -9,7 +9,9 @@ import { bars } from 'react-icons-kit/fa/bars';
 class MenuInner extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: {} };
+        this.state = {
+            data: {},
+        };
     }
     componentDidMount() {
         getMenuDetails().then((data) => {
@@ -18,10 +20,12 @@ class MenuInner extends Component {
             })
         })
     }
+
     render() {
         const data = this.state.data;
+        const className = this.props.menuOn ? 'menu reveal1' : 'menu'
         return (
-            <div className="menu">
+            <div className={className}>
                 {[...data].map((x, i) => (
                     <Menulist key={i} element={x} />
                 ))}
@@ -44,8 +48,9 @@ class MenuInnerSmall extends Component {
     }
     render() {
         const data = this.state.data;
+        const className = this.props.menuOn ? 'menu-small reveal' : 'menu-small'
         return (
-            <div className="menu-small">
+            <div className={className}>
                 <div className="menu-icon">
                     <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
                 </div>
@@ -57,8 +62,6 @@ class MenuInnerSmall extends Component {
     }
 }
 
-
-
 class Menu extends Component {
     constructor(props) {
         super(props);
@@ -67,8 +70,8 @@ class Menu extends Component {
     render() {
         return (
             <div className="menu-wrapper">
-                {this.props.menuOn && <MenuInner />}
-                {this.props.menuOn && <MenuInnerSmall menuToggle={this.props.menuToggle} />}
+                <MenuInner menuOn={this.props.menuOn} />
+                <MenuInnerSmall menuToggle={this.props.menuToggle} menuOn={this.props.menuOn} />
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.less';
 import HomePage from './components/HomePage/HomePage';
 import QuickView from './components/QuickView/QuickView';
@@ -18,6 +18,7 @@ import CategoryView from './components/CategoryView/CategoryView';
 import worker from './worker';
 import ScrollToTop from './components/ScrollToTop';
 import SearchResults from './components/HomePage/SearchResults';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 class App extends Component {
   componentDidMount() {
@@ -38,9 +39,17 @@ class App extends Component {
       <Router>
         <ScrollToTop>
           <div className="App" id="App">
-            <OfferBar />
-            <NavBar />
-            <Menu />
+            <OutsideClickHandler
+              onOutsideClick={() => {
+                if (this.props.menuOn) {
+                  this.props.menuOFF();
+                }
+              }}
+            >
+              <OfferBar />
+              <NavBar />
+              <Menu />
+            </OutsideClickHandler>
             <Route exct path="/search" component={SearchResults} />
             <Route exct path="/cart" component={Cart} />
             <Route path="/checkout" component={CheckOut} />
@@ -54,7 +63,6 @@ class App extends Component {
             <Route exact path="/product/:id" component={ProductDetail} />
             <Footer />
           </div>
-
         </ScrollToTop>
       </Router>
     );
@@ -62,7 +70,8 @@ class App extends Component {
 }
 export const mapStateToProps = (state) => {
   return {
-    quickView: state.quickView
+    quickView: state.quickView,
+    menuOn: state.menuOn
   };
 };
 
@@ -70,6 +79,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setCart: (data) => {
       dispatch(setCart(data))
+    },
+    menuOFF: () => {
+      dispatch({
+        type: 'MENU_OFF'
+      })
     }
   };
 };

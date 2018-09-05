@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import GoogleLog from '../GoogleLogin/GoogleLogin';
 import FacebookLogin from '../FacebookLogin/FacebookLogin';
 import FacebookLoginBig from '../FacebookLogin/FacebookLoginBig';
+import { withAlert } from 'react-alert';
 
 class ButtonCheckOutLarge extends Component {
     constructor(props) {
@@ -110,15 +111,23 @@ class ButtonReviewLarge extends Component {
     getStyles() {
         if (!this.props.isLogged) {
             return {
-                pointerEvents: 'none'
+                opacity: '.35'
             }
+        }
+    }
+    navigate() {
+        if (!this.props.isLogged) {
+           this.props.alert.error('Please Login to complete your order')
+        }
+        else{
+            this.props.history.push("/thanks");
         }
     }
     render() {
         return (
             <div className="bottom-buttons-1 flex-v-center">
                 <Link to="/"><button className="right">Continue Shopping</button></Link>
-                <Link to="/thanks" style={this.getStyles()}><button className="left"> Complete Order</button></Link>
+                <button className="left" style={this.getStyles()} onClick={this.navigate.bind(this)}> Complete Order</button>
             </div>
         );
     }
@@ -136,15 +145,23 @@ class ButtonReviewSmall extends Component {
     getStyles() {
         if (!this.props.isLogged) {
             return {
-                pointerEvents: 'none'
+                opacity: '.35'
             }
+        }
+    }
+    navigate() {
+        if (!this.props.isLogged) {
+           this.props.alert.error('Please Login to complete your order');
+        }
+        else{
+            this.props.history.push("/thanks");
         }
     }
     render() {
         return (
             <div className="bottom-buttons-2 flex-v-center">
                 <button className="right" onClick={this.goBack.bind(this)}>back</button>
-                <Link to="/thanks  " style={this.getStyles()}><button className="left" > Complete Order</button></Link>
+                <button className="left" style={this.getStyles()} onClick={this.navigate.bind(this)}> Complete Order</button>
             </div>
         );
     }
@@ -239,8 +256,8 @@ class CheckOut extends Component {
                 <Route exact path="/checkout" render={() => <ButtonCheckOutSmall adressValid={this.state.adressValid} history={this.props.history} />} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentLarge} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentSmall} />
-                <Route exact path="/checkout/review" render={() => <ButtonReviewLarge isLogged={this.props.loggedIn} />} />
-                <Route exact path="/checkout/review" render={() => <ButtonReviewSmall isLogged={this.props.loggedIn} history={this.props.history} />} />
+                <Route exact path="/checkout/review" render={() => <ButtonReviewLarge isLogged={this.props.loggedIn} history={this.props.history} alert={this.props.alert}/>} />
+                <Route exact path="/checkout/review" render={() => <ButtonReviewSmall isLogged={this.props.loggedIn} history={this.props.history} alert={this.props.alert}/>} />
 
             </div>
         );
@@ -258,5 +275,5 @@ export const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, null)(CheckOut);
+export default connect(mapStateToProps, null)(withAlert(CheckOut));
 
