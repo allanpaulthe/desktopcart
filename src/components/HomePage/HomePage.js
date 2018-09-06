@@ -18,8 +18,11 @@ class HomePage extends Component {
         super(props);
         this.state = {
             searchOn: false,
-            string: ''
+            string: '',
+            gridView: true
         };
+        this.listStyles = this.listStyles.bind(this);
+        this.gridStyles = this.gridStyles.bind(this);
     }
     onSearch(e) {
         if (e.target.value.length > 0) {
@@ -38,6 +41,30 @@ class HomePage extends Component {
     }
     onFocus(e) {
         this.props.setSearchString(e.target.value);
+    }
+    listView() {
+        this.setState({
+            gridView: false
+        })
+    }
+    gridView() {
+        this.setState({
+            gridView: true
+        })
+    }
+    listStyles() {
+        if(this.state.gridView){
+            return({
+                color:'#90a4ae'
+            })
+        }
+    }
+    gridStyles() {
+        if(!this.state.gridView){
+            return({
+                color:'#90a4ae'
+            })
+        }
     }
     render() {
         return (
@@ -58,15 +85,15 @@ class HomePage extends Component {
                         </div>
                         <div className="buttons">
                             <div className="view-buttons flex-v-center">
-                                <Icon icon={list} />
-                                <Icon icon={th} />
+                                <Icon icon={list} onClick={this.listView.bind(this)} style={this.listStyles()} />
+                                <Icon icon={th} onClick={this.gridView.bind(this)} style={this.gridStyles()} />
                             </div>
                             <p>FILTER</p>
                             <p>SORT</p>
                         </div>
                     </div>
-                    {this.state.searchOn && <SearchList />}
-                    {!this.state.searchOn && <ProductList />}
+                    {this.state.searchOn && <SearchList gridView={this.state.gridView}/>}
+                    {!this.state.searchOn && <ProductList gridView={this.state.gridView} />}
                     {!this.state.searchOn && <About />}
                     {!this.state.searchOn && <Shop />}
                 </div>

@@ -81,6 +81,6 @@ export async function writeToCart(cart) {
         const responseJson = await response.json();
         return responseJson;
     } catch (error) {
-        console.log(error)
+     
     }
 }

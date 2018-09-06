@@ -3,7 +3,7 @@ import '../../assets/style/NavBar/menu-list.less';
 import MenuDropDown from '../NavBar/MenuDropDown';
 import { getOneMenuDetails } from '../../server/server';
 import { connect } from 'react-redux';
-
+import Loader from 'react-loader-spinner';
 
 class SubList extends Component {
     constructor(props) {
@@ -43,7 +43,16 @@ class SubList extends Component {
             );
         }
         else {
-            return (false)
+            return (
+                <div className="flex-center full-min">
+                    <Loader
+                        type="ThreeDots"
+                        color="#00BFFF"
+                        height="50"
+                        width="50"
+                    />
+                </div>
+            );
         }
     }
 }

@@ -1,4 +1,8 @@
 .check-out {
+    font-family: 'Open Sans', sans-serif;
+    .status-out{
+        margin-top:50px;
+    }
     .heading {
         height: 80px;
         background-color: #ffffff;
@@ -13,7 +17,6 @@
             height: 40px;
         }
         h1 {
-            font-family: NunitoSans;
             font-size: 22px;
             font-weight: bold;
             color: #78909c;
@@ -56,10 +59,12 @@
             }
             .login-buttons {
                 margin: 40px 0;
+                @media screen and(max-width: 600px) {
+                    margin: 20px 0;
+                }
                 h2 {
                     margin: 0;
                     margin: 20px 0;
-                    font-family: NunitoSans;
                     font-size: 16px;
                     font-weight: 600;
                     color: rgba(38, 50, 56, 0.38);
@@ -92,6 +97,7 @@
                 display: none;
                 width: 100%;
                 margin: 20px 0;
+                position: relative;
                 @media screen and(max-width: 1000px) {
                     display: block;
                 }
@@ -102,7 +108,6 @@
                     background-color: #f7f9f9;
                     box-shadow: 0 1px 3px 0 rgba(38, 50, 56, 0.32);
                     .right {
-                        font-family: NunitoSans;
                         font-size: 16px;
                         font-weight: 600;
                         font-style: normal;
@@ -118,7 +123,6 @@
                     .left {
                         padding-right: 10px;
                         h1 {
-                            font-family: NunitoSans;
                             font-size: 16px;
                             font-weight: bold;
                             font-style: normal;
@@ -137,6 +141,50 @@
                             color: #78909c;
                         }
                         margin-left: auto;
+                    }
+                }
+                .abs-container {
+                    position: absolute;
+                    z-index: 100;
+                    top: 47px;
+                    right: 0;
+                    left: 0;
+                    .cart-small {
+                        border-radius: 2px;
+                        background-color: #ffffff;
+                        box-shadow: 0 4px 12px 0 rgba(38, 50, 56, 0.24);
+                        padding: 10px;
+                        .header {
+                            display: none;
+                        }
+                        .underline {
+                            display: none !important;
+                        }
+                        .wrap {
+                            margin: 20px 0;
+                        }
+                        .ship-method {
+                            display: none;
+                        }
+                        .methods {
+                            display: none;
+                        }
+                        @media screen and(max-width: 400px) {
+                            .cart-item{
+                                .cart-image,a{
+                                    min-height: 56px;
+                                    min-width: 56px;
+                                    height: 56px;
+                                    width: 56px;
+                                }
+                                .cart-data{
+                                    .brand{
+                                        margin: 5px;
+                                    }
+                                    justify-content: space-between;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -167,7 +215,6 @@
         .left {
             margin-left: auto;
             background-image: linear-gradient(100deg, #4f7dff, #0231b7);
-            font-family: NunitoSans;
             font-size: 16px;
             font-weight: bold;
             font-style: normal;
@@ -179,7 +226,6 @@
             outline: none;
         }
         .right {
-            font-family: NunitoSans;
             font-size: 14px;
             font-weight: bold;
             font-style: normal;
@@ -191,10 +237,10 @@
             background: #ffffff;
             outline: none;
         }
-        .not-valid{
+        .not-valid {
             opacity: .35;
         }
-        a:last-child{
+        a:last-child {
             margin-left: auto;
         }
     }
@@ -217,7 +263,6 @@
         .left {
             margin-left: auto;
             background-image: linear-gradient(100deg, #4f7dff, #0231b7);
-            font-family: NunitoSans;
             font-size: 16px;
             font-weight: bold;
             font-style: normal;
@@ -234,7 +279,6 @@
             }
         }
         .right {
-            font-family: NunitoSans;
             font-size: 14px;
             font-weight: bold;
             font-style: normal;
@@ -250,10 +294,10 @@
                 font-size: 12px;
             }
         }
-        .not-valid{
+        .not-valid {
             opacity: .35;
         }
-        a{
+        a {
             margin-left: auto;
         }
     }

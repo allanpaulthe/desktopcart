@@ -12,6 +12,7 @@ import { addToCart } from '../../actions/userActions';
 import { getProductDetails } from '../../server/server';
 import ImageGallery from 'react-image-gallery';
 import { withAlert } from 'react-alert';
+import Loader from 'react-loader-spinner';
 
 
 
@@ -30,8 +31,19 @@ class QuickView1 extends Component {
                 product: data
             })
         }).catch(() => {
-            this.setState({ product: 6 });
+            this.setState({ product: {} });
         })
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.id !== this.props.id) {
+            getProductDetails(nextProps.id).then((data) => {
+                this.setState({
+                    product: data
+                })
+            }).catch(() => {
+                this.setState({ product: {} });
+            })
+        }
     }
     addToCart() {
         this.props.addToCart(this.props.id);
@@ -61,7 +73,7 @@ class QuickView1 extends Component {
             }
         });
         const products = this.state.product;
-        if (products.image_url != null) {
+        if (products !== undefined && Object.keys(products).length !== 0) {
             this.updateHeading(products.name);
             const imgObj = products.image_url.map(function (entry) {
                 var singleObj = {}
@@ -135,7 +147,16 @@ class QuickView1 extends Component {
             );
         }
         else {
-            return false
+            return (
+                <div className="flex-center full-min">
+                    <Loader
+                        type="Ball-Triangle"
+                        color="#00BFFF"
+                        height="50"
+                        width="50"
+                    />
+                </div>
+            );
         }
     }
 }

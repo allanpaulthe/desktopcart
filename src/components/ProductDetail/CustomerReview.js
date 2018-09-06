@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../assets/style/ProductDetail/customer-review.less';
 import StarRatingComponent from 'react-star-rating-component';
 import { getReviewDetails } from '../../server/server';
+import Loader from 'react-loader-spinner';
 
 
 const Review = (props) => {
@@ -39,26 +40,55 @@ class CustomerReview extends Component {
             this.setState({ data: [] });
         })
     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.id !== this.props.id) {
+            getReviewDetails(this.props.id).then((data) => {
+                this.setState({ data: data });
+            }).catch(() => {
+                this.setState({ data: [] });
+            })
+        }
+    }
     render() {
-        return (
-            <div className="CustomerReview">
-                <h1>Customer Reviews</h1>
-                <div className="rating flex-v-center">
-                    <StarRatingComponent
-                        name="rate1"
-                        starCount={5}
-                        value={4}
-                        starColor={'#ff6008'}
-                    />
-                    <p>4.8 of 5</p>
+        if (this.state.data !== undefined && this.state.data.length !== 0) {
+            return (
+                <div className="CustomerReview">
+                    <h1>Customer Reviews</h1>
+                    <div className="rating flex-v-center">
+                        <StarRatingComponent
+                            name="rate1"
+                            starCount={5}
+                            value={4}
+                            starColor={'#ff6008'}
+                        />
+                        <p>4.8 of 5</p>
+                        <div className="new-review flex-v-center">
+                            <p>Share your thoughts with other customers</p>
+                            <div className="button flex-center">
+                                Write a review
+                            </div>
+                        </div>
+                    </div>
+                    <h2 className="top-label">Top Customers Reviews</h2>
+                    {[...this.state.data].map((x, i) => (
+                        <Review review={x} key={i} />
+                    ))}
+                    <p className="show-more">Show more reviews</p>
                 </div>
-                <h2 className="top-label">Top Customers Reviews</h2>
-                {[...this.state.data].map((x, i) => (
-                    <Review review={x} key={i} />
-                ))}
-                <p className="show-more">Show more reviews</p>
-            </div>
-        );
+            );
+        }
+        else {
+            return (
+                <div className="flex-center full-min">
+                    <Loader
+                        type="ThreeDots"
+                        color="#00BFFF"
+                        height="50"
+                        width="50"
+                    />
+                </div>
+            );
+        }
     }
 }
 

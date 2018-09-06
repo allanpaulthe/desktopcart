@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../assets/style/HomePage/carousal.less';
+import Loader from 'react-loader-spinner';
 
 const Arrow = ({ direction, clickFunction, src }) => (
     <div
@@ -28,10 +29,7 @@ class Carousel extends React.Component {
 
         this.state = {
             currentImageIndex: 0,
-            imgUrls: [{
-                "id": 1,
-                "image_URL": "http://10.7.50.88:4000/img/carousal/1"
-            }]
+            imgUrls: []
         };
 
         this.nextSlide = this.nextSlide.bind(this);
@@ -73,18 +71,34 @@ class Carousel extends React.Component {
     render() {
         const rightArrow = require('../../assets/img/icons/arrow-right.svg');
         const leftArrow = require('../../assets/img/icons/arrow-left.svg');
-        return (
-            <div className="carousel">
-                <Arrow direction="left" clickFunction={this.previousSlide} src={leftArrow} />
-                <ImageSlide url={this.state.imgUrls[this.state.currentImageIndex].image_URL} />
-                <Arrow direction="right" clickFunction={this.nextSlide} src={rightArrow} />
-                <div className="info">
-                    <p className='text'>Perfect <br />
-                        Style, Fit, Comfort</p>
-                    <button className='button flex-center'> <a href="#shop-body"> <img src={require('../../assets/img/icons/m.svg')} alt="" /></a></button>
+        if (this.state.imgUrls.length !== 0) {
+            return (
+                <div className="carousel">
+                    <Arrow direction="left" clickFunction={this.previousSlide} src={leftArrow} />
+                    <ImageSlide url={this.state.imgUrls[this.state.currentImageIndex].image_URL} />
+                    <Arrow direction="right" clickFunction={this.nextSlide} src={rightArrow} />
+                    <div className="info">
+                        <p className='text'>Perfect <br />
+                            Style, Fit, Comfort</p>
+                        <button className='button flex-center'> <a href="#shop-body"> <img src={require('../../assets/img/icons/m.svg')} alt="" /></a></button>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else {
+            return (
+                <div className="carousel">
+                    <div className="flex-center full">
+                        <Loader
+                            type="ThreeDots"
+                            color="#00BFFF"
+                            height="50"
+                            width="50"
+                        />
+                    </div>
+                </div>
+            );
+        }
     }
 }
 

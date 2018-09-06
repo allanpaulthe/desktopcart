@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import '../../assets/style/HomePage/shop.less';
 import ShopElement from './ShopElement';
+import Loader from 'react-loader-spinner';
 
 class Shop extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data:[]
+            data: []
         };
     }
-    componentDidMount(){
+    componentDidMount() {
         fetch('http://10.7.50.88:4000/homepage/shop', {
             method: 'GET',
             headers: {
@@ -24,11 +25,24 @@ class Shop extends Component {
         return (
             <div className="shop">
                 <div className="shopHeading flex-center">Shop</div>
-                <div className="shopList">
-                    {[...this.state.data].map((x, i) =>
-                        <ShopElement key={i} element={x}/>
-                    )}
-                </div>
+                {this.state.data.length !== 0 &&
+                    <div className="shopList">
+                        {[...this.state.data].map((x, i) =>
+                            <ShopElement key={i} element={x} />
+                        )}
+                    </div>
+                }
+                {this.state.data.length === 0 &&
+                    <div className="flex-center full-min">
+                        <Loader
+                            type="Ball-Triangle"
+                            color="#00BFFF"
+                            height="50"
+                            width="50"
+                        />
+                    </div>
+                }
+
             </div>
         );
     }

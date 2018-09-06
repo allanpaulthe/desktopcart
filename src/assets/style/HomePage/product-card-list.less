@@ -1,56 +1,24 @@
-.product-card {
+.product-card-list {
     position: relative;
     border-radius: 4px;
     background-color: #ffffff;
-    box-shadow: 0 1px 4px 0 rgba(38, 50, 56, 0.38);
     text-transform: uppercase;
     box-sizing: border-box;
-    transition: box-shadow .5s cubic-bezier(.5, 0, .3, 1);
-    &:before {
-        content: '';
-        z-index: -10;
-        width: 295px;
-        height: 485px;
-        position: absolute;
-        top: -15px;
-        left: -15px;
-        background-color: #ffffff;
-        box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.3);
-        transform: scale(0);
-        transition: transform .5s cubic-bezier(.5, 0, .3, 1);
-        @media screen and (max-width: 600px) {
-            display: none;
-            transform: none;
-        }
-    }
-    &:hover {
-        box-shadow: none;
-        @media screen and (max-width: 600px) {
-            box-shadow: 0 1px 4px 0 rgba(38, 50, 56, 0.38);
-            transform: none;
-        }
-        .image {
-            .hover {
-                transform: scale(1);
-            }
-        }
-        &:before {
-            transform: scale(1);
-        }
-    }
+    display: flex;
     .image {
-        width: 100%;
         position: relative;
         background-color: #f3f3f3;
         cursor: pointer;
+        width: 35%;
+        border-radius: 4px;
         img,
         a {
-            height: auto;
-            max-height: 263px;
-            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100%;
+            height: auto;
+            ;
             @media screen and (max-width: 600px) {
                 max-height: 200px;
             }
@@ -67,31 +35,25 @@
             transform: scale(0);
             transition: transform .4s cubic-bezier(.5, 0, .3, 1);
             @media screen and (max-width: 600px) {
-               display: none;
+                display: none;
             }
         }
     }
     .data {
-        padding:0 19px;
-        height: 180px;
+        padding: 5px 10px;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         flex-direction: column;
+        flex:1;
+        flex-grow: 1;
         font-family: 'Open Sans', sans-serif;
-        @media screen and (max-width: 600px) {
-            height: 130px;
-         }
-        @media screen and (max-width: 450px) {
-            height: 100px;
-         }
-         
         .name {
             font-size: 20px;
             font-weight: 600;
             color: #263238;
             line-height: 1.35;
             @media screen and (max-width: 600px) {
-                font-size: 10px;
+                font-size: 14px;
             }
         }
         .brand {
@@ -100,7 +62,7 @@
             color: #78909c;
             line-height: 0.78;
             @media screen and (max-width: 600px) {
-                font-size: 10px;
+                font-size: 14px;
             }
         }
         .lastRow {
@@ -111,7 +73,7 @@
                 color: #263238;
                 line-height: 1.11;
                 @media screen and (max-width: 600px) {
-                    font-size: 10px;
+                    font-size: 16px;
                 }
             }
             a {
@@ -126,7 +88,7 @@
                 cursor: pointer;
                 user-select: none;
                 @media screen and (max-width: 600px) {
-                    font-size: 10px;
+                    font-size: 12px;
                 }
             }
         }

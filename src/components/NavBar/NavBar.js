@@ -34,61 +34,63 @@ class NavBar extends Component {
     render() {
         const options = this.props.options;
         return (
-            <div className="navbar flex-v-center">
-                <div className="first flex-center">
-                    <div className="menu-icon">
-                        <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
+            <div className="sticky">
+                <div className="navbar flex-v-center">
+                    <div className="first flex-center">
+                        <div className="menu-icon">
+                            <Icon icon={bars} onClick={() => { this.props.menuToggle() }}/>
+                        </div>
+                        <Link to="/cart" className="flex-center">
+                            <div className="cart">
+                                <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
+                                {
+                                    this.props.cartCount > 0 &&
+                                    <div className="count flex-center">{this.props.cartCount}</div>
+                                }
+                            </div>
+                        </Link>
+                        <Link to="/">
+                            <div className="logo flex-center">
+                                <img src={require("../../assets/img/logo/group-2@2x.png")} alt="logo" />
+                            </div>
+                        </Link>
+                        <div className="options">
+                            <ul>
+                                {
+                                    [...options].map((x, i) => (
+                                        <OptionHeader name={x} key={i} id={i} />
+                                    ))
+                                }
+                            </ul>
+                        </div>
                     </div>
-                    <Link to="/cart" className="flex-center">
-                        <div className="cart">
-                            <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
-                            {
-                                this.props.cartCount > 0 &&
-                                <div className="count flex-center">{this.props.cartCount}</div>
-                            }
-                        </div>
-                    </Link>
-                    <Link to="/">
-                        <div className="logo flex-center">
-                            <img src={require("../../assets/img/logo/group-2@2x.png")} alt="logo" />
-                        </div>
-                    </Link>
-                    <div className="options">
-                        <ul>
-                            {
-                                [...options].map((x, i) => (
-                                    <OptionHeader name={x} key={i} id={i} />
-                                ))
-                            }
-                        </ul>
+                    <div className="second flex-center">
+                        {this.props.loggedIn &&
+                            <div className="userDetails flex-v-center">
+                                <p>Welcome, {' ' + this.props.userdata.username}</p>
+                                <img src={this.props.userdata.pic} alt="userpic" onClick={() => { this.props.userLogOut() }} />
+                            </div>
+                        }
+                        {!this.state.loginOn && !this.props.loggedIn && <p onClick={this.handleLoginClick.bind(this)}>LOGIN</p>}
+                        {this.state.loginOn && !this.props.loggedIn &&
+                            <div className="flex-center expand">
+                                <p>Login with</p>
+                                <GoogleLog />
+                                <FacebookLogin />
+                            </div>
+                        }
+                        <SearchBar />
+                        <img src={require("../../assets/img/icons/shape.png")} alt="wish list" />
+                        <Link to="/cart" className="flex-center">
+                            <div className="cart">
+                                <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
+                                {
+                                    this.props.cartCount &&
+                                    <div className="count flex-center">{this.props.cartCount}</div>
+                                }
+                            </div>
+                        </Link>
                     </div>
-                </div>
-                <div className="second flex-center">
-                    {this.props.loggedIn &&
-                        <div className="userDetails flex-v-center">
-                            <p>Welcome, {' ' + this.props.userdata.username}</p>
-                            <img src={this.props.userdata.pic} alt="userpic" onClick={() => { this.props.userLogOut() }} />
-                        </div>
-                    }
-                    {!this.state.loginOn && !this.props.loggedIn && <p onClick={this.handleLoginClick.bind(this)}>LOGIN</p>}
-                    {this.state.loginOn && !this.props.loggedIn &&
-                        <div className="flex-center expand">
-                            <p>Login with</p>
-                            <GoogleLog />
-                            <FacebookLogin />
-                        </div>
-                    }
-                    <SearchBar />
-                    <img src={require("../../assets/img/icons/shape.png")} alt="wish list" />
-                    <Link to="/cart" className="flex-center">
-                        <div className="cart">
-                            <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
-                            {
-                                this.props.cartCount &&
-                                <div className="count flex-center">{this.props.cartCount}</div>
-                            }
-                        </div>
-                    </Link>
                 </div>
             </div>
         );

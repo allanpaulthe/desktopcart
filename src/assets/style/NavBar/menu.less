@@ -18,6 +18,8 @@
         justify-content: center;
         padding: 20px 15vw 50px 15vw;
         box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
+        transform: scale(0);
+        transition: transform .3s cubic-bezier(0.94, 0.13, 0.13, 0.84);
         @media screen and (max-width: 1570px) {
             padding:20px 2vw 50px 2vw;
         }
@@ -72,8 +74,10 @@
         padding-left: 10%;
         padding-top:20px;
         box-sizing: border-box;
-        box-shadow:  0 200px 200px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 200px 0 rgba(0, 0, 0, 0.8);
         border: none;
+        transform: scale(0);
+        transition: transform .3s cubic-bezier(.25, .75, .5, 1.25);
         &::-webkit-scrollbar {
             background-color: white;
             width: .15em;
@@ -88,10 +92,20 @@
         }
         .menu-icon {
             position: fixed;
-            right: 40%;
+            right: 20px;
             div {
                 margin-left: auto;
+                svg {
+                    width: 24px;
+                    height: 20px;
+                }
             }
         }
+    }
+    .reveal {
+        transform: scale(1);
+    }
+    .reveal1 {
+        transform: scale(1);
     }
 }

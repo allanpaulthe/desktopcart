@@ -21,6 +21,13 @@ class CartItem extends Component {
         this.props.deleteItem(this.props.element.id)
     }
     render() {
+        const cart = this.props.cart;
+        let count = 0;
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i].id == this.props.element.id) {
+                count = cart[i].count;
+            }
+        }
         return (
             <div className="cart-item">
                 <div className="cont">
@@ -39,13 +46,13 @@ class CartItem extends Component {
                         </h1>
                         <div className="cart-bottom flex-v-center">
                             <CartQuantity count={this.props.element.count} id={this.props.element.id} />
-                            <p> {'$' + this.props.products[this.props.element.id - 1].price}</p>
+                            <p> {'$' + (this.props.products[this.props.element.id - 1].price * count)}</p>
                         </div>
                     </div>
                 </div>
                 <div className="flex-v-center hides">
                     <CartQuantity count={this.props.element.count} id={this.props.element.id} />
-                    <p> {'$' + this.props.products[this.props.element.id - 1].price}</p>
+                    <p> {'$' + (this.props.products[this.props.element.id - 1].price * count)}</p>
                 </div>
             </div>
         );
@@ -54,7 +61,8 @@ class CartItem extends Component {
 
 export const mapStateToProps = (state) => {
     return {
-        products: state.products
+        products: state.products,
+        cart: state.cart
     };
 };
 

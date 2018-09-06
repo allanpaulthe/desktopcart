@@ -5,28 +5,51 @@ import { connect } from 'react-redux';
 import { getMenuDetails } from '../../server/server';
 import { Icon } from 'react-icons-kit';
 import { bars } from 'react-icons-kit/fa/bars';
+import Loader from 'react-loader-spinner';
 
 class MenuInner extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: {} };
+        this.state = {
+            data: {},
+        };
     }
     componentDidMount() {
         getMenuDetails().then((data) => {
             this.setState({
                 data: data.data
             })
+        }).catch(() => {
+            this.setState({ data: {} });
         })
     }
+
     render() {
         const data = this.state.data;
-        return (
-            <div className="menu">
-                {[...data].map((x, i) => (
-                    <Menulist key={i} element={x} />
-                ))}
-            </div>
-        );
+        const className = this.props.menuOn ? 'menu reveal1' : 'menu'
+        if (data.length !== undefined) {
+            return (
+                <div className={className}>
+                    {[...data].map((x, i) => (
+                        <Menulist key={i} element={x} />
+                    ))}
+                </div>
+            );
+        }
+        else {
+            return (
+                <div className={className}>
+                    <div className="flex-center full">
+                        <Loader
+                            type="Ball-Triangle"
+                            color="#00BFFF"
+                            height="50"
+                            width="50"
+                        />
+                    </div>
+                </div>
+            )
+        }
     }
 }
 
@@ -40,24 +63,44 @@ class MenuInnerSmall extends Component {
             this.setState({
                 data: data.data
             })
+        }).catch(() => {
+            this.setState({ data: {} });
         })
     }
     render() {
         const data = this.state.data;
-        return (
-            <div className="menu-small">
-                <div className="menu-icon">
-                    <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
+        const className = this.props.menuOn ? 'menu-small reveal' : 'menu-small'
+        if (data.length !== undefined) {
+            return (
+                <div className={className}>
+                    <div className="menu-icon">
+                        <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
+                    </div>
+                    {[...data].map((x, i) => (
+                        <Menulist key={i} element={x} />
+                    ))}
                 </div>
-                {[...data].map((x, i) => (
-                    <Menulist key={i} element={x} />
-                ))}
-            </div>
-        );
+            );
+        }
+        else {
+            return (
+                <div className={className}>
+                    <div className="menu-icon">
+                        <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
+                    </div>
+                    <div className="flex-center full">
+                        <Loader
+                            type="Ball-Triangle"
+                            color="#00BFFF"
+                            height="50"
+                            width="50"
+                        />
+                    </div>
+                </div>
+            )
+        }
     }
 }
-
-
 
 class Menu extends Component {
     constructor(props) {
@@ -67,8 +110,8 @@ class Menu extends Component {
     render() {
         return (
             <div className="menu-wrapper">
-                {this.props.menuOn && <MenuInner />}
-                {this.props.menuOn && <MenuInnerSmall menuToggle={this.props.menuToggle} />}
+                <MenuInner menuOn={this.props.menuOn} />
+                <MenuInnerSmall menuToggle={this.props.menuToggle} menuOn={this.props.menuOn} />
             </div>
         );
     }
