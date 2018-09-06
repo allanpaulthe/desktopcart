@@ -28,9 +28,8 @@
             padding: 10px 5%;
         }
         .cart-collection {
-            padding-top:10px;
-            max-height: 45vh;
-            //height: 45vh;
+            padding-top: 10px;
+            max-height: 45vh; //height: 45vh;
             overflow: auto;
             &::-webkit-scrollbar {
                 background-color: lighten(#f4f4f4, 20%);
@@ -48,6 +47,14 @@
                 @media screen and(max-width: 600px) {
                     margin:15px 0;
                 }
+            }
+        }
+        .empty-cart {
+            font-size: 22px;
+            font-weight: bold;
+            color: #78909c;
+            @media screen and(max-width: 600px) {
+                font-size: 15px;
             }
         }
         .cart-end-buttons {

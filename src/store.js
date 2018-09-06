@@ -11,7 +11,7 @@ const initial = {
     quickSelected: null,
     selectedMenuIcon: null,
     cartCount: null,
-    cart: { userid: [] },
+    cart: [],
     count: 1,
     loggedIn: false,
     userDetails: {},

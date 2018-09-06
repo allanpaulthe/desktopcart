@@ -38,7 +38,7 @@ class NavBar extends Component {
                 <div className="navbar flex-v-center">
                     <div className="first flex-center">
                         <div className="menu-icon">
-                            <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
+                            <Icon icon={bars} onClick={() => { this.props.menuToggle() }}/>
                         </div>
                         <Link to="/cart" className="flex-center">
                             <div className="cart">

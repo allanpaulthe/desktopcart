@@ -5,6 +5,7 @@ import { Icon } from 'react-icons-kit';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import Loader from 'react-loader-spinner';
 
 class CartSmall extends Component {
     constructor(props) {
@@ -26,16 +27,30 @@ class CartSmall extends Component {
                     <h1>Shopping Cart</h1>
                     <div className="count flex-center">{this.props.cartCount}</div>
                 </div>
-                <div className="minimized-list">
-                    {
-                        [...this.props.cart].map((x, i) => (
-                            <div key={i} className="wrap">
-                                <div className="underline"></div>
-                                <CartItem element={x} />
-                            </div>
-                        ))
-                    }
-                </div>
+                {this.props.cart.length !== 0 &&
+                    <div className="minimized-list">
+                        {
+                            [...this.props.cart].map((x, i) => (
+                                <div key={i} className="wrap">
+                                    <div className="underline"></div>
+                                    <CartItem element={x} />
+                                </div>
+                            ))
+                        }
+                    </div>
+                }
+                {this.props.cart.length === 0 &&
+                    <div className="minimized-list">
+                        <div className="flex-center full-min">
+                            <Loader
+                                type="Ball-Triangle"
+                                color="#00BFFF"
+                                height="50"
+                                width="50"
+                            />
+                        </div>
+                    </div>
+                }
                 <div className="underline"></div>
                 {this.props.history.location.pathname !== "/checkout/review" &&
                     <div>
