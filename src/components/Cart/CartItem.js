@@ -24,7 +24,7 @@ class CartItem extends Component {
         const cart = this.props.cart;
         let count = 0;
         for (let i = 0; i < cart.length; i++) {
-            if (cart[i].id == this.props.element.id) {
+            if (cart[i].id === this.props.element.id) {
                 count = cart[i].count;
             }
         }

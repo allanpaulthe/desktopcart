@@ -61,9 +61,41 @@
             line-height: 2.22;
             letter-spacing: normal;
             color: #0231b7;
+            text-transform: capitalize;
         }
         .black {
             color: black;
+        }
+        .left {
+            margin-left: auto;
+            @media screen and (max-width: 600px) {
+                display: none;
+            }
+            h1 {
+                font-size: 24px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.67;
+                letter-spacing: normal;
+                color: #333333;
+            }
+            .select-box {
+                width: 165px;
+                height: 40px;
+                border: solid 1px #dedede;
+                margin-left: 20px;
+                .css-10nd86i{
+                    width: 100%;
+                    .css-1aya2g8{
+                        outline: none;
+                        border: none;
+                    }
+                    .css-d8oujb{
+                        display: none;
+                    }
+                }
+            }
         }
     }
     .category-view-body {

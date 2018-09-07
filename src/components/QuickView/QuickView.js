@@ -50,7 +50,7 @@ class QuickView extends Component {
         document.body.style.overflow = "auto";
     }
     render() {
-        var added = false;
+        var added;
         const cart = [...this.props.cart];
         cart.forEach(el => {
             if (parseInt(el.id, 10) === parseInt(this.props.id, 10)) {

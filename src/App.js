@@ -32,7 +32,7 @@ class App extends Component {
       const cart_data = JSON.parse(m.data)
       this.props.setCart(cart_data);
     };
-    setInterval(() => myWorker.postMessage('Update Cart Details'), 1000000);
+    setInterval(() => myWorker.postMessage('Update Cart Details'), 10000);
   }
   render() {
     return (

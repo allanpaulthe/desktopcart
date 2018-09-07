@@ -3,12 +3,16 @@
     box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
     font-family: 'Nunito Sans', sans-serif;
+    padding: 0 11%;
+    @media screen and (max-width: 860px) {
+        padding: 0 3%;
+    }
     .first {
-        flex: 1;
         height: 100%;
         position: relative;
         @media screen and (max-width: 600px) {
             height: 60px;
+            flex:1;
         }
         .menu-icon {
             width: 22px;
@@ -58,13 +62,12 @@
         }
     }
     .second {
-        flex: 1;
+        margin-left: auto;
         height: 100%;
         color: #0231b7;
         font-size: 12px;
         font-weight: 600;
         * {
-            margin: 3%;
             cursor: pointer;
         }
         @media screen and (max-width: 1000px) {
@@ -89,19 +92,18 @@
         .expand {
             font-size: 16px;
             color: #0231b7;
-            margin: 0;
-            @media screen and (max-width: 864px) {
-                flex-direction: column !important;
-                justify-content: center;
-            }
-            @media screen and (max-width:700px) {
-                flex-direction: row !important;
+            margin-right: 40px;
+            @media screen and (max-width: 1300px) {
+                margin-right: 20px;
             }
         }
         .userDetails {
-            margin: 0;
+            margin-right: 40px;
             position: relative;
             min-width: 49px;
+            @media screen and (max-width: 1300px) {
+                margin-right: 20px;
+            }
             p {
                 font-size: 12px;
                 font-weight: normal;
@@ -110,6 +112,7 @@
                 line-height: 1.33;
                 letter-spacing: 1px;
                 color: #0231b7;
+                margin-right: 10px;
                 @media screen and (max-width: 830px) {
                     display: none;
                 }
@@ -124,8 +127,8 @@
             &:after {
                 content: 'sign out';
                 position: absolute;
-                bottom: -10px;
-                right: 5px;
+                bottom: -15px;
+                right: 0px;
                 display: none;
             }
             &:hover {
@@ -136,6 +139,10 @@
         }
         .searching {
             position: relative;
+            margin-right: 40px;
+            @media screen and (max-width: 1300px) {
+                margin-right: 20px;
+            }
             input {
                 width: 0px;
                 border: 0;
@@ -159,6 +166,18 @@
             .show-search {
                 width: 150px;
                 transform: scale(1);
+            }
+        }
+        .wish-wrap{
+            margin-right: 40px;
+            @media screen and (max-width: 1300px) {
+                margin-right: 20px;
+            }
+        }
+        .log-wrap{
+            margin-right: 40px;
+            @media screen and (max-width: 1300px) {
+                margin-right: 20px;
             }
         }
     }

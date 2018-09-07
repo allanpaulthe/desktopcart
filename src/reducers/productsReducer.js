@@ -72,8 +72,8 @@ const productsReducer = (state, action) => {
             state = { ...state, cart: newData, cartCount: newData.length }
             return state;
         case 'REMOVE_COUNT':
-            var cart = [...state.cart]
-            var newData = cart.map(el => {
+            var cart1 = [...state.cart]
+            var newData1 = cart1.map(el => {
                 if (parseInt(el.id, 10) === parseInt(action.id, 10))
                     if (el.count > 1)
                         return Object.assign({}, el, { count: el.count - 1 })
@@ -81,21 +81,21 @@ const productsReducer = (state, action) => {
                         return el
                 return el
             });
-            writeToCart(newData);
-            state = { ...state, cart: newData, cartCount: newData.length }
+            writeToCart(newData1);
+            state = { ...state, cart: newData1, cartCount: newData1.length }
             return state;
 
         case 'DELETE_ITEM':
-            var cart = [...state.cart];
+            var cart2 = [...state.cart];
             var length = [...state.cart].length - 1;
-            var newData = cart.filter(element => element.id !== action.id);
-            writeToCart(newData);
-            return { ...state, cart: newData, cartCount: length };
+            var newData2 = cart2.filter(element => element.id !== action.id);
+            writeToCart(newData2);
+            return { ...state, cart: newData2, cartCount: length };
         case 'ADD_TO_CART':
             let flag = 0;
-            var cart = [...state.cart];
-            var length = [...state.cart].length;
-            var newData = cart.map(el => {
+            var cart3 = [...state.cart];
+            var length3 = [...state.cart].length;
+            var newData3 = cart3.map(el => {
                 if (el.id === action.id) {
                     flag = 1
                     return Object.assign({}, el, { count: el.count + 1 })
@@ -103,11 +103,11 @@ const productsReducer = (state, action) => {
                 return el
             });
             if (flag === 0) {
-                newData.push({ id: action.id, count: 1 })
-                length += 1;
+                newData3.push({ id: action.id, count: 1 })
+                length3 += 1;
             }
-            writeToCart(newData);
-            return { ...state, cart: newData, cartCount: length };
+            writeToCart(newData3);
+            return { ...state, cart: newData3, cartCount: length };
         case 'LOGIN_GOOGLE':
             const username = action.data.w3.ig;
             const pic = action.data.w3.Paa;

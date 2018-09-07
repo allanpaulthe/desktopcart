@@ -71,12 +71,4 @@ export const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addToCart: (id) => {
-            dispatch()
-        }
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(suggetions);
+export default connect(mapStateToProps,null )(suggetions);

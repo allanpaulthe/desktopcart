@@ -7,7 +7,13 @@ import { th } from 'react-icons-kit/fa/th';
 import { Icon } from 'react-icons-kit';
 import { ic_keyboard_arrow_right } from 'react-icons-kit/md/ic_keyboard_arrow_right';
 import Loader from 'react-loader-spinner';
+import Select from 'react-select';
 
+const options = [
+    { value: 'price', label: 'price' },
+    { value: 'brand', label: 'brand' },
+    { value: 'size', label: 'size' }
+]
 
 class CategoryView extends Component {
     constructor(props) {
@@ -87,8 +93,14 @@ class CategoryView extends Component {
                             <h3 className="black">{main}</h3>
                         }
                     </div>
-                    <div className="left">
-
+                    <div className="left flex-v-center">
+                        <h1>Sort by</h1>
+                        <div className="select-box flex-center">
+                            <Select
+                                options={options}
+                                defaultValue={options[0]}
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className="buttons">

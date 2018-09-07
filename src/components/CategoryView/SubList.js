@@ -13,7 +13,7 @@ class SubList extends Component {
         };
     }
     componentWillReceiveProps(nextProps) {
-        if (nextProps.main != this.props.main) {
+        if (nextProps.main !== this.props.main) {
             getOneMenuDetails(nextProps.main).then((data) => {
                 this.props.setSuBMenu(data[0]);
             }).catch(() => {
