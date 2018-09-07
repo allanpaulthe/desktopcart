@@ -107,7 +107,7 @@ const productsReducer = (state, action) => {
                 length3 += 1;
             }
             writeToCart(newData3);
-            return { ...state, cart: newData3, cartCount: length };
+            return { ...state, cart: newData3, cartCount: length3 };
         case 'LOGIN_GOOGLE':
             const username = action.data.w3.ig;
             const pic = action.data.w3.Paa;

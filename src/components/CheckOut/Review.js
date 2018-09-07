@@ -8,7 +8,70 @@ import { connect } from 'react-redux';
 class Review extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            delEdit: false,
+            cardEdit: false,
+            billEdit: false,
+            sameBillAdress: true
+        };
+    }
+    delEdit() {
+        this.setState({
+            delEdit: true
+        })
+    }
+    cardEdit() {
+        this.setState({
+            cardEdit: true
+        })
+    }
+    billEdit() {
+        this.setState({
+            billEdit: true
+        })
+    }
+    componentDidMount() {
+        const bAdress = {};
+        bAdress.bname = this.props.adress.name
+        bAdress.bstreet = this.props.adress.street
+        bAdress.bbuilding = this.props.adress.building
+        bAdress.bphno = this.props.adress.phno
+        this.setState({
+            adress: this.props.adress,
+            billAdress: bAdress
+        })
+    }
+    editAdress(e) {
+        const value = e.target.value;
+        const adress = this.state.adress;
+        adress[e.target.name] = value;
+        this.setState({
+            adress: adress
+        })
+    }
+    editBillAdress(e) {
+        const value = e.target.value;
+        const billAdress = this.state.billAdress;
+        billAdress[e.target.name] = value;
+        this.setState({
+            billAdress: billAdress
+        })
+    }
+    changeDelAdress() {
+        this.setState({
+            delEdit: false
+        })
+    }
+    changeBillAdress() {
+        this.setState({
+            billEdit: false,
+            sameBillAdress: false
+        })
+    }
+    changeCard() {
+        this.setState({
+            cardEdit: false
+        })
     }
     render() {
         const adress = this.props.adress;
@@ -24,38 +87,97 @@ class Review extends Component {
             <div className="revieww">
                 <div className="top flex-v-center">
                     <h1>Shipping to:</h1>
-                    <Icon icon={ic_edit} />
-                    <div className="edit-blue">EDIT</div>
+                    <Icon icon={ic_edit} onClick={this.delEdit.bind(this)} />
+                    <div className="edit-blue" onClick={this.delEdit.bind(this)}>EDIT</div>
                 </div>
-                <p className="data">
-                    {adress.name}
-                </p>
-                <p className="data">
-                    {adress.street}
+                {!this.state.delEdit &&
+                    <div>
+                        <p className="data">
+                            {adress.name}
+                        </p>
+                        <p className="data">
+                            {adress.street}
 
-                </p>
-                <p className="data">
-                    {adress.building}
-                </p>
-                <p className="data">
-                    {adress.phno}
-                </p>
+                        </p>
+                        <p className="data">
+                            {adress.building}
+                        </p>
+                        <p className="data">
+                            {adress.phno}
+                        </p>
+                    </div>
+                }
+                {this.state.delEdit &&
+                    <div className="flex-v-center">
+                        <div className="edit">
+                            <input type="text" value={this.state.adress.name} name="name" onChange={this.editAdress.bind(this)} />
+                            <input type="text" value={this.state.adress.street} name="street" onChange={this.editAdress.bind(this)} />
+                            <input type="text" value={this.state.adress.building} name="building" onChange={this.editAdress.bind(this)} />
+                            <input type="text" value={this.state.adress.phno} name="phno" onChange={this.editAdress.bind(this)} />
+                        </div>
+                        <button onClick={this.changeDelAdress.bind(this)}>Change</button>
+                    </div>
+                }
                 <div className="top flex-v-center">
                     <h1>Payment Method:</h1>
-                    <Icon icon={ic_edit} />
-                    <div className="edit-blue">EDIT</div>
+                    <Icon icon={ic_edit} onClick={this.cardEdit.bind(this)} />
+                    <div className="edit-blue" onClick={this.cardEdit.bind(this)}>EDIT</div>
                 </div>
-                <p className="data">
-                    VISA ending in 8765
-                </p>
+                {!this.state.cardEdit &&
+                    <p className="data">
+                        VISA ending in 8765
+                    </p>
+                }
+                {this.state.cardEdit &&
+                    <div className="flex-v-center">
+                        <div className="edit">
+                            <input type="text" />
+                        </div>
+                        <button onClick={this.changeCard.bind(this)}>Change</button>
+                    </div>
+                }
                 <div className="top flex-v-center">
                     <h1>Billing Address</h1>
-                    <Icon icon={ic_edit} />
-                    <div className="edit-blue">EDIT</div>
+                    <Icon icon={ic_edit} onClick={this.billEdit.bind(this)} />
+                    <div className="edit-blue" onClick={this.billEdit.bind(this)}>EDIT</div>
                 </div>
-                <p className="data">
-                    Same as shipping address
-                </p>
+                {!this.state.billEdit &&
+                    <div>
+                        {this.state.sameBillAdress &&
+                            <p className="data">
+                                Same as shipping address
+                            </p>
+                        }
+                        {!this.state.sameBillAdress &&
+                            <div>
+                                <p className="data">
+                                    {this.state.billAdress.bname}
+                                </p>
+                                <p className="data">
+                                    {this.state.billAdress.bstreet}
+
+                                </p>
+                                <p className="data">
+                                    {this.state.billAdress.bbuilding}
+                                </p>
+                                <p className="data">
+                                    {this.state.billAdress.bphno}
+                                </p>
+                            </div>
+                        }
+                    </div>
+                }
+                {this.state.billEdit &&
+                    <div className="flex-v-center">
+                        <div className="edit">
+                            <input type="text" value={this.state.billAdress.bname} name="bname" onChange={this.editBillAdress.bind(this)} />
+                            <input type="text" value={this.state.billAdress.bstreet} name="bstreet" onChange={this.editBillAdress.bind(this)} />
+                            <input type="text" value={this.state.billAdress.bbuilding} name="bbuilding" onChange={this.editBillAdress.bind(this)} />
+                            <input type="text" value={this.state.billAdress.bphno} name="bphno" onChange={this.editBillAdress.bind(this)} />
+                        </div>
+                        <button onClick={this.changeBillAdress.bind(this)}>Change</button>
+                    </div>
+                }
                 <div className="line"></div>
                 <div className="summary">
                     <div className="one">
