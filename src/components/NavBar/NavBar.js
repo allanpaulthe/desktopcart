@@ -38,13 +38,12 @@ class NavBar extends Component {
                 <div className="navbar flex-v-center">
                     <div className="first flex-center">
                         <div className="menu-icon">
-                            <Icon icon={bars} onClick={() => { this.props.menuToggle() }}/>
+                            <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
                         </div>
                         <Link to="/cart" className="flex-center">
                             <div className="cart">
                                 <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
                                 {
-                                    this.props.cartCount > 0 &&
                                     <div className="count flex-center">{this.props.cartCount}</div>
                                 }
                             </div>
@@ -71,7 +70,11 @@ class NavBar extends Component {
                                 <img src={this.props.userdata.pic} alt="userpic" onClick={() => { this.props.userLogOut() }} />
                             </div>
                         }
-                        {!this.state.loginOn && !this.props.loggedIn && <p onClick={this.handleLoginClick.bind(this)}>LOGIN</p>}
+                        {!this.state.loginOn && !this.props.loggedIn &&
+                            <div className="log-wrap">
+                                <p onClick={this.handleLoginClick.bind(this)}>LOGIN</p>
+                            </div>
+                        }
                         {this.state.loginOn && !this.props.loggedIn &&
                             <div className="flex-center expand">
                                 <p>Login with</p>
@@ -80,12 +83,13 @@ class NavBar extends Component {
                             </div>
                         }
                         <SearchBar />
-                        <img src={require("../../assets/img/icons/shape.png")} alt="wish list" />
+                        <div className="wish-wrap">
+                            <img src={require("../../assets/img/icons/shape.png")} alt="wish list" />
+                        </div>
                         <Link to="/cart" className="flex-center">
                             <div className="cart">
                                 <img src={require("../../assets/img/icons/cart.png")} alt="cart" />
                                 {
-                                    this.props.cartCount &&
                                     <div className="count flex-center">{this.props.cartCount}</div>
                                 }
                             </div>
