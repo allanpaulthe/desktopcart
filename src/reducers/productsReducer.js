@@ -19,6 +19,16 @@ const productsReducer = (state, action) => {
                 ...state,
                 quickView: false
             })
+        case 'ON_VIDEO_VIEW':
+            return ({
+                ...state,
+                videoView: true
+            })
+        case 'OFF_VIDEO_VIEW':
+            return ({
+                ...state,
+                videoView: false
+            })
         case 'MENU_TOGGLE':
             if (state.selectedMenuIcon === action.payload && state.menuOn === true) {
                 return ({

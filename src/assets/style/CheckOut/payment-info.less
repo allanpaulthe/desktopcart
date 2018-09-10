@@ -50,14 +50,19 @@
             }
         }
         .details {
-            height: 53px;
             border: solid 1px rgba(38, 50, 56, 0.12);
-            padding: 0 10px;
+            padding: 10px 10px;
             justify-content: space-between;
             @media screen and(max-width: 380px) {
                 padding: 0 3px;
                 img {
                     display: none;
+                }
+            }
+            .sc-bdVaJa,.ixTfPP{
+                width: 100%;    
+                .input,.sc-bwzfXH,.kJnpoy{
+                    justify-content: space-between;
                 }
             }
             input {
@@ -73,16 +78,6 @@
                 @media screen and(max-width: 600px) {
                     font-size: 12px;
                 }
-            }
-            .cvv {
-                width: 50px;
-            }
-            .date {
-                width: 80px;
-            }
-            .card {
-                width: 160px;
-                padding-left: 10px;
             }
         }
         .Help-Text {
@@ -103,10 +98,15 @@
             display: block;
         }
         .details {
-            height: 43px;
             border: solid 1px rgba(38, 50, 56, 0.12);
-            padding: 0 10px;
+            padding: 5px 10px;
             justify-content: space-between;
+            .sc-bdVaJa,.ixTfPP{
+                width: 100%;    
+                .input,.sc-bwzfXH,.kJnpoy{
+                    justify-content: space-between;
+                }
+            }
             input {
                 border: none;
                 outline: none;
@@ -120,16 +120,6 @@
                 @media screen and(max-width: 600px) {
                     font-size: 12px;
                 }
-            }
-            .cvv {
-                width: 50px;
-            }
-            .date {
-                width: 80px;
-            }
-            .card {
-                width: 160px;
-                padding-left: 10px;
             }
             @media screen and(max-width: 380px) {
                 padding: 0 3px;
@@ -166,11 +156,12 @@
         }
     }
     .paypal {
-        height: 48px;
+        height: 40px;
         border-radius: 2px;
         border: solid 1px #90a4ae;
         margin:20px 0; 
         display: none;
+        box-sizing: border-box;
         @media screen and(max-width: 600px) {
             display: flex;
         } 

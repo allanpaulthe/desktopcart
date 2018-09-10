@@ -28,7 +28,7 @@ class ProductCard extends Component {
                     <img src={require('../../assets/img/icons/quick-open.svg')} alt="quick open" className="hover" onClick={this.quickView.bind(this)} />
                 </div>
                 <div className="data">
-                    <p className="name">{element.name}</p>
+                    <Link to={'/product/' + this.props.element.id} className="name">{element.name}</Link>
                     <p className="brand">{element.brand}</p>
                     <div className="lastRow">
                         <p className="price">{'$' + element.price}</p>

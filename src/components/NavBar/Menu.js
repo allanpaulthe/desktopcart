@@ -73,18 +73,26 @@ class MenuInnerSmall extends Component {
         if (data.length !== undefined) {
             return (
                 <div className={className}>
+                    <div className="logo flex-center">
+                        <img src={require("../../assets/img/logo/group-2@2x.png")} alt="logo" />
+                    </div>
                     <div className="menu-icon">
                         <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
                     </div>
-                    {[...data].map((x, i) => (
-                        <Menulist key={i} element={x} />
-                    ))}
+                    <div className="just-wrap">
+                        {[...data].map((x, i) => (
+                            <Menulist key={i} element={x} />
+                        ))}
+                    </div>
                 </div>
             );
         }
         else {
             return (
                 <div className={className}>
+                    <div className="logo flex-center">
+                        <img src={require("../../assets/img/logo/group-2@2x.png")} alt="logo" />
+                    </div>
                     <div className="menu-icon">
                         <Icon icon={bars} onClick={() => { this.props.menuToggle() }} />
                     </div>

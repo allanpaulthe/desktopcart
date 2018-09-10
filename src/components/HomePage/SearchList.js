@@ -44,6 +44,11 @@ class SearchList extends Component {
         }
     }
 }
+
+SearchList.defaultProps = {
+    gridView: true
+}
+
 export const mapStateToProps = (state) => {
     return {
         searchProducts: state.searchProducts

@@ -37,10 +37,10 @@ class MenuDropDown extends Component {
         const list = this.props.element.sublist;
         return (
             <div className="menu-drop-down">
-                <div className="top">
+                <div className="top" onClick={this.handleClick.bind(this)}>
                     {!this.state.open && <Icon icon={ic_keyboard_arrow_right} />}
                     {this.state.open && <Icon icon={ic_keyboard_arrow_down} />}
-                    <p onClick={this.handleClick.bind(this)}>{element.type}</p>
+                    <p>{element.type}</p>
                 </div>
                 <div className="bottom" style={this.getStyles()}>
                     <ul>

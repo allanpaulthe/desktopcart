@@ -64,6 +64,9 @@ class QuickView1 extends Component {
             })
         }
     }
+    playVideo() {
+        this.props.onVideo();
+    }
     render() {
         var added;
         const cart = [...this.props.cart];
@@ -88,6 +91,7 @@ class QuickView1 extends Component {
                                 {[...products.image_url].map((x, i) => (
                                     <img src={x} alt="" style={this.getStyles(i)} key={i} onClick={() => this.changeImage(i)} />
                                 ))}
+                                <img src={require('../../assets/img/icons/thumbnail.jpg')} alt="" onClick={() => this.playVideo()} />
                             </div>
                             <div className="pic flex-center">
                                 <img src={products.image_url[this.state.selectedImage]} alt="" />
@@ -171,6 +175,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (id) => {
             dispatch(addToCart(id))
+        },
+        onVideo: () => {
+            dispatch({
+                type: 'ON_VIDEO_VIEW'
+            })
         }
     };
 };

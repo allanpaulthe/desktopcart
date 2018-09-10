@@ -13,7 +13,7 @@ const StatusShippingNot = () => {
 }
 const StatusShippingYes = () => {
     return (
-        <div className="round shipping flex-center completed">
+        <div className="round shipping flex-center completed full">
             <Icon icon={ic_check} />
         </div>
     );
@@ -37,7 +37,7 @@ const StatuspaymentReached = () => {
 
 const StatuspaymentYes = () => {
     return (
-        <div className="round payment flex-center completed">
+        <div className="round payment flex-center completed full">
             <Icon icon={ic_check} />
         </div>
     );
