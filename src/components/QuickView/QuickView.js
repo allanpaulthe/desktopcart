@@ -50,13 +50,6 @@ class QuickView extends Component {
         document.body.style.overflow = "auto";
     }
     render() {
-        var added;
-        const cart = [...this.props.cart];
-        cart.forEach(el => {
-            if (parseInt(el.id, 10) === parseInt(this.props.id, 10)) {
-                added = true;
-            }
-        });
         const id = this.props.id;
         const products = this.props.products;
         const imgObj = products[id - 1].image_url.map(function (entry) {

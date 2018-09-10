@@ -4,6 +4,59 @@ import { Icon } from 'react-icons-kit';
 import { ic_edit } from 'react-icons-kit/md/ic_edit';
 import { connect } from 'react-redux';
 
+class DelAddress extends Component {
+    state = {}
+    render() {
+        return (
+            <div>
+                <p className="data">
+                    {this.props.adress.name}
+                </p>
+                <p className="data">
+                    {this.props.adress.street}
+
+                </p>
+                <p className="data">
+                    {this.props.adress.building}
+                </p>
+                <p className="data">
+                    {this.props.adress.phno}
+                </p>
+            </div>
+        );
+    }
+}
+
+class ReviewSummary extends Component {
+    state = {}
+    render() {
+        return (
+            <div className="summary">
+                <div className="one">
+                    <h1>Subtotal</h1>
+                    <p>{'$' + this.props.sum}</p>
+                </div>
+                <div className="one">
+                    <h1>Shipping</h1>
+                    <p>FREE</p>
+                </div>
+                <div className="one">
+                    <h1>Expected Delivery</h1>
+                    <p>Apr 20 - 28</p>
+                </div>
+                <div className="one">
+                    <h1>Taxes</h1>
+                    <p>$11.55</p>
+                </div>
+                <div className="one black">
+                    <h1>Total</h1>
+                    <p>{'$' + (this.props.sum + 11.55)}</p>
+                </div>
+            </div>
+        );
+    }
+}
+
 
 class Review extends Component {
     constructor(props) {
@@ -91,21 +144,7 @@ class Review extends Component {
                     <div className="edit-blue" onClick={this.delEdit.bind(this)}>EDIT</div>
                 </div>
                 {!this.state.delEdit &&
-                    <div>
-                        <p className="data">
-                            {adress.name}
-                        </p>
-                        <p className="data">
-                            {adress.street}
-
-                        </p>
-                        <p className="data">
-                            {adress.building}
-                        </p>
-                        <p className="data">
-                            {adress.phno}
-                        </p>
-                    </div>
+                    <DelAddress adress={adress} />
                 }
                 {this.state.delEdit &&
                     <div className="flex-v-center">
@@ -179,28 +218,7 @@ class Review extends Component {
                     </div>
                 }
                 <div className="line"></div>
-                <div className="summary">
-                    <div className="one">
-                        <h1>Subtotal</h1>
-                        <p>{'$' + sum}</p>
-                    </div>
-                    <div className="one">
-                        <h1>Shipping</h1>
-                        <p>FREE</p>
-                    </div>
-                    <div className="one">
-                        <h1>Expected Delivery</h1>
-                        <p>Apr 20 - 28</p>
-                    </div>
-                    <div className="one">
-                        <h1>Taxes</h1>
-                        <p>$11.55</p>
-                    </div>
-                    <div className="one black">
-                        <h1>Total</h1>
-                        <p>{'$' + (sum + 11.55)}</p>
-                    </div>
-                </div>
+                <ReviewSummary sum={sum} />
             </div>
         );
     }

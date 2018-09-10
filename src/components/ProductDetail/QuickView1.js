@@ -68,13 +68,6 @@ class QuickView1 extends Component {
         this.props.onVideo();
     }
     render() {
-        var added;
-        const cart = [...this.props.cart];
-        cart.forEach(el => {
-            if (parseInt(el.id, 10) === parseInt(this.props.id, 10)) {
-                added = true;
-            }
-        });
         const products = this.state.product;
         if (products !== undefined && Object.keys(products).length !== 0) {
             this.updateHeading(products.name);
