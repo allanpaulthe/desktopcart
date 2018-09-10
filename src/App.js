@@ -19,6 +19,7 @@ import worker from './worker';
 import ScrollToTop from './components/ScrollToTop';
 import SearchResults from './components/HomePage/SearchResults';
 import OutsideClickHandler from 'react-outside-click-handler';
+import Video from './components/Video/Video';
 
 class App extends Component {
   componentDidMount() {
@@ -32,7 +33,7 @@ class App extends Component {
       const cart_data = JSON.parse(m.data)
       this.props.setCart(cart_data);
     };
-    setInterval(() => myWorker.postMessage('Update Cart Details'), 10000);
+    setInterval(() => myWorker.postMessage('Update Cart Details'), 600000);
   }
   render() {
     return (
@@ -58,6 +59,11 @@ class App extends Component {
             {this.props.quickView && <div className="popup-screen">
               <QuickView />
             </div>}
+            {this.props.videoView &&
+              <div className="popup-screen video flex-center">
+                <Video />
+              </div>
+            }
             <Route exact path="/" component={HomePage} />
             <Route exact path="/thanks" component={Thanks} />
             <Route exact path="/product/:id" component={ProductDetail} />
@@ -71,7 +77,8 @@ class App extends Component {
 export const mapStateToProps = (state) => {
   return {
     quickView: state.quickView,
-    menuOn: state.menuOn
+    menuOn: state.menuOn,
+    videoView: state.videoView
   };
 };
 

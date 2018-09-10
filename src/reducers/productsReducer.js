@@ -19,6 +19,16 @@ const productsReducer = (state, action) => {
                 ...state,
                 quickView: false
             })
+        case 'ON_VIDEO_VIEW':
+            return ({
+                ...state,
+                videoView: true
+            })
+        case 'OFF_VIDEO_VIEW':
+            return ({
+                ...state,
+                videoView: false
+            })
         case 'MENU_TOGGLE':
             if (state.selectedMenuIcon === action.payload && state.menuOn === true) {
                 return ({
@@ -107,7 +117,7 @@ const productsReducer = (state, action) => {
                 length3 += 1;
             }
             writeToCart(newData3);
-            return { ...state, cart: newData3, cartCount: length };
+            return { ...state, cart: newData3, cartCount: length3 };
         case 'LOGIN_GOOGLE':
             const username = action.data.w3.ig;
             const pic = action.data.w3.Paa;

@@ -83,7 +83,7 @@ class NavBar extends Component {
                             </div>
                         }
                         <SearchBar />
-                        <div className="wish-wrap">
+                        <div className="wish-wrap flex-center">
                             <img src={require("../../assets/img/icons/shape.png")} alt="wish list" />
                         </div>
                         <Link to="/cart" className="flex-center">

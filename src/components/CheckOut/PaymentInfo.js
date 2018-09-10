@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
 import '../../assets/style/CheckOut/payment-info.less';
+import CreditCardInput from 'react-credit-card-input';
 
 class PaymentInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
             first: true,
-            second: false
+            second: false,
+            cardNumber: '',
+            expiry: '',
+            cvc: ''
         };
     }
     toggle() {
         this.setState({
             first: !this.state.first,
             second: !this.state.second
+        })
+    }
+    handleCardNumberChange(e) {
+        this.setState({
+            cardNumber: e.target.value
+        })
+    }
+    handleCardExpiryChange(e) {
+        this.setState({
+            expiry: e.target.value
+        })
+    }
+    handleCardCVCChange(e) {
+        this.setState({
+            cvc: e.target.value
         })
     }
     render() {
@@ -39,10 +58,12 @@ class PaymentInfo extends Component {
                         Safe money transfer using your bank account. Visa, Maestro, Discover, American Express.
                     </div>
                     <div className="details flex-v-center">
-                        <img src={require('../../assets/img/icons/cc.svg')} alt="card" />
-                        <input type="text" placeholder="1234  5678  9012  3456" className="card" />
-                        <input type="text" placeholder="MM/YYYY" className="date" />
-                        <input type="text" placeholder="CVV" className="cvv" />
+                        <CreditCardInput
+                            cardNumberInputProps={{ value: this.state.cardNumber, onChange: this.handleCardNumberChange.bind(this) }}
+                            cardExpiryInputProps={{ value: this.state.expiry, onChange: this.handleCardExpiryChange.bind(this) }}
+                            cardCVCInputProps={{ value: this.state.cvc, onChange: this.handleCardCVCChange.bind(this) }}
+                            fieldClassName="input"
+                        />
                     </div>
                     <div className="Help-Text">
                         Enter card number, expiration date & CVV number
@@ -71,10 +92,12 @@ class PaymentInfo extends Component {
                 <div className="credit-small">
                     <h3>Credit or Debit Card</h3>
                     <div className="details flex-v-center">
-                        <img src={require('../../assets/img/icons/cc.svg')} alt="card" />
-                        <input type="text" placeholder="1234  5678  9012  3456" className="card" />
-                        <input type="text" placeholder="MM/YYYY" className="date" />
-                        <input type="text" placeholder="CVV" className="cvv" />
+                        <CreditCardInput
+                            cardNumberInputProps={{ value: this.state.cardNumber, onChange: this.handleCardNumberChange.bind(this) }}
+                            cardExpiryInputProps={{ value: this.state.expiry, onChange: this.handleCardExpiryChange.bind(this) }}
+                            cardCVCInputProps={{ value: this.state.cvc, onChange: this.handleCardCVCChange.bind(this) }}
+                            fieldClassName="input"
+                        />
                     </div>
                     <h4>Enter card number, expiration date & CVV number</h4>
                 </div>
