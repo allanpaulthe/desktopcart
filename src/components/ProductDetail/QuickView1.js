@@ -104,6 +104,9 @@ class QuickView1 extends Component {
                                 <h1>{products.name}</h1>
                                 <Icon icon={ic_star_border} size={25} />
                             </div>
+                            <div className="brandd flex-center">
+                                <p>{products.brand}</p>
+                            </div>
                             <div className="second-top-2 flex-v-center">
                                 <p className="price">{'$' + products.price}</p>
                                 <div className="rating">

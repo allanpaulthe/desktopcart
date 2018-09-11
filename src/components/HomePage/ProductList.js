@@ -6,6 +6,7 @@ import { setAllProducts } from '../../actions/productsActions';
 import { connect } from 'react-redux';
 import ProductCardList from './ProductCardList';
 import Loader from 'react-loader-spinner';
+import { withRouter } from 'react-router-dom';
 
 
 class ProductList extends Component {
@@ -14,11 +15,21 @@ class ProductList extends Component {
         this.state = {};
     }
     componentDidMount() {
-        getProducts().then((data) => {
-            this.props.setProducts(data);
-        }).catch(() => {
-            this.setState({ data: [] });
-        })
+        if (this.props.category) {
+
+        }
+        else {
+            getProducts().then((data) => {
+                this.props.setProducts(data);
+            }).catch(() => {
+                this.setState({ data: [] });
+            })
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.location.pathname !== this.props.location.pathname) {
+            
+        }
     }
     render() {
         const productList = this.props.products;
@@ -73,5 +84,5 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductList));
 

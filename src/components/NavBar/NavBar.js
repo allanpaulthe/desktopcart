@@ -57,7 +57,13 @@ class NavBar extends Component {
                             <ul>
                                 {
                                     [...options].map((x, i) => (
-                                        <OptionHeader name={x} key={i} id={i} />
+                                        <OptionHeader
+                                            name={x}
+                                            key={i}
+                                            id={i}
+                                            index={i}
+                                            selectedMenuIcon={this.props.selectedMenuIcon}
+                                        />
                                     ))
                                 }
                             </ul>
@@ -111,7 +117,8 @@ export const mapStateToProps = (state) => {
     return {
         cartCount: state.cartCount,
         loggedIn: state.loggedIn,
-        userdata: state.userDetails
+        userdata: state.userDetails,
+        selectedMenuIcon: state.selectedMenuIcon
     };
 };
 

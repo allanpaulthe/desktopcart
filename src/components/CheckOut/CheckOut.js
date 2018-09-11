@@ -25,9 +25,7 @@ class ButtonCheckOutLarge extends Component {
             this.props.history.push('/checkout/payment')
         }
         else {
-            this.setState({
-                alertNotValid: true
-            })
+            this.props.alert.error('please fill the neccessary fields to continue')
         }
     }
     render() {
@@ -59,6 +57,9 @@ class ButtonCheckOutSmall extends Component {
     checkValid() {
         if (this.props.adressValid) {
             this.props.history.push('/checkout/payment')
+        }
+        else {
+            this.props.alert.error('please fill the neccessary fields to continue')
         }
     }
     render() {
@@ -259,8 +260,8 @@ class CheckOut extends Component {
                         <Route exact path="/checkout/review" component={Review} />
                     </div>
                 </div>
-                <Route exact path="/checkout" render={() => <ButtonCheckOutLarge adressValid={this.state.adressValid} history={this.props.history} />} />
-                <Route exact path="/checkout" render={() => <ButtonCheckOutSmall adressValid={this.state.adressValid} history={this.props.history} />} />
+                <Route exact path="/checkout" render={() => <ButtonCheckOutLarge adressValid={this.state.adressValid} history={this.props.history} alert={this.props.alert}/>} />
+                <Route exact path="/checkout" render={() => <ButtonCheckOutSmall adressValid={this.state.adressValid} history={this.props.history} alert={this.props.alert}/>} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentLarge} />
                 <Route exact path="/checkout/payment" component={ButtonPaymentSmall} />
                 <Route exact path="/checkout/review" render={() => <ButtonReviewLarge isLogged={this.props.loggedIn} history={this.props.history} alert={this.props.alert} />} />
