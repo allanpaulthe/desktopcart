@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/style/CheckOut/adress-form.less';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 class AdressForm extends Component {
     constructor(props) {
@@ -36,28 +35,17 @@ class AdressForm extends Component {
             })
         }
     }
-    validate(e) {
+    validate = async(e) =>{
+        await this.handleChange(e);
         this.props.setAdress(this.state);
-        if (e.target.value.length === 0) {
-            this.setState({
-                [e.target.name + 'Error']: 'This field should be filled',
-                [e.target.name + 'Ok']: false
-            })
-        }
-        else {
-            this.setState({
-                [e.target.name + 'Error']: false,
-                [e.target.name + 'Ok']: true
-            })
-        }
         const state = this.state;
         if (state.nameOk && state.streetOk && state.zipOk && state.phnoOk) {
             this.setState({
                 validatedAll: true
             })
-           this.props.makeAddressValid(true);
+            this.props.makeAddressValid(true);
         }
-        else{
+        else {
             this.props.makeAddressValid(false);
         }
     }
@@ -69,14 +57,14 @@ class AdressForm extends Component {
                         <p>Full Name</p>
                         <div className="input-wrapper flex-v-center">
                             <p className="error">{this.state.nameError}</p>
-                            <input type="text" placeholder="FULL NAME" name="name" value={this.state.name} onChange={this.handleChange} onBlur={this.validate} />
+                            <input type="text" placeholder="FULL NAME" name="name" value={this.state.name} onChange={this.validate} onBlur={this.validate} />
                         </div>
                     </div>
                     <div className="one-input ">
                         <p>Street Address</p>
                         <div className="input-wrapper flex-v-center">
                             <p className="error">{this.state.streetError}</p>
-                            <input type="text" placeholder="STREET ADRESS" name="street" value={this.state.street} onChange={this.handleChange} onBlur={this.validate} />
+                            <input type="text" placeholder="STREET ADRESS" name="street" value={this.state.street} onChange={this.validate} onBlur={this.validate} />
                         </div>
                     </div>
                     <div className="one-input ">
@@ -90,7 +78,7 @@ class AdressForm extends Component {
                             <p>Zip Code</p>
                             <div className="input-wrapper flex-v-center">
                                 <p className="error">{this.state.zipError}</p>
-                                <input type="number" placeholder="60613" name="zip" value={this.state.zip} onChange={this.handleChange} onBlur={this.validate} />
+                                <input type="number" placeholder="60613" name="zip" value={this.state.zip} onChange={this.validate} onBlur={this.validate} />
                             </div>
                         </div>
                         <div className="add-or-remove">
@@ -106,7 +94,7 @@ class AdressForm extends Component {
                             <p>Phone Number</p>
                             <div className="input-wrapper flex-v-center">
                                 <p className="error">{this.state.phnoError}</p>
-                                <input type="number" placeholder="(123) 456 - 7890" name="phno" value={this.state.phno} onChange={this.handleChange} onBlur={this.validate} />
+                                <input type="number" placeholder="(123) 456 - 7890" name="phno" value={this.state.phno} onChange={this.validate} onBlur={this.validate} />
                             </div>
                         </div>
                     </div>

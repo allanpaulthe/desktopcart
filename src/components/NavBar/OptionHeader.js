@@ -10,15 +10,28 @@ class OptionHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.getStyles = this.getStyles.bind(this)
     }
-    menuToggle(){
+    menuToggle() {
         this.props.menuToggle(this.props.id);
+    }
+    getStyles() {
+        if (this.props.index === this.props.selectedMenuIcon) {
+            return {
+                color: 'red'
+            }
+        }
     }
     render() {
         return (
-            <li className="option-header" onClick={this.menuToggle.bind(this)}>
+            <li className="option-header" onClick={this.menuToggle.bind(this)} style={this.getStyles()}>
                 <p>{this.props.name}</p>
-                <Icon icon={ic_keyboard_arrow_down} />
+                {this.props.index !== this.props.selectedMenuIcon &&
+                    <Icon icon={ic_keyboard_arrow_down} />
+                }
+                {this.props.index === this.props.selectedMenuIcon &&
+                    <Icon icon={ic_keyboard_arrow_up} />
+                }
             </li>
         );
     }
@@ -32,5 +45,5 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null,mapDispatchToProps)(OptionHeader);
+export default connect(null, mapDispatchToProps)(OptionHeader);
 

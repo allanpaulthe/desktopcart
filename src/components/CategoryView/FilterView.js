@@ -77,18 +77,18 @@ class FilterView extends Component {
                 <div className="line">
                 </div>
                 <div>
-                    <SubList element={data1} main={this.props.main}/>
+                    <SubList element={data1} main={this.props.main} />
                 </div>
-                <div>
+                <div style={{ pointerEvents: 'none'}}>
                     <MenuList element={data} />
-                </div>
-                <div className="line">
-                </div>
-                <SizeList />
-                <div className="line">
-                </div>
-                <PriceList />
             </div>
+            <div className="line">
+            </div>
+            <SizeList />
+            <div className="line">
+            </div>
+            <PriceList />
+            </div >
         );
     }
 }

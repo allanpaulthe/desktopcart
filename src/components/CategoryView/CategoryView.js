@@ -116,7 +116,7 @@ class CategoryView extends Component {
                         <FilterView main={main} />
                     </div>
                     <div className="right">
-                        <ProductList gridView={this.state.gridView} />
+                        <ProductList gridView={this.state.gridView} category={true} />
                     </div>
                 </div>
             </div>

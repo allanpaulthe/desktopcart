@@ -8,7 +8,7 @@ const workercode = () => {
                 postMessage(this.responseText)
             }
         };
-        xhttp.open("GET", "http://localhost:4000/user/cart", true);
+        xhttp.open("GET", "http://10.7.50.88:4000/user/cart", true);
         xhttp.send();
 
     };

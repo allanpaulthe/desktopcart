@@ -33,7 +33,7 @@ const productsReducer = (state, action) => {
             if (state.selectedMenuIcon === action.payload && state.menuOn === true) {
                 return ({
                     ...state,
-                    selectedMenuIcon: action.payload,
+                    selectedMenuIcon: null,
                     menuOn: false
                 })
             }
@@ -47,7 +47,8 @@ const productsReducer = (state, action) => {
         case 'MENU_OFF':
             return ({
                 ...state,
-                menuOn: false
+                menuOn: false,
+                selectedMenuIcon: null
             })
         case 'MENU_ON_OFF':
             return ({
