@@ -16,7 +16,11 @@ class ProductList extends Component {
     }
     componentDidMount() {
         if (this.props.category) {
-
+            getProducts().then((data) => {
+                this.props.setProducts(data);
+            }).catch(() => {
+                this.setState({ data: [] });
+            })
         }
         else {
             getProducts().then((data) => {
@@ -28,7 +32,11 @@ class ProductList extends Component {
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.location.pathname !== this.props.location.pathname) {
-            
+            getProducts().then((data) => {
+                this.props.setProducts(data);
+            }).catch(() => {
+                this.setState({ data: [] });
+            })
         }
     }
     render() {
