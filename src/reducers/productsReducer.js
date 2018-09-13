@@ -24,6 +24,11 @@ const productsReducer = (state, action) => {
                 ...state,
                 videoView: true
             })
+        case 'CHANGE_DELEVARY':
+            return ({
+                ...state,
+                selectedDelivary: action.data
+            })
         case 'OFF_VIDEO_VIEW':
             return ({
                 ...state,

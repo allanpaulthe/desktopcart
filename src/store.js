@@ -23,7 +23,8 @@ const initial = {
         phno: false
     },
     subMenuList: {},
-    searchProducts: []
+    searchProducts: [],
+    selectedDelivary: 1
 }
 
 const store = createStore(productsReducer, initial, applyMiddleware(logger));
