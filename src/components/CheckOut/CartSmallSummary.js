@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon } from 'react-icons-kit';
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down';
+import { connect } from 'react-redux';
 
 class CartSmallSummary extends Component {
     constructor(props) {
@@ -12,12 +13,10 @@ class CartSmallSummary extends Component {
         this.getStyles = this.getStyles.bind(this);
     }
     setDelivary(i) {
-        this.setState({
-            selected: i
-        })
+        this.props.setDelivary(i);
     }
     getStyles(i) {
-        if (i === this.state.selected) {
+        if (i === this.props.selected) {
             return ({
                 color: '#2196f3',
                 border: 'solid 2px #2196f3'
@@ -32,14 +31,14 @@ class CartSmallSummary extends Component {
     render() {
         let sum = this.props.sum;
         let shipCost = 'Free';
-        if (this.state.selected === 1) {
+        if (this.props.selected === 1) {
             sum = sum + 0;
         }
-        else if (this.state.selected === 2) {
+        else if (this.props.selected === 2) {
             sum = sum + 5.99;
             shipCost = '$5.99';
         }
-        else if (this.state.selected === 3) {
+        else if (this.props.selected === 3) {
             sum = sum + 17.50;
             shipCost = '$17.50';
         }
@@ -114,4 +113,21 @@ class CartSmallSummary extends Component {
     }
 }
 
-export default CartSmallSummary;
+export const mapStateToProps = (state) => {
+    return {
+        selected: state.selectedDelivary
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setDelivary: (i) => {
+            dispatch({
+                type: 'CHANGE_DELEVARY',
+                data: i
+            })
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartSmallSummary);

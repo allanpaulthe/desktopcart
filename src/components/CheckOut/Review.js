@@ -30,15 +30,28 @@ class DelAddress extends Component {
 class ReviewSummary extends Component {
     state = {}
     render() {
+        let sum = this.props.sum;
+        let shipCost = 'Free';
+        if (this.props.selected === 1) {
+            sum = sum + 0;
+        }
+        else if (this.props.selected === 2) {
+            sum = sum + 5.99;
+            shipCost = '$5.99';
+        }
+        else if (this.props.selected === 3) {
+            sum = sum + 17.50;
+            shipCost = '$17.50';
+        }
         return (
             <div className="summary">
                 <div className="one">
                     <h1>Subtotal</h1>
-                    <p>{'$' + this.props.sum}</p>
+                    <p>{'$' + sum}</p>
                 </div>
                 <div className="one">
                     <h1>Shipping</h1>
-                    <p>FREE</p>
+                    <p>{shipCost}</p>
                 </div>
                 <div className="one">
                     <h1>Expected Delivery</h1>
@@ -50,7 +63,7 @@ class ReviewSummary extends Component {
                 </div>
                 <div className="one black">
                     <h1>Total</h1>
-                    <p>{'$' + (this.props.sum + 11.55)}</p>
+                    <p>{'$' + (sum + 11.55)}</p>
                 </div>
             </div>
         );
@@ -218,7 +231,7 @@ class Review extends Component {
                     </div>
                 }
                 <div className="line"></div>
-                <ReviewSummary sum={sum} />
+                <ReviewSummary sum={sum} selected={this.props.selected} />
             </div>
         );
     }
@@ -229,7 +242,8 @@ export const mapStateToProps = (state) => {
         adress: state.userAdress,
         cart: state.cart,
         products: state.products,
-        cartCount: state.cartCount
+        cartCount: state.cartCount,
+        selected: state.selectedDelivary
     };
 };
 
